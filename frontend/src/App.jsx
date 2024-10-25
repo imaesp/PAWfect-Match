@@ -1,5 +1,5 @@
 import Hero from './pages/Hero/Hero.jsx'
-//import Survey from './components/Survey/Survey.jsx'
+//import Survey from './pages/Survey/Survey.jsx'
 
 function App() {
 
