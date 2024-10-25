@@ -1,0 +1,21 @@
+.animal-details {
+    border: 1px solid #ccc;
+    padding: 16px;
+    margin: 16px;
+    border-radius: 8px;
+    text-align: center;
+  }
+  
+  .animal-details{
+    .picture{
+      width: 150px;
+      height: auto; 
+    }
+    
+  }
+  .animal-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+  
