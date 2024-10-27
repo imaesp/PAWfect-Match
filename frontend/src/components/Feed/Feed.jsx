@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './Feed.scss'
 
+
 const AnimalDetails = ({ animal }) => {
   const attributes = animal.attributes;
   const primaryBreed = animal.breedString;
@@ -35,7 +36,7 @@ const Feed = () => {
           method: 'GET',
           headers: {
             'Content-Type': 'application/vnd.api+json',
-            'Authorization': '' 
+            'Authorization': import.meta.env.VITE_RGAPIKEY
           }
         });
         
