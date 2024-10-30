@@ -3,12 +3,11 @@ import './Navbar.scss'
 
 function Navbar() {
   return (
-    <div>
+    <div className='container'>
         <div>
         <h1 className='title'>PAWfect Match</h1>
         </div>
-
-        <div>
+        <div className='list'>
             <ul>
                 <li>
                     <button>About</button>
