@@ -1,27 +1,42 @@
-import React from 'react'
-import './Navbar.scss'
+import './Navbar.scss';
+import Dropdown from './Dropdown';
+import Login from '../Login/Login';
+import { useState } from 'react';
+
 
 function Navbar() {
-  return (
-    <div className='container'>
-        <div>
-        <h1 className='title'>PAWfect Match</h1>
-        </div>
-        <div className='list'>
+  const [activeDropdown, setActiveDropdown] = useState('');
+
+  const handleSetActive = (title) => {
+      setActiveDropdown(title);
+  };
+
+    return (
+      <nav className="navbar">
+          <div className="nav-logo">
+              <a href="#"><img src="src/components/Navbar/pawfectlogo.png" alt="PAWfect Match Logo" /></a>
+          </div>
+          <div className="page-links">
             <ul>
                 <li>
-                    <button>About</button>
+                  <a href ="#" onClick={() => handleSetActive('Home')}> 
+                    <Dropdown title="Home" items={['Quiz', 'Test']} />
+                  </a>
                 </li>
                 <li>
-                    <button>Contact</button>
+                  <a href ="#" onClick={() => handleSetActive('About')}>  
+                    <Dropdown title="About" items={['Trips', 'Hub']} />
+                  </a>
                 </li>
                 <li>
-                    <button>Services</button>
+                  <a href ="#" onClick={() => handleSetActive('About')}> 
+                    <Dropdown title="Contact" items={['Insta', 'Facebook']} />
+                  </a>
                 </li>
             </ul>
         </div>
-    </div>
-  )
+        <Login className="login_btn"></Login>
+      </nav>
+    );
 }
-
-export default Navbar
+export default Navbar;

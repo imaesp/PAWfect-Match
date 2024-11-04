@@ -1,16 +1,17 @@
 import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/clerk-react";
 import React from 'react'
+import './Login.scss'
 
 function Login() {
   return (
-    <header>
+    <div>
       <SignedOut>
         <SignInButton />
       </SignedOut>
       <SignedIn>
         <UserButton />
       </SignedIn>
-    </header>
+    </div>
   )
 }
 
