@@ -2,6 +2,8 @@ import React from "react";
 import "./LandingSection.scss"; // Import the SCSS file
 import Card from "../../components/Card/Card";
 
+
+
 const LandingSection = () => {
   return (
     <div className="landing-container">

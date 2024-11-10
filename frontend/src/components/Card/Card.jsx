@@ -10,7 +10,7 @@ function Card() {
   const navigate = useNavigate();
   const updateAction = () => {
     setGetStartedClicked(true);
-    navigate('/questionnaire'); // will navigate to questionnaire
+    navigate('/survey'); // will navigate to questionnaire
   }
 
   return (

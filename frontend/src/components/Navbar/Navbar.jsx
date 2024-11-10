@@ -1,6 +1,7 @@
 import './Navbar.scss';
 import Dropdown from './Dropdown';
 import Login from '../Login/Login';
+import { Link } from 'react-router-dom';
 import { useState } from 'react';
 
 
@@ -14,22 +15,22 @@ function Navbar() {
     return (
       <nav className="navbar">
           <div className="nav-logo">
-              <a href="#"><img src="src/components/Navbar/pawfectlogo.png" alt="PAWfect Match Logo" /></a>
+              <Link to="/"><img src="src/components/Navbar/pawfectlogo.png" alt="PAWfect Match Logo" /></Link>
           </div>
           <div className="page-links">
             <ul>
                 <li>
-                  <a href ="#" onClick={() => handleSetActive('Home')}> 
-                    <Dropdown title="Home" items={['Quiz', 'Test']} />
-                  </a>
+                  <Link to="/survey" onClick={() => handleSetActive('Home')}> 
+                    <Dropdown title="Home" items={['Survey', 'Test']} />
+                  </Link>
                 </li>
                 <li>
-                  <a href ="#" onClick={() => handleSetActive('About')}>  
+                  <a onClick={() => handleSetActive('About')}>  
                     <Dropdown title="About" items={['Trips', 'Hub']} />
                   </a>
                 </li>
                 <li>
-                  <a href ="#" onClick={() => handleSetActive('About')}> 
+                  <a onClick={() => handleSetActive('About')}> 
                     <Dropdown title="Contact" items={['Insta', 'Facebook']} />
                   </a>
                 </li>

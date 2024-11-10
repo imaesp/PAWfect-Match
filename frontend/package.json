@@ -11,13 +11,16 @@
   },
   "dependencies": {
     "@clerk/clerk-react": "^5.13.1",
+    "axios": "^1.7.7",
     "bootstrap": "^5.3.3",
     "dotenv": "^16.4.5",
     "flowbite": "^2.5.2",
     "flowbite-react": "^0.10.2",
+    "framer-motion": "^11.11.11",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "react-router-dom": "^6.27.0"
+    "react-router-dom": "^6.27.0",
+    "survey-react-ui": "^1.12.9"
   },
   "devDependencies": {
     "@eslint/js": "^9.9.0",
