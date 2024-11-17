@@ -1,0 +1,35 @@
+.container{
+    background-color:#EEEAEA;
+    position: fixed;
+    margin: 0;
+    bottom: 0;
+    width: 100%;
+    padding: 10px 25px;
+    color: black;
+    text-align: center;
+    .text{
+        font-family: 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif, 'Trebuchet MS';
+        font-weight: 200;
+        font-size: small;
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+    }
+}
+    
+.paw-logo img{
+    width: 50px;
+    height: 50px;
+}
+
+ul{
+    display: flex;
+    padding: 10px;
+    margin: 0;
+    li{
+        list-style-type: none;
+        cursor: pointer;
+        margin-right: 20px;
+       
+    }
+}

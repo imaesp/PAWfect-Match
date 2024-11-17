@@ -1,39 +1,47 @@
-.dropdown {
-    position: relative;
-}
-.dropdown-title {
-    cursor: pointer; 
-}
+/* Dropdown Menu */
+.dropdown-menu {
+  background-color: #D9D9D9;
+  position: absolute;
+  left: 0;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  list-style-type: none;
 
-.dropdown-list {
-    display: none;
-    position: absolute;
-    top: 100%; /* Position below the title */
-    width: auto; 
-    background-color: #BFA697;
-    border: 1px solid #000000; 
-    border-radius: 10%;
-    list-style-type: none;
-    padding: 50px;
-    margin: 0; 
-    z-index: 1000; /* Ensure it appears on top */
-    max-width: 100px; 
-}
-
-.dropdown:hover .dropdown-list {
-     display: block; 
-}
-
-.dropdown-list li {
-    margin: 0;
-    color: black;
+  /* Ensure li items have default color */
+  li {
+    padding: 8px 20px; 
     cursor: pointer;
-    padding: 10px;
-    text-align: center;
+    font-size: 16px;
+    font-weight: 500;
+    font-family: 'Courier New', monospace, Courier;
+    color: black; 
+    transition: color 0.3s ease, text-decoration 0.3s ease; /* Smooth transitions for hover */
+
+    /* Hover effect */
+    &:hover {
+      color: #f3a756 ;  
+      text-decoration: underline;
+    }
+
+    /* Ensure the link color doesn't interfere */
+    a {
+       color: inherit;  /* Inherit color from the parent li element */
+       text-decoration: none;  /* Remove any default link underlining */
+       transition: color 0.3s ease;
+
+       &:hover {
+         color: inherit;  /* Ensure the link text doesn't change color on hover */
+       }
+     }
+  }
 }
 
-.dropdown-list li:hover {
-    color: white;
-    text-decoration: underline;
-    background-color: #4A4A48;
+/* Menu category wrapper */
+.menu-category {
+  padding: 0;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 }
