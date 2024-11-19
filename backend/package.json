@@ -2,6 +2,11 @@
   "dependencies": {
     "body-parser": "^1.20.3",
     "cors": "^2.8.5",
+<<<<<<< Updated upstream
     "express": "^4.21.1"
+=======
+    "express": "^4.21.1",
+    "node": "^22.11.0"
+>>>>>>> Stashed changes
   }
 }

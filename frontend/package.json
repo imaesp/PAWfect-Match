@@ -10,8 +10,17 @@
     "preview": "vite preview"
   },
   "dependencies": {
+<<<<<<< Updated upstream
     "@clerk/clerk-react": "^5.13.1",
     "axios": "^1.7.7",
+=======
+<<<<<<< Updated upstream
+=======
+    "@clerk/clerk-react": "^5.13.1",
+    "@supabase/supabase-js": "^2.46.1",
+    "axios": "^1.7.7",
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
     "bootstrap": "^5.3.3",
     "dotenv": "^16.4.5",
     "flowbite": "^2.5.2",

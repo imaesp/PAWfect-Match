@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -5,16 +6,32 @@
     padding: 10px;
     background-color: #ECE2D8;
     color: black; 
+=======
+<<<<<<< Updated upstream
+=======
+.navbar {
+    height: 80px;
+    display: flex;
+    //align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    //background-color: #FFCA93; 
+>>>>>>> Stashed changes
     width: 100%;
     position: fixed;
     top: 0;
     left: 0;
+<<<<<<< Updated upstream
     z-index: 1000;
+=======
+    z-index: 2;
+>>>>>>> Stashed changes
 }
 
 .nav-logo img {
     height: 50px; 
 }
+<<<<<<< Updated upstream
 
 .page-links {
     display: flex;
@@ -76,3 +93,60 @@
     font-weight: bold;
  
 }
+=======
+.menu-icon{
+    display: none;
+}
+
+.nav-menu {
+    display: flex;
+    align-items: center;
+    list-style-type: none;  
+}
+
+.nav-item{
+  margin-right: 20px;
+    .nav-links {
+        text-decoration: none;
+        color: black;
+        font-size: 20px;
+        font-weight: bold;
+        font-family: 'Courier New',monospace, Courier;
+        &:hover {
+          color: #0da9b4; 
+        }
+      }
+ }
+
+ 
+ 
+//Responsive Design 
+ @media screen and (max-width: 768px) {
+    .menu-icon {
+      display: block;
+      font-size: 24px;
+    }
+  
+    .nav-menu {
+      position: absolute;
+      top: 80px;
+      left: 0;
+      width: 100%;
+      background-color: #d9d9d9;
+      display: none;
+      flex-direction: column;
+      padding: 10px 0;
+      text-align: center;
+    }
+  
+    .nav-menu.active {
+      display: flex;
+    }
+  
+    .nav-item {
+      margin-right: 0;
+      margin-bottom: 10px; /* Add space between items in mobile view */
+    }
+  }
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
