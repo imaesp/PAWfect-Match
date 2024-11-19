@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import axios from 'axios'
-import JComponents from "../../components/JComponents/JComponents";
+
 
 function TestPage() {
     const [survey, setSurvey] = useState([])

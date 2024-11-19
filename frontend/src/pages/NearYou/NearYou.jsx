@@ -1,29 +1,5 @@
-<<<<<<< Updated upstream
 import React from 'react';
 import './NearYou.scss';
-
-const NearYou = () => {
-  return (
-    <section>
-      <div className="pet-gallery">
-      <h2>Pets Available Near You</h2>
-      <div className="pet-cards">
-        <div className="pet-card">
-          <img src="src\pages\NearYou\shooby-image.jpeg" alt="Shooby" />
-          <div className="pet-name">Shooby</div>
-        </div>
-        <div className="pet-card">
-          <img src="src\pages\NearYou\dooby-image.jpeg" alt="Dooby" />
-          <div className="pet-name">Dooby</div>
-        </div>
-        <div className="pet-card">
-          <img src="src\pages\NearYou\doo-image.avif" alt="Doo" />
-          <div className="pet-name">Doo</div>
-        </div>
-      </div>
-      <p>Meet the 9,000+ adoptable pets in your area!</p>
-    </div>
-=======
 import { useEffect, useState } from 'react';
 import supabase from '../../supabase/supabaseClient';
 import './NearYou.scss';
@@ -40,7 +16,7 @@ const NearYou = () => {
           .from('pets') //table to select from
           .select('name, pictures') //the columns to be selected follow this format: ('column1, column2, column3')
           .eq('species', 'Dog') //works as the WHERE clause in SQLs
-          .limit(10); //how many records do we want?
+          .limit(5); //how many records do we want?
 
         if (error) throw error;
         if (data != null) {
@@ -78,7 +54,6 @@ const NearYou = () => {
         </div>
         <p>Meet the 9,000+ adoptable pets in your area!</p>
       </div>
->>>>>>> Stashed changes
     </section>
   );
 };

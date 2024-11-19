@@ -7,14 +7,14 @@ export const MenuItems = [
     },
     {
         category: 'home',
-        title: 'Blog',
-        path: '/Blog',
+        title: 'test',
+        path: '/test',
         cName: 'dropdown-link'
     },
     {
         category: 'home',
-        title: 'Test',
-        path: '/test',
+        title: 'Contact',
+        path: '/footer',
         cName: 'dropdown-link'
     },
     {
