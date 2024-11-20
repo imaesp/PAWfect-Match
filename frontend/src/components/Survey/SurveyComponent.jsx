@@ -3,6 +3,7 @@ import { Model } from "survey-core";
 import { Survey } from "survey-react-ui";
 import "survey-core/defaultV2.min.css";
 import { json } from "./json";
+import { themeJson } from "./survey_theme"
 import axios from 'axios'
 import {useUser} from "@clerk/clerk-react";
 
@@ -12,6 +13,7 @@ function SurveyComponent() {
     console.log("local storage value: " + localStorage.getItem('userEmail'))
 
     const survey = new Model(json);
+    survey.theme = themeJson;
     survey.onComplete.add(() => {
         axios.post("http://localhost:5001/survey", {
             data: survey.data,
