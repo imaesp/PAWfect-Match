@@ -1,6 +1,7 @@
 import './Navbar.scss';
 import Dropdown from './Dropdown';
 import Button from './Button';
+import Login from '../../components/Login/Login'
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 
@@ -47,7 +48,7 @@ function Navbar() {
             </li>
           ))}
         </ul>
-        <Button />
+        <Login></Login>
       </nav>
     </>
   );

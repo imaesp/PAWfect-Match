@@ -1,0 +1,35 @@
+.jc-container {
+  align-items: center;
+  align-content: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.button-container {
+  margin-top: 7.5%;
+  display: flex;
+}
+
+.first,
+.second,
+.third {
+  margin-left: 25px;
+  margin-right: 25px;
+}
+
+.first-button,
+.second-button,
+.third-button {
+  width: 75px;
+  height: 75px;
+  border-radius: 50%;
+  background-color: #bfa697;
+  color: #fff;
+}
+
+.survey-button {
+  border-radius: 20px;
+  background-color: #f5b26b;
+  color: #fff;
+  margin-top: 50%;
+}
