@@ -21,6 +21,7 @@ app.post("/survey", (req, res) => {
     } else{
         surveys[emailAddress] = []
         surveys[emailAddress].push(req.body.data)
+        console.log(surveys)
     }
     res.end()
 })

@@ -1,0 +1,64 @@
+.budget-container {
+  background-color: #bfa697;
+  width: 35%;
+  margin-right: 1em;
+  border-radius: 10px;
+}
+
+.budget-header {
+  margin-top: 0.5rem;
+}
+
+.b-button,
+.b-button:hover,
+.b-button:active,
+.b-button:focus,
+.b-button:visited {
+  background-color: #fff6ec !important;
+  color: #000 !important;
+  transform: none !important;
+  border: 2px solid #7e7067 !important;
+  margin-right: 1em !important;
+}
+
+.e-button,
+.e-button:active,
+.e-button:focus,
+.e-button:visited {
+  background-color: #7e7067 !important;
+  color: #fff !important;
+  transform: none !important;
+  border: 2px solid #7e7067 !important;
+  margin-right: 0px !important;
+}
+.e-button:hover {
+  background-color: #fff6ec !important;
+  color: #000 !important;
+  transform: none !important;
+  border: 2px solid #7e7067 !important;
+  margin-right: 0px !important;
+}
+
+h1 {
+  color: #ece2d8;
+  // color: #7e7067;
+}
+
+.title {
+  color: #7e7067;
+}
+
+.budgets {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.total {
+  margin-bottom: 1rem;
+}
+
+.reg-card {
+  background-color: #ece2d8;
+}

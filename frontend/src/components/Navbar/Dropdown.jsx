@@ -3,22 +3,19 @@ import { Link } from 'react-router-dom';
 import { MenuItems } from './MenuItems';
 
 function Dropdown({ category }) {
-    return (
-      <ul className="dropdown-menu">
-        <div className={`menu-category ${category}`}>
-          {MenuItems.filter(item => item.category === category).map((item, index) => (
-            <>
-             <li key={index}>
-              <Link className={item.cName} to={item.path}>
-                {item.title}
-              </Link>
-            </li> 
+  const filteredItems = MenuItems.filter(item => item.category === category);
 
-            </>
-          ))}
-        </div>
-      </ul>
-    );
+  return filteredItems.length > 0 ? (
+    <ul className={`dropdown-menu ${category}`}>
+      {filteredItems.map(item => (
+        <li key={item.id}>
+          <Link className={item.cName} to={item.path}>
+            {item.title}
+          </Link>
+        </li>
+      ))}
+    </ul>
+  ) : null;
 }
-  
+
 export default Dropdown;
