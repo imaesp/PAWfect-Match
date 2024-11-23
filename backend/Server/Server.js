@@ -21,9 +21,19 @@ app.post("/survey", (req, res) => {
     } else{
         surveys[emailAddress] = []
         surveys[emailAddress].push(req.body.data)
+        console.log(surveys)
     }
     res.end()
 })
+//sends data back to fronted
+app.get("/:email/survey", (req, res) => {
+    if(surveys[req.params.email] === undefined){
+        res.json([]);
+    } else{
+        res.json(surveys[req.params.email])
+    }
+})
+
 
 app.get("/", (req, res) => {
     res.send("Hello")

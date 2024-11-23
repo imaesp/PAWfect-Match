@@ -16,8 +16,8 @@ export const MenuItems = [
     {
       id: 3,
       category: 'home',
-      title: 'Contact',
-      path: '/footer',
+      title: 'Budget',
+      path: '/budget',
       cName: 'dropdown-link'
     },
     {
@@ -43,21 +43,21 @@ export const MenuItems = [
     },
     {
       id: 7,
-      category: 'adopt',
+      category: 'adapt',
       title: 'Pets',
-      path: '/Adopt.jsx',
+      path: '/pets',
       cName: 'dropdown-link'
     },
     {
       id: 8,
-      category: 'adopt',
+      category: 'adapt',
       title: 'Pet Education',
       path: '/Blog',
       cName: 'dropdown-link'
     },
     {
       id: 9,
-      category: 'adopt',
+      category: 'adapt',
       title: 'Are You Really Ready?',
       path: '/ready',
       cName: 'dropdown-link'

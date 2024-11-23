@@ -7,15 +7,13 @@ function Dropdown({ category }) {
 
   return filteredItems.length > 0 ? (
     <ul className={`dropdown-menu ${category}`}>
-      <div className='menu-category'>
-        {filteredItems.map(item => (
-          <li key={item.id}>
-            <Link className={item.cName} to={item.path}>
-              {item.title}
-            </Link>
-          </li>
-        ))}
-      </div>
+      {filteredItems.map(item => (
+        <li key={item.id}>
+          <Link className={item.cName} to={item.path}>
+            {item.title}
+          </Link>
+        </li>
+      ))}
     </ul>
   ) : null;
 }
