@@ -1,0 +1,66 @@
+/* Customize Card container */
+.card {
+    border-radius: 20%;
+    margin: 20px;
+    min-height: 450px;
+    max-width: 350px ;
+    position: relative; /* To position the overlay inside the card */
+  }
+  
+/* Card Image */
+.card-img-top {
+    border-radius: 10px 10px 0 0; /* round the top corners of the image */
+    object-fit: cover;
+//  height: 200px; /* control the image height */
+}
+  
+/* Card Body */
+.card-body {
+    background-color: #FDCA40;
+    padding: 10px;
+}
+  
+/* Title */
+.card-title {
+    font-family: Georgia, Times, 'Times New Roman', serif;
+    //font-family: Nexa Bold,arial,helvetica,sans-serif;
+    font-size: 50px;
+    font-weight: 400;
+    color: #DF2935;
+}
+
+/* Text inside Card */
+.card-text {
+    font-family: Georgia, Times, 'Times New Roman', serif;
+    font-size: 15px;
+    color: #662121;
+    margin-bottom: 10px;
+}
+  
+/* Button inside Card */
+.card-body .btn {
+    background-color: #007bff;
+    border-color: #007bff;
+    color: white;
+    padding: 20px;
+    border-radius: 20%;
+    font-size: 16px;
+    
+    &:hover {
+        background-color: #0056b3;
+        border-color: #0056b3;
+    }
+}
+  
+/* Icon Overlay */
+.icon-overlay {
+    position: absolute; /* Position the icon on top of the image */
+    top: 10px; /* Adjust the top position of the icon */
+    right: 10px; /* Adjust the left position of the icon */
+    width: 30px; /* Set a fixed size for the icon */
+    height: 30px;
+    object-fit: contain; /* Make sure the icon scales correctly */
+    z-index: 10; /* Ensure the icon is on top of the image */
+    cursor: pointer;
+}
+

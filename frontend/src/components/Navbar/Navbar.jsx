@@ -1,6 +1,6 @@
 import './Navbar.scss';
 import Dropdown from './Dropdown';
-import Button from './Button';
+//import Button from './Button';
 import Login from '../../components/Login/Login'
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
@@ -33,7 +33,7 @@ function Navbar() {
 
         <ul className={click ? 'nav-menu active' : 'nav-menu'}>
           {/* Hover effect for each category */}
-          {['home', 'about', 'adapt'].map((category) => (
+          {['home', 'about', 'adopt'].map((category) => (
             <li
               key={category}
               className="nav-item"

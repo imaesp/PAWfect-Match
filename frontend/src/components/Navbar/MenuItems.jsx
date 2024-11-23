@@ -43,21 +43,21 @@ export const MenuItems = [
     },
     {
       id: 7,
-      category: 'adapt',
+      category: 'adopt',
       title: 'Pets',
-      path: '/pets',
+      path: '/Adopt.jsx',
       cName: 'dropdown-link'
     },
     {
       id: 8,
-      category: 'adapt',
+      category: 'adopt',
       title: 'Pet Education',
       path: '/Blog',
       cName: 'dropdown-link'
     },
     {
       id: 9,
-      category: 'adapt',
+      category: 'adopt',
       title: 'Are You Really Ready?',
       path: '/ready',
       cName: 'dropdown-link'
