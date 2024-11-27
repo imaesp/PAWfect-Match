@@ -3,40 +3,54 @@ import { Card } from 'react-bootstrap';
 import { useState } from 'react';
 import './PetCard.scss';
 
-function PetCard(){
-   // State to track whether the icon has been clicked
-   const [isClicked, setIsClicked] = useState(false);
+function PetCard({ pet }) {
+    // State to track whether the icon has been clicked
+    const [isClicked, setIsClicked] = useState({});
 
-   // Handle the click event and toggle the state
-   const handleClick = () => setIsClicked(!isClicked);
+    // Toggle the heart for the specific pet by ID
+    const handleClick = (petId) => {
+        setIsClicked((prevState) => ({
+            ...prevState,
+            [petId]: !prevState[petId], 
+        }));
+    };
 
-   // Conditionally set the image source based on the `isClicked` state
-   const heartIconSrc = isClicked ? '/heartfill.png' : '/heart.png';
+    let petImg = [];
+    try {
+        petImg = JSON.parse(pet.pictures.replace(/'/g, '"'));
+    } catch (error) {
+        console.error('Failed to parse pictures string:', error);
+    }
 
-    
+    // Conditionally set the image source based on the `isClicked` state
+    const heartIconSrc = isClicked[pet.animalID] ? '/heartfill.png' : '/heart.png';
+
     return (
-        <Card style={{ width: '18rem' }}>
-          <Card.Img variant="top" src="/pet_2.jpeg" />
-             {/* Use the dynamic image source for the heart icon */}
-             <img 
-                src={heartIconSrc} 
-                alt="Heart Icon" 
-                className="icon-overlay" 
-                onClick={handleClick} 
-            />
-          <Card.Body>
-            <Card.Title>Max</Card.Title>
-            <Card.Text>
-                Breed | Age
-            </Card.Text>
-            <Button variant="primary">Adopt Me</Button>
-          </Card.Body>
-        </Card>
-      );
+        
+            <Card>
+                <Card.Img 
+                    variant="top" 
+                    src={petImg[0] || '/pet_2.jpeg'}  
+                    alt={pet.name + " the PAWfect Pet"} 
+                />
+                {/* Heart icon, toggles state on click */}
+                <img
+                    src={heartIconSrc}
+                    alt="Heart Icon"
+                    className="icon-overlay"
+                    onClick={() => handleClick(pet.animalID)} 
+                />
+
+                <Card.Body>
+                    <Card.Title>{pet.name}</Card.Title>
+                    <Card.Text>
+                        {pet.breed} | {pet.age}
+                    </Card.Text>
+                    <Button variant="primary">Adopt Me</Button>
+                </Card.Body>
+            </Card>
+
+    );
 }
-
-
-
-
 
 export default PetCard;

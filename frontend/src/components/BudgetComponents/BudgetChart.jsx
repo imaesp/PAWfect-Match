@@ -66,7 +66,7 @@ export default function BudgetChart() {
     };
 
     fetchChartData();
-  }, [userId, chartData]); // Refetch whenever userId changes
+  }, [userId]); // Refetch whenever userId changes
 
   return (
     <PieChart

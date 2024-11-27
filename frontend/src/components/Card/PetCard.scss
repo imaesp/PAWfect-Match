@@ -1,22 +1,29 @@
-/* Customize Card container */
+//Card Desgin
 .card {
     border-radius: 20%;
-    margin: 20px;
-    min-height: 450px;
-    max-width: 350px ;
-    position: relative; /* To position the overlay inside the card */
-  }
+    margin-top: 10px;
+    margin-left: 10px;
+    padding: 0;
+    height: 200px;     
+    width: 15rem; 
+    cursor: pointer;
+    transition: 0.6s;
+   &:hover{
+        box-shadow: 10px 10px 50px #3D0A0A;
+        transform: scale(0.95);
+   }
+}
   
 /* Card Image */
 .card-img-top {
     border-radius: 10px 10px 0 0; /* round the top corners of the image */
     object-fit: cover;
-//  height: 200px; /* control the image height */
+    height: 228px;
 }
   
 /* Card Body */
 .card-body {
-    background-color: #FDCA40;
+    background-color: #fff;
     padding: 10px;
 }
   
@@ -26,41 +33,45 @@
     //font-family: Nexa Bold,arial,helvetica,sans-serif;
     font-size: 50px;
     font-weight: 400;
-    color: #DF2935;
+    color: #3D0A0A;
 }
 
 /* Text inside Card */
 .card-text {
     font-family: Georgia, Times, 'Times New Roman', serif;
     font-size: 15px;
-    color: #662121;
+    color: #3D0A0A;
     margin-bottom: 10px;
 }
   
 /* Button inside Card */
 .card-body .btn {
-    background-color: #007bff;
-    border-color: #007bff;
-    color: white;
-    padding: 20px;
-    border-radius: 20%;
+    background-color: #3D0A0A;
+    border-color: #3D0A0A;
+    color: #ffca93;
+    padding: 10px;
+    border-radius: 5px;
     font-size: 16px;
+    width: 200px;
     
     &:hover {
-        background-color: #0056b3;
-        border-color: #0056b3;
+        background-color: #fff;
+        border-color: #3D0A0A;
+        color:#3D0A0A;
+        border: 3px solid;
+
     }
 }
   
 /* Icon Overlay */
 .icon-overlay {
-    position: absolute; /* Position the icon on top of the image */
-    top: 10px; /* Adjust the top position of the icon */
-    right: 10px; /* Adjust the left position of the icon */
-    width: 30px; /* Set a fixed size for the icon */
+    position: absolute; 
+    top: 10px; 
+    right: 10px; 
+    width: 30px; 
     height: 30px;
-    object-fit: contain; /* Make sure the icon scales correctly */
-    z-index: 10; /* Ensure the icon is on top of the image */
+    object-fit: contain; 
+    z-index: 10; 
     cursor: pointer;
 }
 

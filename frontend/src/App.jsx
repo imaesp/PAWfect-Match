@@ -1,10 +1,9 @@
 import Hero from './pages/Hero/Hero.jsx'
-//import Survey from './pages/Survey/Survey.jsx'
+import AdoptPage from './pages/AdoptPage/Adopt.jsx'
 import Navbar from './components/Navbar/Navbar.jsx'
 import SurveyPage from './pages/SurveyPage/SurveyPage.jsx'
 import TestPage from './pages/TestPage/TestPage.jsx'
 import BudgetPage from "./pages/BudgetPage/BudgetPage.jsx";
-import AdoptPage from './pages/AdoptPage/Adopt.jsx'
 import {Routes, Route} from 'react-router-dom'
 import './App.scss'
  
@@ -22,6 +21,11 @@ function App() {
         </Route>
         <Route path='/test' element={<TestPage></TestPage>}>
         </Route>
+        <Route path='/budget' element={<BudgetPage></BudgetPage>}>
+        </Route>
+        <Route path='/Adopt.jsx' element={<AdoptPage></AdoptPage>}>
+        </Route>
+
       </Routes>
     </>
   )   

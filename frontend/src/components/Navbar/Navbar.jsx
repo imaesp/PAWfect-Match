@@ -32,7 +32,7 @@ function Navbar() {
       </div>
 
       <ul className={click ? 'nav-menu active' : 'nav-menu'}>
-        {['home', 'about', 'adapt'].map((category) => (
+        {['home', 'about', 'adopt'].map((category) => (
           <li
             key={category}
             className="nav-item"
