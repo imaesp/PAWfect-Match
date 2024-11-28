@@ -1,3 +1,5 @@
+// Old survey fetching method, use for reference
+
 import React from "react";
 import { Model } from "survey-core";
 import { Survey } from "survey-react-ui";
