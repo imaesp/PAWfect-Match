@@ -5,8 +5,9 @@ import TestPage from './pages/TestPage/TestPage.jsx';
 import BudgetPage from './pages/BudgetPage/BudgetPage.jsx';
 import AdoptPage from './pages/AdoptPage/Adopt.jsx';
 import ArticlePage from './pages/ArticlePage/ArticlePage.jsx';
-//import AuthGuard from './components/AuthGuard/AuthGuard.jsx'; // Import the AuthGuard component
+import AuthGuard from './components/AuthGuard/AuthGuard.jsx'; // Import the AuthGuard component
 import { Routes, Route } from 'react-router-dom';
+import { ClerkProvider, SignedIn } from '@clerk/clerk-react'
 import './App.scss';
 
 function App() {
@@ -15,9 +16,9 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Hero />} />
-        <Route path="/survey" element={<SurveyPage />}/>
+        <Route path="/survey" element={<AuthGuard><SurveyPage /></AuthGuard>}/>
         <Route path="/test" element={<TestPage />} />
-        <Route path="/budget" element={<BudgetPage />}/>
+        <Route path="/budget" element={<AuthGuard><BudgetPage /></AuthGuard>}/>
         <Route path="/adopt" element={<AdoptPage />} />
         <Route path="/article" element={<ArticlePage />} />
       </Routes>

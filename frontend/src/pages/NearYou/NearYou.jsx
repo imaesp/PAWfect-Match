@@ -1,52 +1,96 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './NearYou.scss';
-import { useEffect, useState } from 'react';
 import supabase from '../../supabase/supabaseClient';
-import './NearYou.scss';
+import { findBestMatches } from '../../utils/petMatchAlgorithm';
+import { useUser } from '@clerk/clerk-react'; // For user authentication
 
 const NearYou = () => {
+  const { user } = useUser();
   const [pets, setPets] = useState([]);
+  const [userAnswers, setUserAnswers] = useState(null);
+  const [loading, setLoading] = useState(true);
 
-
+  // Fetch pets data from Supabase
   useEffect(() => {
-    getPets(); //action or function to be done.
     async function getPets() {
       try {
         const { data, error } = await supabase
-          .from('pets') //table to select from
-          .select('name, pictures') //the columns to be selected follow this format: ('column1, column2, column3')
-          .eq('species', 'Dog') //works as the WHERE clause in SQLs
-          .limit(5); //how many records do we want?
-
+          .from('pets')
+          .select(
+            'animalID, name, species, sex, activityLevel, energyLevel, age, size, breed, primaryBreed, pictures'
+          );
         if (error) throw error;
-        if (data != null) {
-          setPets(data);
-        }
+        setPets(data);
       } catch (error) {
-        alert(error.message);
+        console.error('Error fetching pets:', error.message);
+      } finally {
+        setLoading(false);
       }
     }
-  }, []); //dependencies, when do we want to peform the action/function? In this case as soon as the component loads.
-  console.log(pets)
+    getPets();
+  }, []);
+
+  // Fetch survey responses for the current user
+  useEffect(() => {
+    async function fetchSurveyData() {
+      if (!user?.id) return;
+
+      try {
+        const { data, error } = await supabase
+          .from('survey_responses')
+          .select('answers')
+          .eq('user_id', user.id)
+          .maybeSingle();
+
+        if (error) throw error;
+
+        if (data?.answers) {
+          setUserAnswers(formatSurveyData(data.answers));
+        } else {
+          setUserAnswers(null);
+        }
+      } catch (error) {
+        console.error('Failed to fetch survey data:', error.message);
+      }
+    }
+    fetchSurveyData();
+  }, [user?.id]);
+
+  // Format survey data
+  const formatSurveyData = (surveyData) => ({
+    species: surveyData.species,
+    sex: surveyData.sex,
+    activityLevel: surveyData.activityLevel,
+    energyLevel: surveyData.energyLevel,
+    age: surveyData.age,
+    livingArea: surveyData.livingArea,
+    outdoorAccess: surveyData.outdoorAccess,
+    size: surveyData.size,
+    breed: surveyData.breed || [], // Default to empty array
+  });
+
+  // Parse pictures safely
+  const parsePictures = (pictures) => {
+    try {
+      return JSON.parse(pictures.replace(/'/g, '"')) || [];
+    } catch {
+      return [];
+    }
+  };
+
+  const petsToDisplay = userAnswers ? findBestMatches(userAnswers, pets, 3) : pets;
+
   return (
     <section>
       <div className="pet-gallery">
         <h2>Pets Available Near You</h2>
         <div className="pet-cards">
-          {pets.map((pet, index) => {
-            let picturesArray = [];
-            try {
-              //pictures come in as a String of an array of links, in the following format: "[linkToPicture, linkTopicture]"
-              //to parse it we need to replace every double quote with a single quote.
-              picturesArray = JSON.parse(pet.pictures.replace(/'/g, '"'));
-            } catch (error) {
-              console.error('Failed to parse pictures string:', error);
-            }
-            //only the first picture of the array
+          {petsToDisplay.map((pet, index) => {
+            const picturesArray = parsePictures(pet.pictures);
             const picture = picturesArray[0];
             return (
               <div className="pet-card" key={index}>
-                <img src={picture} alt={pet.name || 'Adoptable Pet'} /> 
+                <img src={picture} alt={pet.name || 'Adoptable Pet'} />
                 <div className="pet-name">{pet.name}</div>
               </div>
             );
