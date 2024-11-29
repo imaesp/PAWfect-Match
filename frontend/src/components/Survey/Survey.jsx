@@ -4,6 +4,7 @@ import supabase from "../../supabase/supabaseClient";
 import { useUser } from "@clerk/clerk-react"; 
 import { json } from "./json";
 import "survey-react/survey.css";
+import './Survey.scss'
 
 const SurveyComp = () => {
   const { user } = useUser();
@@ -127,7 +128,6 @@ const SurveyComp = () => {
   if (!hasCompletedSurvey) {
     return (
       <div style={{ padding: "20px" }}>
-        <h1>Survey</h1>
         <Survey.Survey model={survey} />
       </div>
     );

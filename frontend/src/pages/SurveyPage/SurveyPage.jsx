@@ -6,7 +6,6 @@ import SurveyComp from '../../components/Survey/Survey'
 function SurveyPage() {
   return (
     <div>
-        <h1>Survey Page</h1>
         <SurveyComp></SurveyComp>
     </div>
   )

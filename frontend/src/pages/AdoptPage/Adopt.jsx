@@ -15,6 +15,15 @@ function Adopt() {
     const [userAnswers, setUserAnswers] = useState(null); // Survey data
     const [loading, setLoading] = useState(true);
 
+    // Filter state
+    const [selectedFilters, setSelectedFilters] = useState({
+        species: '',
+        sex: '',
+        size: '',
+        age: '',
+        breed: '',
+    });
+
     // Fetch pets data from Supabase
     useEffect(() => {
         async function getPets() {
@@ -75,14 +84,33 @@ function Adopt() {
         breed: surveyData.breed || [], // Default to empty array
     });
 
-     // If the user is not authenticated or doesn't have survey data, show all pets
-     if (!userAnswers || !user?.id) {
+    // Handle filter changes
+    const handleFilterChange = (filterType, value) => {
+        setSelectedFilters((prevState) => ({
+            ...prevState,
+            [filterType]: value,
+        }));
+    };
+
+    // Function to filter pets based on selected filters
+    const filteredPets = pets.filter((pet) => {
+        return (
+            (selectedFilters.species ? pet.species === selectedFilters.species : true) &&
+            (selectedFilters.sex ? pet.sex === selectedFilters.sex : true) &&
+            (selectedFilters.size ? pet.size === selectedFilters.size : true) &&
+            (selectedFilters.age ? pet.age === selectedFilters.age : true) &&
+            (selectedFilters.breed ? pet.breed === selectedFilters.breed : true)
+        );
+    });    
+
+    // If the user is not authenticated or doesn't have survey data, show all pets
+    if (!userAnswers || !user?.id) {
         return (
             <>
                 <CarouselAdopt />
-                <Filter />
-                <Row xs={1} sm={2} md={3} lg={4} className="g-4">
-                    {pets.map((pet) => (
+                <Filter onFilterChange={handleFilterChange} />
+                <Row xs={1} sm={2} md={3} lg={5} className="g-4">
+                    {filteredPets.map((pet) => (
                         <Col key={pet.animalID}>
                             <PetCard pet={pet} />
                         </Col>
@@ -102,13 +130,13 @@ function Adopt() {
     }
 
     // If user is authenticated and has survey data, show best matches
-    const bestMatches = findBestMatches(userAnswers, pets, 100);
+    const bestMatches = findBestMatches(userAnswers, filteredPets, 3547);
 
     return (
         <>
             <CarouselAdopt />
-            <Filter />
-            <Row xs={1} sm={2} md={3} lg={4} className="g-4">
+            <Filter onFilterChange={handleFilterChange} />
+            <Row xs={1} sm={2} md={3} lg={5} className="g-4">
                 {bestMatches.map((pet) => (
                     <Col key={pet.animalID}>
                         <PetCard pet={pet} />
