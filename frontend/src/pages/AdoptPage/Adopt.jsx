@@ -6,7 +6,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import './Adopt.scss';
 import supabase from '../../supabase/supabaseClient';
-import { useUser } from '@clerk/clerk-react'; // For user authentication
+import { useUser } from '@clerk/clerk-react';
 import { findBestMatches } from '../../utils/petMatchAlgorithm';
 
 function Adopt() {
@@ -15,7 +15,6 @@ function Adopt() {
     const [userAnswers, setUserAnswers] = useState(null); // Survey data
     const [loading, setLoading] = useState(true);
 
-    // Filter state
     const [selectedFilters, setSelectedFilters] = useState({
         species: '',
         sex: '',
@@ -30,7 +29,7 @@ function Adopt() {
             try {
                 const { data, error } = await supabase
                     .from('pets')
-                    .select('animalID, name, species, sex, activityLevel, energyLevel, age, size, breed, primaryBreed, pictures');
+                    .select('animalID, name, species, sex, activityLevel, energyLevel, age, size, breed, primaryBreed, secondaryBreed, pictures');
                 if (error) throw error;
                 setPets(data);
             } catch (error) {
@@ -81,10 +80,9 @@ function Adopt() {
         livingArea: surveyData.livingArea,
         outdoorAccess: surveyData.outdoorAccess,
         size: surveyData.size,
-        breed: surveyData.breed || [], // Default to empty array
+        breed: surveyData.breed || [],
     });
 
-    // Handle filter changes
     const handleFilterChange = (filterType, value) => {
         setSelectedFilters((prevState) => ({
             ...prevState,
@@ -119,8 +117,6 @@ function Adopt() {
             </>
         );
     }
-
-    // Render loading spinner if data is being fetched
     if (loading) {
         return (
             <div className="d-flex justify-content-center align-items-center vh-100">
