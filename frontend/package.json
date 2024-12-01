@@ -28,6 +28,7 @@
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.27.0",
     "styled-components": "^6.1.13",
+    "survey-react": "^1.12.11",
     "survey-react-ui": "^1.12.9",
     "uuid": "^11.0.3"
   },
