@@ -101,7 +101,7 @@ const DidYouKnow = () => {
 
     return (
         <div className="education-container text-center">
-            <div className="row justify-content-center"><h1>Did You Know</h1></div>
+            <div className="row justify-content-center"><h1>Did You Know?</h1></div>
             <div className="row">
                 <div className="col-md">
                     <div className="facts-container container text-center">

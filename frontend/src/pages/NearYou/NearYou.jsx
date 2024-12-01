@@ -132,6 +132,7 @@ const NearYou = () => {
       >
         <p>Meet the 3,000+ adoptable pets waiting for a home!</p>
       </Link>
+      
     </div>
   );
 };
