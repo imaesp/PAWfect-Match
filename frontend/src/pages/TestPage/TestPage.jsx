@@ -1,10 +1,11 @@
 import React from 'react'
 import PetMatch from '../../components/Matching/matching'
+import ZipCodeDistance from '../../components/ZipCode/ZipCode'
 
 function TestPage() {
   return (
     <div>TestPage
-      <PetMatch></PetMatch>
+      <ZipCodeDistance></ZipCodeDistance>
     </div>
     
   )

@@ -3,6 +3,7 @@ import './NearYou.scss';
 import supabase from '../../supabase/supabaseClient';
 import { findBestMatches } from '../../utils/petMatchAlgorithm';
 import { useUser } from '@clerk/clerk-react'; // For user authentication
+import { Link } from 'react-router-dom';
 
 const NearYou = () => {
   const { user } = useUser();
@@ -17,7 +18,7 @@ const NearYou = () => {
         const { data, error } = await supabase
           .from('pets')
           .select(
-            'animalID, name, species, sex, activityLevel, energyLevel, age, size, breed, primaryBreed, pictures'
+            'animalID, name, species, sex, activityLevel, energyLevel, age, size, breed, primaryBreed, pictures, animalLocation'
           );
         if (error) throw error;
         setPets(data);
@@ -78,12 +79,12 @@ const NearYou = () => {
     }
   };
 
+
   const petsToDisplay = userAnswers ? findBestMatches(userAnswers, pets, 3) : pets;
 
   return (
-    <section>
-      <div className="pet-gallery">
-        <h2>Pets Available Near You</h2>
+      <div className="pet-container">
+        <h1>Check out your top matches!</h1>
         <div className="pet-cards">
           {petsToDisplay.map((pet, index) => {
             const picturesArray = parsePictures(pet.pictures);
@@ -96,9 +97,19 @@ const NearYou = () => {
             );
           })}
         </div>
-        <p>Meet the 9,000+ adoptable pets in your area!</p>
+        <Link
+          to='/adopt'
+          style={{
+            textDecoration: 'none',
+            color: '#fff',
+            transition: 'color 0.3s ease',
+          }}
+          onMouseEnter={(e) => (e.target.style.color = '#3D0C02')}
+          onMouseLeave={(e) => (e.target.style.color = '#fff')}
+        >
+          <p>Meet the 3,000+ adoptable pets waiting for a home!</p>
+      </Link>
       </div>
-    </section>
   );
 };
 

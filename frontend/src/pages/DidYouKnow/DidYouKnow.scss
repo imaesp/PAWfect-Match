@@ -1,0 +1,53 @@
+$text-color: #fff;
+
+.education-container{
+    background-color: #de9d76;
+    padding: 90px 500px 90px;
+    height: 800px;
+
+    h1 {
+        font-size: 40px;
+        color: $text-color;
+        margin-top: 20px;
+        margin-bottom: 50px;
+        font-weight: bold;
+      }
+
+    .facts-container{
+        background-color: #de9d76;
+    }
+    .edu-container{
+        background-color: #FFCA93;
+    }
+
+    h3{
+        color: #fff;
+        font-weight: bold;
+        font-size: 40px;
+    }
+    p{
+        color: #220601;
+        font-weight: bold;
+        opacity: 0.5;
+    }
+    .card-divider {
+        width: 100%;
+        border-top: 2px solid #220601;
+        opacity: .5;
+        margin: 30px 0 -5px;
+      }
+
+    h2{
+        margin-top: 20px;
+        color: #220601;
+        font-weight: bold;
+        opacity: 0.5;
+    }
+
+    .linking{
+        font-weight: bold;
+    }
+}
+
+  
+  
