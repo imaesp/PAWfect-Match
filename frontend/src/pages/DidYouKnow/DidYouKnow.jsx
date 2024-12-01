@@ -86,11 +86,11 @@ const DidYouKnow = () => {
     useEffect(() => {
         const factInterval = setInterval(() => {
             setRandomFacts(getRandomFacts());
-        }, 5000); // Update facts every 5 seconds
+        }, 5000); 
 
         const quoteInterval = setInterval(() => {
             setRandomQuote(getRandomQuote());
-        }, 11000); // Update quotes every 5 seconds
+        }, 10000); 
 
         // Cleanup on component unmount
         return () => {
@@ -101,8 +101,8 @@ const DidYouKnow = () => {
 
     return (
         <div className="education-container text-center">
-            <div className="row justify-content-center"><h1>Did You Know?</h1></div>
-            <div className="row">
+            <div className="group-container row">
+                <div className="title row justify-content-center"><h1>Did You Know?</h1></div>
                 <div className="col-md">
                     <div className="facts-container container text-center">
                         <div className="row row-cols-2">
@@ -152,7 +152,7 @@ const DidYouKnow = () => {
                                 color: '#fff',
                                 transition: 'color 0.3s ease',
                             }}
-                            onMouseEnter={(e) => (e.target.style.color = '#fff')}
+                            onMouseEnter={(e) => (e.target.style.color = '#de9d76')}
                             onMouseLeave={(e) => (e.target.style.color = '#3D0C02')}
                         >
                             <p className="linking">Check out our Education Page</p>
