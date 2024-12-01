@@ -2,14 +2,16 @@ import React, { useEffect, useState } from 'react';
 import './NearYou.scss';
 import supabase from '../../supabase/supabaseClient';
 import { findBestMatches } from '../../utils/petMatchAlgorithm';
-import { useUser } from '@clerk/clerk-react'; // For user authentication
+import { useUser } from '@clerk/clerk-react';
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
 const NearYou = () => {
   const { user } = useUser();
   const [pets, setPets] = useState([]);
   const [userAnswers, setUserAnswers] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [animatePets, setAnimatePets] = useState(false);
 
   // Fetch pets data from Supabase
   useEffect(() => {
@@ -67,7 +69,7 @@ const NearYou = () => {
     livingArea: surveyData.livingArea,
     outdoorAccess: surveyData.outdoorAccess,
     size: surveyData.size,
-    breed: surveyData.breed || [], // Default to empty array
+    breed: surveyData.breed || [],
   });
 
   // Parse pictures safely
@@ -79,37 +81,58 @@ const NearYou = () => {
     }
   };
 
-
   const petsToDisplay = userAnswers ? findBestMatches(userAnswers, pets, 3) : pets;
 
+
+  useEffect(() => {
+    const petAnimationInterval = setInterval(() => {
+      setAnimatePets((prev) => !prev);
+    }, 2000);
+
+    return () => {
+      clearInterval(petAnimationInterval);
+    };
+  }, []);
+
   return (
-      <div className="pet-container">
-        <h1>Check out your top matches!</h1>
-        <div className="pet-cards">
-          {petsToDisplay.map((pet, index) => {
-            const picturesArray = parsePictures(pet.pictures);
-            const picture = picturesArray[0];
-            return (
-              <div className="pet-card" key={index}>
-                <img src={picture} alt={pet.name || 'Adoptable Pet'} />
-                <div className="pet-name">{pet.name}</div>
-              </div>
-            );
-          })}
-        </div>
-        <Link
-          to='/adopt'
-          style={{
-            textDecoration: 'none',
-            color: '#fff',
-            transition: 'color 0.3s ease',
-          }}
-          onMouseEnter={(e) => (e.target.style.color = '#3D0C02')}
-          onMouseLeave={(e) => (e.target.style.color = '#fff')}
-        >
-          <p>Meet the 3,000+ adoptable pets waiting for a home!</p>
-      </Link>
+    <div className="pet-container">
+      <h1>Check out your top matches!</h1>
+      <div className="pet-cards">
+        {petsToDisplay.map((pet, index) => {
+          const picturesArray = parsePictures(pet.pictures);
+          const picture = picturesArray[0];
+
+          return (
+            <motion.div
+              key={index}
+              className="pet-card"
+              initial={{ y: 0 }}
+              animate={{ y: animatePets ? [0, -20, 0] : 0 }} // Toggle animation when state changes
+              transition={{
+                duration: 0.6,
+                ease: 'easeInOut',
+                delay: 0.5 * index,
+              }}
+            >
+              <img src={picture} alt={pet.name || 'Adoptable Pet'} />
+              <div className="pet-name">{pet.name}</div>
+            </motion.div>
+          );
+        })}
       </div>
+      <Link
+        to='/adopt'
+        style={{
+          textDecoration: 'none',
+          color: '#fff',
+          transition: 'color 0.3s ease',
+        }}
+        onMouseEnter={(e) => (e.target.style.color = '#3D0C02')}
+        onMouseLeave={(e) => (e.target.style.color = '#fff')}
+      >
+        <p>Meet the 3,000+ adoptable pets waiting for a home!</p>
+      </Link>
+    </div>
   );
 };
 
