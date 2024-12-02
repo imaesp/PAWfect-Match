@@ -1,14 +1,19 @@
-//import React from 'react'
-import Navbar from '../../components/Navbar/Navbar.jsx'
-//import Feed from '../../components/Feed/Feed.jsx' 
-//<Feed></Feed>
+import React from 'react'
+import NearYou from '../../pages/NearYou/NearYou.jsx'
+import LandingSection from '../LandingSection/LandingSection.jsx'
+import Journey from '../Journey/Journey.jsx'
+import Footer from '../../components/Footer/Footer.jsx'
+import './Hero.scss'
 
 function Hero() {
   return (
-    <section>
-        <Navbar></Navbar>
-        
-    </section>
+    <div>
+      <LandingSection></LandingSection>
+      <Journey></Journey>
+      <NearYou></NearYou>
+      <Footer></Footer>
+    </div>
+
   )
 }
 

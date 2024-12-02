@@ -2,16 +2,15 @@
 
 
 .page-container {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    height: 100vh;                
-    width: 100vw;
-    padding-right: 300px;
-    box-sizing: border-box; 
-    margin-top: -300px;
+  display: flex;
+  align-items: center;
+  justify-content: center; // Center Card within its parent container
+  height: 100vh;                
+  width: 100vw;
+  box-sizing: border-box;
+  margin-top: 0; // Remove any negative margin if unnecessary
+  padding-right: 0; // Remove right padding to prevent Card from being off-screen
 }
-
 .card-container {
   display: flex;
   flex-direction: column;

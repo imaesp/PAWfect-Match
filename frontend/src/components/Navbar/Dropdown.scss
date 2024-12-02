@@ -1,0 +1,48 @@
+.dropdown-menu {
+  background-color: #d9d9d9;
+  position: absolute;
+  top: 100%; /* Dropdown sits directly below the nav-item */
+  left: 0;
+  padding: 0;
+  margin: 0;
+  width: 100%; /* Full width dropdown */
+  list-style-type: none;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add subtle shadow for clarity */
+
+  li {
+    padding: 8px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 500;
+    font-family: 'Courier New', monospace, Courier;
+    color: black;
+    transition: color 0.3s ease, background-color 0.3s ease;
+
+    &:hover {
+      color: #f3a756;
+      background-color: #f7f7f7; /* Subtle background change on hover */
+      text-decoration: underline;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+      &:hover {
+        color: inherit;
+      }
+    }
+  }
+}
+
+/* Wrapper for category-specific styling */
+.menu-category {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Align links to the left */
+  width: 100%;
+}
+
+/* Show dropdown only when parent nav-item is hovered */
+.nav-item:hover .dropdown-menu {
+  display: block;
+}
