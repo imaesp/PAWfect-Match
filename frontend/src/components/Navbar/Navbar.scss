@@ -1,79 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+.container {
+  background-color: transparent !important;
+  color: #390510;
+  font-family: 'Poppins', sans-serif;
+}
+
 .navbar {
-  height: 80px;
-  display: flex;
-  justify-content: space-between;
-  padding: 10px;
-  background-color: #d9d9d9;
-  width: 100%;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 2;
+  
+  background-color: #fffaf0;
 }
 
-.nav-logo img {
-  height: 50px;
+.navLinks {
+  padding: 10px 15px; 
 }
 
-.menu-icon {
-  display: none;
+
+.navbar .nav-link {
+  text-decoration: none; 
+  color: #390510; 
+  transition: color 0.3s ease; 
 }
 
-.nav-menu {
-  display: flex;
-  align-items: center;
-  list-style-type: none;
+
+.mid{
+  padding-right: 40px;
+}
+.navbar .nav-link:hover  {
+  color: #FFCA93; 
 }
 
-.nav-item {
-  position: relative; /* For dropdown positioning */
-  margin-right: 20px;
 
-  .nav-links {
-    text-decoration: none;
-    color: black;
-    font-size: 20px;
-    font-weight: bold;
-    font-family: 'Courier New', monospace, Courier;
-    transition: color 0.3s ease;
-
-    &:hover {
-      color: #0da9b4;
-    }
-  }
+.navbar .nav-link:focus {
+  color: #FFCA93; 
 }
 
-/* Responsive Design */
-@media screen and (max-width: 768px) {
-  .menu-icon {
-    display: block;
-    font-size: 24px;
-  }
 
-  .nav-menu {
-    position: absolute;
-    top: 80px;
-    left: 0;
-    width: 100%;
-    background-color: #d9d9d9;
-    display: none;
-    flex-direction: column;
-    padding: 10px 0;
-    text-align: center;
-  }
-
-  .nav-menu.active {
-    display: flex;
-  }
-
-  .nav-item {
-    margin-right: 0;
-    margin-bottom: 10px;
-  }
-
-  .dropdown-menu {
-    position: static; /* Adjust for mobile view */
-    width: 100%;
-    box-shadow: none; /* Remove shadow for simpler mobile design */
-  }
+.navLinks {
+  text-decoration: none;  
+  color: #390510; 
+  transition: color 0.3s ease; 
 }
+
+
+.navLinks:hover {
+  color: #FFCA93; 
+}
+
+.navLinks:focus {
+  color: #FFCA93; 
+}
+
+
+
