@@ -26,37 +26,38 @@ const PawPrintRtoL = () => {
         const intervalDuration = 500; // Time between creating paw prints in milliseconds
         const baseVertical = 35; // Base vertical position
         const verticalVariation = 30; // Max vertical variation in pixels
+        const resetInterval = 15000; // Time to reset the animation in milliseconds
 
-        let createdPaws = 0;
-        let currentPosition = window.innerWidth; // Start at the far-right edge
+        const createPawTrail = () => {
+            container.innerHTML = ""; // Clear existing paw prints
 
-        const createPaw = () => {
-            if (createdPaws >= trailLength) {
-                clearInterval(intervalId); // Stop once all paw prints are created
-                return;
+            let currentPosition = window.innerWidth; // Start at the far-right edge
+            for (let i = 0; i < trailLength; i++) {
+                const pawPrint = document.createElement("div");
+                pawPrint.className = "paw-print-rtl";
+                pawPrint.innerHTML = pawSvg;
+
+                // Horizontal position
+                pawPrint.style.left = `${currentPosition}px`;
+
+                // Vertical position with variation
+                const randomOffset = Math.random() * verticalVariation - verticalVariation / 2;
+                pawPrint.style.top = `${baseVertical + randomOffset}px`;
+
+                // Staggered animation delay
+                pawPrint.style.animationDelay = `${i * (intervalDuration / 1000)}s`;
+
+                container.appendChild(pawPrint);
+
+                currentPosition -= pawSpacing; // Move left for the next paw
             }
-
-            const pawPrint = document.createElement("div");
-            pawPrint.className = "paw-print-rtl";
-            pawPrint.innerHTML = pawSvg;
-
-            // Horizontal position
-            pawPrint.style.left = `${currentPosition}px`;
-
-            // Vertical position with variation
-            const randomOffset = Math.random() * verticalVariation - verticalVariation / 2;
-            pawPrint.style.top = `${baseVertical + randomOffset}px`;
-
-            container.appendChild(pawPrint);
-
-            // Update for next paw print
-            currentPosition -= pawSpacing; // Move left
-            createdPaws++;
         };
 
-        const intervalId = setInterval(createPaw, intervalDuration);
+        createPawTrail();
 
-        return () => clearInterval(intervalId); // Cleanup on unmount
+        const resetAnimation = setInterval(createPawTrail, resetInterval);
+
+        return () => clearInterval(resetAnimation); // Cleanup on unmount
     }, []);
 
     return <div id="paw-container-rtl" className="paw-line-rtl" />;

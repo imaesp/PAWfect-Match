@@ -4,6 +4,7 @@ import supabase from "../../supabase/supabaseClient";
 import { useUser } from "@clerk/clerk-react"; 
 import { json } from "./json";
 import "survey-react/survey.css";
+import { theme } from "./survey_theme";
 import './Survey.scss'
 
 const SurveyComp = () => {
@@ -98,6 +99,7 @@ const SurveyComp = () => {
   };
 
   const survey = new Survey.Model(json); 
+  survey.applyTheme(theme);
   survey.onComplete.add(handleSurveyComplete);
 
   useEffect(() => {
@@ -127,8 +129,8 @@ const SurveyComp = () => {
   // Render the survey if the user hasn't completed it
   if (!hasCompletedSurvey) {
     return (
-      <div style={{ padding: "20px" }}>
-        <Survey.Survey model={survey} />
+      <div className="survey-container">
+        <Survey.Survey className="survey-model" model={survey} />
       </div>
     );
   }

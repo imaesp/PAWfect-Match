@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import "./PawPrintLtoR.scss";
 
-const PawPrintLtoR = () => {
+const PawPrintLeftToRight = () => {
     const pawSvg = `<svg height="50px" width="50px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48.839 48.839">
         <g>
             <path style="fill:#3D0C02;" d="M39.041,36.843c2.054,3.234,3.022,4.951,3.022,6.742c0,3.537-2.627,5.252-6.166,5.252
@@ -18,7 +18,7 @@ const PawPrintLtoR = () => {
     </svg>`;
 
     useEffect(() => {
-        const container = document.getElementById("paw-container");
+        const container = document.getElementById("paw-container-ltr");
         if (!container) return;
 
         const trailLength = 25; // Total number of paw prints
@@ -26,40 +26,41 @@ const PawPrintLtoR = () => {
         const intervalDuration = 500; // Time between creating paw prints in milliseconds
         const baseVertical = 35; // Base vertical position
         const verticalVariation = 30; // Max vertical variation in pixels
+        const resetInterval = 15000; // Time to reset the animation in milliseconds
 
-        let createdPaws = 0;
-        let currentPosition = 0;
+        const createPawTrail = () => {
+            container.innerHTML = ""; // Clear existing paw prints
 
-        const createPaw = () => {
-            if (createdPaws >= trailLength) {
-                clearInterval(intervalId); // Stop once all paw prints are created
-                return;
+            let currentPosition = -50; // Start at the far-left edge
+            for (let i = 0; i < trailLength; i++) {
+                const pawPrint = document.createElement("div");
+                pawPrint.className = "paw-print-ltr";
+                pawPrint.innerHTML = pawSvg;
+
+                // Horizontal position
+                pawPrint.style.left = `${currentPosition}px`;
+
+                // Vertical position with variation
+                const randomOffset = Math.random() * verticalVariation - verticalVariation / 2;
+                pawPrint.style.top = `${baseVertical + randomOffset}px`;
+
+                // Staggered animation delay
+                pawPrint.style.animationDelay = `${i * (intervalDuration / 1000)}s`;
+
+                container.appendChild(pawPrint);
+
+                currentPosition += pawSpacing; // Move right for the next paw
             }
-
-            const pawPrint = document.createElement("div");
-            pawPrint.className = "paw-print";
-            pawPrint.innerHTML = pawSvg;
-
-            // Horizontal position
-            pawPrint.style.left = `${currentPosition}px`;
-
-            // Vertical position with variation
-            const randomOffset = Math.random() * verticalVariation - verticalVariation / 2;
-            pawPrint.style.top = `${baseVertical + randomOffset}px`;
-
-            container.appendChild(pawPrint);
-
-            // Update for next paw print
-            currentPosition += pawSpacing;
-            createdPaws++;
         };
 
-        const intervalId = setInterval(createPaw, intervalDuration);
+        createPawTrail();
 
-        return () => clearInterval(intervalId); // Cleanup on unmount
+        const resetAnimation = setInterval(createPawTrail, resetInterval);
+
+        return () => clearInterval(resetAnimation); // Cleanup on unmount
     }, []);
 
-    return <div id="paw-container" className="paw-line" />;
+    return <div id="paw-container-ltr" className="paw-line-ltr" />;
 };
 
-export default PawPrintLtoR;
+export default PawPrintLeftToRight;
