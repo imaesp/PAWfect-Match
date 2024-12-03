@@ -1,20 +1,17 @@
 import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/clerk-react";
-import React from "react";
-import "./Login.scss";
+import React from 'react'
 
 function Login() {
   return (
-    <div className="login-container">
+    <header>
       <SignedOut>
-        <SignInButton mode="modal">
-          <button className="sign-in-button">Sign In</button>
-        </SignInButton>
+        <SignInButton />
       </SignedOut>
       <SignedIn>
         <UserButton />
       </SignedIn>
-    </div>
-  );
+    </header>
+  )
 }
 
-export default Login;
+export default Login

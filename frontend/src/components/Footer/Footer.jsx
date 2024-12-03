@@ -1,27 +1,15 @@
+import React from 'react'
 import './Footer.scss'
 
 function Footer() {
   return (
-    <div className='container'>
+    <div>
+        <div className='container'>
+            <div className='text'>Footer</div>
+        </div>
+  
 
-      <div className='text'>
-          <ul>
-            <li>Home</li>
-            <li>Contact</li>
-            <li>Services</li>
-          </ul>
-          <p>PAWfect Match</p>
-      </div>
-
-      <div className='paw-logo'>
-        <img src= 'src/components/Footer/paw.png' alt = "Paw Logo"/>
-      </div>
-
-
-    <div className='text'>
-      <p>&copy; 2024 All Rights Reserved</p>
-      <p>Shooby Dooby Doo</p>
-    </div>
+        <div className='text'></div>
     </div>
     
   )
