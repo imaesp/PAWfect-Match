@@ -7,49 +7,60 @@
 }
 
 .navbar {
-  
   background-color: #fffaf0;
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center; 
+  padding: 10px 20px;
+}
+
+/* Left Section (Logo and Name) */
+.left-section {
+  display: flex;
+  align-items: center;
+  gap: 2px; 
+  margin-right: 40px;
+
+  .paw-logo {
+    height: 50px;
+    width: auto;
+  }
+
+  .name {
+    font-weight: bold;
+    font-size: 1.2rem;
+    text-decoration: none;
+    color: #390510;
+  }
+
+  .name:hover {
+    color: #FFCA93;
+  }
+}
+
+/* Middle Section (Navigation Links) */
+.mid {
+  display: flex;
+  justify-content: center; 
 }
 
 .navLinks {
-  padding: 10px 15px; 
+  padding: 10px 15px;
+  text-decoration: none;
+  color: #390510;
+  transition: color 0.3s ease;
+  margin: -2px; 
 }
 
-
-.navbar .nav-link {
-  text-decoration: none; 
-  color: #390510; 
-  transition: color 0.3s ease; 
-}
-
-
-.mid{
-  padding-right: 40px;
-}
-.navbar .nav-link:hover  {
-  color: #FFCA93; 
-}
-
-
-.navbar .nav-link:focus {
-  color: #FFCA93; 
-}
-
-
-.navLinks {
-  text-decoration: none;  
-  color: #390510; 
-  transition: color 0.3s ease; 
-}
-
-
-.navLinks:hover {
-  color: #FFCA93; 
-}
-
+.navLinks:hover,
 .navLinks:focus {
-  color: #FFCA93; 
+  color: #FFCA93;
 }
 
-
-
+/* Right Section (Sign In Button) */
+.login {
+  margin-left: auto;
+  display: flex;
+  justify-content: flex-end;
+  margin-left: 40px; 
+}

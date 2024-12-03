@@ -4,39 +4,58 @@ import { useNavigate } from 'react-router-dom';
 import './Card.scss';
 
 
+
 function Card() {
   const [isGetStartedClicked, setGetStartedClicked] = useState(false);
 
   const navigate = useNavigate();
   const updateAction = () => {
     setGetStartedClicked(true);
-    navigate('/survey'); // will navigate to questionnaire
+    navigate('/survey'); 
   }
 
   return (
-    <div className="page-container">
-      <div className="card-container">
-        <div className="card-images">
-          <img src="/pet_1.jpeg" alt="pet-1" />
-          <img src="/pet_2.jpeg" alt="pet-2" />
-          <img src="/pet_3.jpeg" alt="pet-3" />
+    <>
+    <div className="col container" style={{  maxWidth: '320px'}}>
+
+      {/* Row for Images */}
+      <div className="row justify-content-center g-2" >
+        <div className="col-auto">
+          <div className="petsIMG">
+            <img src="/pet_1.jpeg" alt="pet-1" />
+          </div>
         </div>
-
-        <div className="card-text">
-          <h1>Find your match</h1>
-          <p>By filling out the questionnaire</p>
+        <div className="col-auto">
+          <div className="petsIMG">
+            <img src="/pet_2.jpeg" alt="pet-2" />
+          </div>
         </div>
+        <div className="col-auto">
+          <div className="petsIMG">
+            <img src="/pet_3.jpeg" alt="pet-3" />
+          </div>
+        </div>
+      </div>
 
-        <div className="card-divider"></div>
+      {/* Row for Text and Action */}
+      <div className="row flex-column align-items-center mt-3">
+        <div className="col text-center" style={{ paddingBottom: '20px'}}>
+          <h1>Find Your Match</h1>
+          <p>By Taking the Quiz</p>
+        </div>
+      </div>
 
-        <div className="card-footer">
-          <p>Get Started</p>
-          <button className="questionnaire_arrow" onClick={updateAction}>
-            <img src="/arrow_2.jpeg" alt="arrow to questionnaire" />
+      {/* Call to Action */}
+      <div className="row flex-column align-items-center mt-3">
+        <div className="col text-center flex-container"  style={{ borderTop: '2px solid black', margin: '10px 0', width: '250px' }}>
+          <p onClick={updateAction}>Get Started</p>
+          <button className="btn questionnaire_arrow" onClick={updateAction}>
+            <img style={{ width: '26px' }} src="/arrow_2.jpeg" className="img-fluid" alt="arrow to questionnaire" />
           </button>
         </div>
       </div>
     </div>
+   </>
   );
 }
 
