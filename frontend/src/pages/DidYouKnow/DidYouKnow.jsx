@@ -108,12 +108,12 @@ const DidYouKnow = () => {
                         <div className="row row-cols-2">
                             {randomFacts.map((fact, index) => (
                                 <motion.div
-                                    key={fact.title + index} // Unique key based on fact title and index
+                                    key={fact.title + index}
                                     className="col"
                                     initial={{ opacity: 0, scale: 0.0 }}
                                     animate={{ opacity: 1, scale: 1 }}
                                     transition={{
-                                        delay: 0.5 * index, // Delay each fact a little
+                                        delay: 0.5 * index,
                                         duration: 1,
                                         ease: [0, 0.71, 0.2, 1.01],
                                     }}
@@ -129,16 +129,16 @@ const DidYouKnow = () => {
                     <div className="edu-container container text-center rounded">
                         {randomQuote.map((quote, index) => (
                             <motion.div
-                                key={quote.quote + index} // Unique key based on quote text and index
+                                key={quote.quote + index}
                                 initial={{ opacity: 0, scale: 0.0 }}
                                 animate={{ opacity: 1, scale: 1 }}
                                 transition={{
-                                    delay: 0.5 * index, // Delay each quote a little
+                                    delay: 0.5 * index,
                                     duration: 1,
                                     ease: [0, 0.71, 0.2, 1.01],
                                 }}
                             >
-                                <h3>{quote.quote}</h3>
+                                <h3 className='quote'>{quote.quote}</h3>
                                 <p>{quote.author}</p>
                             </motion.div>
                         ))}

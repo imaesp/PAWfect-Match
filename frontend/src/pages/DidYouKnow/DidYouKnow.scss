@@ -3,7 +3,7 @@ $text-color: #fff;
 .education-container{
     background-color: #FFCA93;
     padding: 90px 500px 90px;
-    height: 800px;
+    height: 850px;
 
     h1 {
         font-size: 40px;
@@ -17,10 +17,16 @@ $text-color: #fff;
         background-color: #FFCA93;
     }
     .edu-container{
-        background-color: #fffaf0;
+        background-color: #ffff;
     }
 
     h3{
+        color: #fffaf0;
+        font-weight: bold;
+        font-size: 40px;
+    }
+
+    .quote{
         color: #220601;
         font-weight: bold;
         font-size: 40px;
