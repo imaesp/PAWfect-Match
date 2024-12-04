@@ -150,17 +150,19 @@ function Adopt() {
     // If the user is not authenticated or doesn't have survey data, show all pets
     if (!userAnswers || !user?.id) {
         return (
-            <>
-                <CarouselAdopt />
-                <Filter onFilterChange={handleFilterChange} />
-                <Row xs={1} sm={2} md={3} lg={5} className="g-4">
-                    {filteredPets.map((pet) => (
-                        <Col key={pet.animalID}>
-                            <PetCard pet={pet} />
-                        </Col>
-                    ))}
-                </Row>
-            </>
+            <div className='adopt-page'>
+                <div className='adopt-container'>
+                    <CarouselAdopt />
+                    <Filter onFilterChange={handleFilterChange} />
+                    <Row xs={1} sm={2} md={3} lg={5} className="g-4">
+                        {filteredPets.map((pet) => (
+                            <Col key={pet.animalID}>
+                                <PetCard pet={pet} />
+                            </Col>
+                        ))}
+                    </Row>
+                </div>
+            </div>
         );
     }
     if (loading) {
@@ -175,17 +177,19 @@ function Adopt() {
     const bestMatches = findBestMatches(userAnswers, filteredPets, 3547);
 
     return (
-        <>
-            <CarouselAdopt />
-            <Filter onFilterChange={handleFilterChange} />
-            <Row xs={1} sm={2} md={3} lg={5} className="g-4">
-                {bestMatches.map((pet) => (
-                    <Col key={pet.animalID}>
-                        <PetCard pet={pet} />
-                    </Col>
-                ))}
-            </Row>
-        </>
+        <div className='adopt-page'>
+            <div className='adopt-container'>
+                <CarouselAdopt />
+                <Filter onFilterChange={handleFilterChange} />
+                <Row xs={1} sm={2} md={3} lg={5} className="g-4">
+                    {bestMatches.map((pet) => (
+                        <Col key={pet.animalID}>
+                            <PetCard pet={pet} />
+                        </Col>
+                    ))}
+                </Row>
+            </div>
+        </div>
     );
 }
 

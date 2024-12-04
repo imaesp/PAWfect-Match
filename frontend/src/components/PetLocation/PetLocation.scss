@@ -1,3 +1,80 @@
 .location-card{
-    width: 18rem;
+    margin-left: 300px;
+    .card-body{
+
+
+        .title-picture{
+            height: 100px;
+            width: 100px;
+         
+        }
+
+        background-color: #ffffff;
+        width: 350px;
+        height: 700px;
+        .card-title{
+            color: #220601;
+            font-size: 25px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .card-subtitle{
+            color: #220601;
+            text-align: center;
+        }
+
+        .map{
+            justify-self: center;
+            align-self: center;
+        }
+
+        .location-container{
+            display: flex;
+
+            .location-text{
+                color: #220601;
+                margin-bottom: 0px;
+                
+            }
+    
+            .add-svg{
+                height: 50px;
+                width: 50px;
+            }
+        }
+        .email-container{
+            margin-top: 20px;
+            display: flex;
+
+            .email-text{
+                color: #220601;
+                margin-left: 5px;
+            }
+            .email-svg{
+                margin-left: 10px;
+                height: 35px;
+                width: 35px;
+            }
+        }
+        .phone-container{
+            display: flex;
+
+            .phone-text{
+                color: #220601;
+                margin-bottom: 0px;
+            }
+    
+            .phone-svg{
+                margin-left: 10px;
+                margin-top: -10px;
+                height: 50px;
+                width: 50px;
+            }
+        }
+        .btn-container{
+            padding: 0 75px 0;
+        }
+    }
+        
 }

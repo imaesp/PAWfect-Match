@@ -3,51 +3,42 @@ import Dropdown from './Dropdown';
 import Login from '../../components/Login/Login';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 function Navbar() {
-  const [click, setClick] = useState(false);
-  const [hoveredCategory, setHoveredCategory] = useState(null);
-
-  const handleClick = () => setClick(!click);
-  const closeMobileMenu = () => setClick(false);
-
-  const onMouseEnter = (category) => {
-    setHoveredCategory(category);
-  };
-
-  const onMouseLeave = (e) => {
-    if (!e.currentTarget.contains(e.relatedTarget)) {
-      setHoveredCategory(null);
-    }
-  };
-
   return (
-    <nav className="navbar">
-      <Link to="/" className="nav-logo">
-        <img src="src/components/Navbar/pawfectlogo.png" alt="PAWfect Match Logo" />
-      </Link>
+  <nav className="navbar">
+  <div className="navbar-container text-center">
+    <div className="row justify-content-between align-items-center">
 
-      <div className="menu-icon" onClick={handleClick}>
-        <i className={click ? 'fas fa-times' : 'fas fa-bars'} />
+      {/* Left Section */}
+      <div className="col-auto d-flex align-items-center left-section">
+        <img src='/leftpaw.png' alt="PAWfect Match logo" className="paw-logo" />
+        <Link to="/" className="nav-link name">PAWfect Match</Link>
       </div>
 
-      <ul className={click ? 'nav-menu active' : 'nav-menu'}>
-        {['home', 'about', 'adopt'].map((category) => (
-          <li
-            key={category}
-            className="nav-item"
-            onMouseEnter={() => onMouseEnter(category)}
-            onMouseLeave={onMouseLeave}
-          >
-            <Link to="/" className="nav-links" onClick={closeMobileMenu}>
-              {category.charAt(0).toUpperCase() + category.slice(1)}
-            </Link>
-            {hoveredCategory === category && <Dropdown category={category} />}
-          </li>
-        ))}
-      </ul>
-      <Login />
-    </nav>
+      {/* Middle Section */}
+      <div className="col-auto mid">
+        <div className="d-flex justify-content-center gap-1">
+          <Link to="/article" className="navLinks">Pet EDU</Link>
+          <Link to="/budget" className="navLinks">Budgeting Tool</Link>
+          <Link to="/adopt" className="navLinks">Adopt</Link>
+          <Link to="/survey" className="navLinks">Matchmaker</Link>
+          <Link to="/about" className="navLinks">About</Link>
+          <Link to="/test" className="navLinks">Test</Link>
+        </div>
+      </div>
+
+      {/* Right Section */}
+      <div className="col-auto login">
+          <Login />
+      </div>
+
+    </div>
+  </div>
+</nav>
+
   );
 }
 

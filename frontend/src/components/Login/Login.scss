@@ -1,21 +1,25 @@
+
 .login-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-  }
-  
-  .sign-in-button {
-    background-color: #b6b6b6;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-  }
-  
-  .sign-in-button:hover {
-    background-color: #45a049;
-  }
-  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+}
+
+.sign-in-button {
+  background-color: #fffaf0;
+  color: #390510;
+  border: solid 2px #390510;
+  padding: 10px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.sign-in-button:hover {
+  background-color:#fffaf0 ;
+  border: solid 2px #FFCA93 ;
+  color: #FFCA93;
+}
+

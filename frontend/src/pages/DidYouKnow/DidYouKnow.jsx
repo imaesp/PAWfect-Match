@@ -86,11 +86,11 @@ const DidYouKnow = () => {
     useEffect(() => {
         const factInterval = setInterval(() => {
             setRandomFacts(getRandomFacts());
-        }, 5000); 
+        }, 10000); 
 
         const quoteInterval = setInterval(() => {
             setRandomQuote(getRandomQuote());
-        }, 10000); 
+        }, 20000); 
 
         // Cleanup on component unmount
         return () => {

@@ -1,7 +1,16 @@
 import { motion } from "framer-motion";
 import "./JComponents.scss";
+import React, { useState } from "react";
+import { useNavigate } from 'react-router-dom'; 
 
 function JComponents() {
+  const [isGetStartedClicked, setGetStartedClicked] = useState(false);
+
+  const navigate = useNavigate();
+  const updateAction = () => {
+    setGetStartedClicked(true);
+    navigate('/survey'); 
+  }
   return (
     <div className="jc-container">
       <div className="button-container">
@@ -87,7 +96,7 @@ function JComponents() {
           ease: [0, 0.71, 0.2, 1.01],
         }}
       >
-        <button className="survey-button">Take Survey!</button>
+        <button className="survey-button"onClick={updateAction}>Find Your Match!</button>
       </motion.div>
     </div>
   );

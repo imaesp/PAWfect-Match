@@ -1,9 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
 .jc-container {
+  padding-top: 20px;
   align-items: center;
   align-content: center;
   display: flex;
   flex-direction: column;
-  font-weight: bold;
+  font-weight: 300px;
+  font-size: 20px;
 }
 
 .button-container {
@@ -36,18 +40,19 @@
   width: 5rem;
   height: 5rem;
   border-radius: 50%;
-  background-color: #bfa697;
-  color: #fff;
+  background-color:#FFCA93;
+  color:white;
   border: none;
 }
 
 .survey-button {
-  border-radius: 10px;
-  background-color: #220601;
-  color: #fff;
-  margin-top: 50%;
+  border-radius: 15px;
+  background-color:#fffaf0; 
+  border: solid 2px #390510;
+  color: #390510;
+  margin-top: 80%;
   margin-bottom: 50%;
   padding: 0.5rem;
-  border: none;
+  font-size: 20px;
   font-weight: bold;
 }

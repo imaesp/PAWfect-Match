@@ -23,7 +23,7 @@ const ArticleList = () => {
   );
 
   return (
-    <div className="container mt-4">
+    <div className="article-grid container mt-4">
       {/* Search bar */}
       <div className="row mb-3">
         <div className="col-12 col-md-6 mx-auto">
@@ -32,10 +32,11 @@ const ArticleList = () => {
             placeholder="Search articles..."
             value={searchTerm}
             onChange={handleSearchChange}
-            className="form-control"
+            className="search-bar"
           />
         </div>
       </div>
+
 
       {/* Article list */}
       <div className="article-list">

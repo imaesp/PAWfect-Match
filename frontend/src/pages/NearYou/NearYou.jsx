@@ -131,6 +131,7 @@ const NearYou = () => {
         onMouseLeave={(e) => (e.target.style.color = '#220601')}
       >
         <p>Meet the 3,000+ adoptable pets waiting for a home!</p>
+        <img className="paw-print" src='/leftpaw.png' alt="" style={{ height: '45px', marginLeft:'10px'}} />
       </Link>
       
     </div>
