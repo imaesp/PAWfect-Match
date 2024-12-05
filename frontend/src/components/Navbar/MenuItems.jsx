@@ -45,20 +45,20 @@ export const MenuItems = [
       id: 7,
       category: 'adopt',
       title: 'Pets',
-      path: '/Adopt.jsx',
+      path: '/adopt',
       cName: 'dropdown-link'
     },
     {
       id: 8,
       category: 'adopt',
       title: 'Pet Education',
-      path: '/Blog',
+      path: '/article',
       cName: 'dropdown-link'
     },
     {
       id: 9,
       category: 'adopt',
-      title: 'Are You Really Ready?',
+      title: 'Checklist',
       path: '/ready',
       cName: 'dropdown-link'
     }

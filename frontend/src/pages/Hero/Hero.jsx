@@ -3,7 +3,8 @@ import NearYou from '../../pages/NearYou/NearYou.jsx'
 import LandingSection from '../LandingSection/LandingSection.jsx'
 import Journey from '../Journey/Journey.jsx'
 import Footer from '../../components/Footer/Footer.jsx'
-import ArticleList from '../../components/Articles/articleFeed.jsx'
+import DidYouKnow from '../DidYouKnow/DidYouKnow.jsx'
+import Planning from '../Planning/Planning.jsx'
 import './Hero.scss'
 
 function Hero() {
@@ -12,7 +13,8 @@ function Hero() {
       <LandingSection></LandingSection>
       <Journey></Journey>
       <NearYou></NearYou>
-      <ArticleList></ArticleList>
+      <DidYouKnow></DidYouKnow>
+      <Planning></Planning>
       <Footer></Footer>
     </div>
 

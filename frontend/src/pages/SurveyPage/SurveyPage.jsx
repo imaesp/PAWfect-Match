@@ -1,14 +1,12 @@
 import React, {useState, useEffect} from 'react'
 import SurveyComponent from '../../components/Survey/SurveyComponent'
 import Card from '../../components/Card/Card'
-import axios from 'axios'
+import SurveyComp from '../../components/Survey/Survey'
 
 function SurveyPage() {
   return (
     <div>
-        <h1>Survey Page</h1>
-        <SurveyComponent></SurveyComponent>
-        <Card></Card>
+        <SurveyComp></SurveyComp>
     </div>
   )
 }

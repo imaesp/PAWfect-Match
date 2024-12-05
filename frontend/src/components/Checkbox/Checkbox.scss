@@ -1,0 +1,12 @@
+$border-radius: 15px;
+
+input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px; // Space between checkbox and label text
+    cursor: pointer;
+    transition: background-color 1.3s ease;
+    border-radius: $border-radius;
+    margin-top: 4px;
+    margin-bottom: 20px; // Adds space between checkboxes
+}

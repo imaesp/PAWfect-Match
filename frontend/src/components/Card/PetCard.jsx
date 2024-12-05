@@ -15,12 +15,13 @@ function PetCard({ pet }) {
         }));
     };
 
-    let petImg = [];
+    let picturesArray = [];
     try {
-        petImg = JSON.parse(pet.pictures.replace(/'/g, '"'));
+        picturesArray = JSON.parse(pet.pictures.replace(/'/g, '"'));
     } catch (error) {
         console.error('Failed to parse pictures string:', error);
     }
+    const picture = picturesArray[0]; // Only the first picture
 
     // Conditionally set the image source based on the `isClicked` state
     const heartIconSrc = isClicked[pet.animalID] ? '/heartfill.png' : '/heart.png';
@@ -30,7 +31,7 @@ function PetCard({ pet }) {
             <Card>
                 <Card.Img 
                     variant="top" 
-                    src={petImg[0] || '/pet_2.jpeg'}  
+                    src={picture}  
                     alt={pet.name + " the PAWfect Pet"} 
                 />
                 {/* Heart icon, toggles state on click */}

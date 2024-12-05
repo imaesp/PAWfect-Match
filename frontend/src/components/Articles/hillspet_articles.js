@@ -133,13 +133,6 @@ const articles = [
         "content": "No content found"
     },
     {
-        "title": "Helping a Cat with Sensitive Skin",
-        "link": "https://www.hillspet.com/cat-care/healthcare/cat-sensitive-skin",
-        "description": "Discover how to identify cat sensitive skin and what you can do to help your cat thrive from head to paw.",
-        "image_url": "https://www.hillspet.com/content/dam/cp-sites/hills/hills-pet/en_us/img/article/HP_PCC_hero_0085_cat28.jpg",
-        "content": "No content found"
-    },
-    {
         "title": "How Wellness Checks Help Senior Cats",
         "link": "https://www.hillspet.com/cat-care/healthcare/vet-check-ups-for-senior-cats",
         "description": "If you have a senior-aged cat, learn why it is so important to take her to regular vet visits & blood panel, especially if she has a health condition.",

@@ -6,207 +6,209 @@ export const json = {
       "elements": [
         {
           "type": "dropdown",
-          "name": "question1",
-          "title": "I'd like to adopt a _______",
+          "name": "species",
+          "title": " Which type of pet do you think would be your PAWfect match?",
+          "choices": [
+            "Dog",
+            "Cat"
+          ]
+        },
+        {
+          "type": "dropdown",
+          "name": "sex",
+          "title": "What's your vibe for your PAWfect match?",
+          "choices": [
+            "Male",
+            "Female"
+          ]
+        },
+        {
+          "type": "dropdown",
+          "name": "activityLevel",
+          "title": "Would you prefer a pet that is:",
+          "choices": [
+            "Quiet and independent",
+            "Energetic and social"
+          ]
+        },
+        {
+          "type": "dropdown",
+          "name": "PlayHours",
+          "title": "Can you dedicate a minimum of 2 hours each day for walks, play, or training activities with your pet?",
+          "choices": [
+            "Yes",
+            "No"
+          ]
+        },
+        {
+          "type": "dropdown",
+          "name": "OutHours",
+          "title": "On average, how many hours per day are you away from home due to work, school, or other activities?\r\n",
+          "choices": [
+            "Less than 6 hours",
+            "Between 6 and 8 hours",
+            "Over 8 hours"
+          ]
+        },
+        {
+          "type": "dropdown",
+          "name": "age",
+          "title": "What is your age preference?",
+          "choices": [
+            "I’m open to adopting an older pet",
+            "I’m interested in a long-term commitment with a younger pet",
+            "Age doesn’t matter to me, I’m open to pets of all ages!"
+          ]
+        },
+        {
+          "type": "dropdown",
+          "name": "budget",
+          "title": "How much do you expect to budget for your pet on an annual basis?",
           "choices": [
             {
-              "value": "Dog",
-              "text": "Dog"
+              "value": "1000",
+              "text": "Less than $1,000"
             },
             {
-              "value": "Cat",
-              "text": "Cat"
+              "value": "1300",
+              "text": "$1,000 - $1,500"
             },
             {
-              "value": "More",
-              "text": "More"
+              "value": "1500",
+              "text": "Over $1,500"
             }
           ]
         },
         {
           "type": "dropdown",
-          "name": "question2",
-          "title": "I am a _______ pet owner",
+          "name": "livingArea",
+          "title": "What best describes the size of your living area?",
           "choices": [
-            {
-              "value": "first-time",
-              "text": "first-time"
-            },
-            {
-              "value": "previous",
-              "text": "previous"
-            },
-            {
-              "value": "current",
-              "text": "current"
-            }
-          ]
-        },
-        {
-          "type": "dropdown",
-          "name": "question3",
-          "title": "I currently have _______ ",
-          "choices": [
-            {
-              "value": "dog(s)",
-              "text": "dog(s)"
-            },
-            {
-              "value": "cat(s)",
-              "text": "cat(s)"
-            },
-            {
-              "value": "no dog(s) or cats(s)",
-              "text": "no dog(s) or cats(s)"
-            },
-            {
-              "value": "dog(s) and cats(s)",
-              "text": "dog(s) and cats(s)"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "name": "page2",
-      "elements": [
-        {
-          "type": "dropdown",
-          "name": "question4",
-          "title": "My home has _______",
-          "choices": [
-            {
-              "value": "no yard",
-              "text": "no yard"
-            },
-            {
-              "value": "a fenced yard",
-              "text": "a fenced yard"
-            },
-            {
-              "value": "a yard",
-              "text": "a yard"
-            }
-          ]
-        },
-        {
-          "type": "dropdown",
-          "name": "question5",
-          "title": "There are _______ as part of my HOA or lease",
-          "choices": [
-            {
-              "value": "pet restrictions",
-              "text": "pet restrictions"
-            },
-            {
-              "value": "no pet restrictions",
-              "text": "no pet restrictions"
-            }
-          ]
-        },
-        {
-          "type": "dropdown",
-          "name": "question6",
-          "title": "My ideal pet is _______",
-          "choices": [
-            {
-              "value": "(no age preference)",
-              "text": "(no age preference)"
-            },
-            {
-              "value": "young",
-              "text": "young"
-            },
-            {
-              "value": "adult",
-              "text": "adult"
-            },
-            {
-              "value": "senior",
-              "text": "senior"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "name": "page3",
-      "elements": [
-        {
-          "type": "dropdown",
-          "name": "question7",
-          "title": "I would like to adopt _______",
-          "choices": [
-            {
-              "value": "(no sex preference)",
-              "text": "(no sex preference)"
-            },
-            {
-              "value": "Male",
-              "text": "Male"
-            },
-            {
-              "value": "Female",
-              "text": "Female"
-            }
-          ]
-        },
-        {
-          "type": "dropdown",
-          "name": "question8",
-          "title": "I prefer a pet that is _______",
-          "choices": [
-            {
-              "value": "(no size preference)",
-              "text": "(no size preference)"
-            },
             {
               "value": "Small",
-              "text": "Small"
+              "text": "Small (e.g., studio or one-bedroom apartment)"
             },
             {
-              "value": "Medium",
-              "text": "Medium"
+              "value": "Moderate",
+              "text": "Moderate (e.g., one- or two-bedroom apartment)"
             },
             {
-              "value": "Large",
-              "text": "Large"
-            },
-            {
-              "value": "Extra Large",
-              "text": "Extra Large"
+              "value": "Spacious",
+              "text": "Spacious (e.g., house or large apartment)"
             }
           ]
         },
         {
           "type": "dropdown",
-          "name": "question9",
-          "title": "My pet's activity level should be _______",
+          "name": "outdoorAccess",
+          "title": "Do you have access to outdoor space for your pet?",
           "choices": [
-            {
-              "value": "(no activity preference)",
-              "text": "(no activity preference)"
-            },
-            {
-              "value": "very active",
-              "text": "very active"
-            },
-            {
-              "value": "active",
-              "text": "active"
-            },
-            {
-              "value": "laid back",
-              "text": "laid back"
-            },
-            {
-              "value": "lap-pet",
-              "text": "lap-pet"
-            }
+            "No outdoor access",
+            "Limited outdoor access (e.g., small balcony or shared space)",
+            "Nearby park or green space"
+          ]
+        },
+        {
+          "type": "dropdown",
+          "name": "size",
+          "title": " Do you have size preferences for your pet selection?",
+          "choices": [
+            "Small",
+            "Medium",
+            "Large"
+          ]
+        },
+        {
+          "type": "tagbox",
+          "name": "breed",
+          "title": "Do you have any breed restrictions that may affect your matches(ie. allergies, living conditions(building requirements))",
+          "choices": [
+            "Abyssinian",
+            "Akita",
+            "American Bulldog",
+            "American Shorthair",
+            "American Staffordshire Terrier",
+            "Anatolian Shepherd",
+            "Australian Cattle Dog/Blue Heeler",
+            "Australian Kelpie",
+            "Australian Shepherd",
+            "Australian Terrier",
+            "Basset Hound",
+            "Basenji",
+            "Belgian Shepherd Malinois",
+            "Black Mouth Cur",
+            "Bombay",
+            "Boykin Spaniel",
+            "Border Collie",
+            "Brittany",
+            "Briard",
+            "Cairn Terrier",
+            "Calico",
+            "Cardigan Welsh Corgi",
+            "Chihuahua",
+            "Chinese Shar-Pei",
+            "Chow Chow",
+            "Cockapoo",
+            "Collie",
+            "Coonhound",
+            "Corgi",
+            "Coyote",
+            "Dalmatian",
+            "Dachshund",
+            "Dilute Calico",
+            "Dilute Tortoiseshell",
+            "Doberman Pinscher",
+            "Domestic Long Hair",
+            "Domestic Medium Hair",
+            "Domestic Short Hair",
+            "Dogo Argentino",
+            "Dutch Shepherd",
+            "Feist",
+            "Foxhound",
+            "French Bulldog",
+            "French Brittany",
+            "German Shepherd Dog",
+            "German Shorthaired Pointer",
+            "Golden Retriever",
+            "Greyhound",
+            "Hound",
+            "Husky",
+            "Italian Greyhound",
+            "Labrador Retriever",
+            "Maine Coon",
+            "Manchester Terrier",
+            "Maltese",
+            "Miniature Pinscher",
+            "Maine Coon",
+            "Mastiff",
+            "Norfolk Terrier",
+            "Poodle (Miniature)",
+            "Poodle (Standard)",
+            "Poodle (Toy)",
+            "Pointer",
+            "Plott Hound",
+            "Pit Bull Terrier",
+            "Pug",
+            "Rat Terrier",
+            "Red Heeler",
+            "Retriever",
+            "Rhodesian Ridgeback",
+            "Ragdoll",
+            "Shiba Inu",
+            "Shih Tzu",
+            "Snowshoe",
+            "Staffordshire Bull Terrier",
+            "Tabby",
+            "Terrier",
+            "Tortoiseshell",
+            "Toy Fox Terrier",
+            "Whippet",
+            "Wirehaired Fox Terrier",
+            "Yellow Labrador Retriever",
+            "Yorkshire Terrier Yorkie"
           ]
         }
       ]
     }
   ]
 }
-
