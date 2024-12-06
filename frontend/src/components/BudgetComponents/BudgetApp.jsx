@@ -31,7 +31,6 @@ export default function BudgetPage() {
     <>
       <Container className="my-4 budget-container">
         <Stack direction="horizontal" gap="2" className="mb-4 budget-header">
-          <h1 className="me-auto">Budgets</h1>
           <Button
             className="b-button"
             onClick={() => setShowAddBudgetModal(true)}

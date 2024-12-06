@@ -8,6 +8,7 @@ import ArticlePage from './pages/ArticlePage/ArticlePage.jsx';
 import AuthGuard from './components/AuthGuard/AuthGuard.jsx'; // Import the AuthGuard component
 import ChecklistPage from './pages/ChecklistPage/Checklist.jsx'
 import { Routes, Route } from 'react-router-dom';
+import Checklist from './pages/ChecklistPage/Checklist.jsx';
 import { ClerkProvider, SignedIn } from '@clerk/clerk-react'
 import './App.scss';
 
@@ -22,7 +23,7 @@ function App() {
         <Route path="/budget" element={<AuthGuard><BudgetPage /></AuthGuard>}/>
         <Route path="/adopt" element={<AdoptPage />} />
         <Route path="/article" element={<ArticlePage />} />
-        <Route path="/ready" element={<ChecklistPage/>}/>
+        <Route path="/checklist" element={<Checklist></Checklist>}></Route>
       </Routes>
     </>
   );

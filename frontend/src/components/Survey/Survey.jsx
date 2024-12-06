@@ -4,7 +4,8 @@ import supabase from "../../supabase/supabaseClient";
 import { useUser } from "@clerk/clerk-react"; 
 import { json } from "./json";
 import "survey-react/survey.css";
-import './Survey.scss'
+import { theme } from "./survey_theme";
+import './Survey.scss';
 
 const SurveyComp = () => {
   const { user } = useUser();
@@ -13,12 +14,11 @@ const SurveyComp = () => {
   const [surveyData, setSurveyData] = useState(null); 
   const [loading, setLoading] = useState(true); 
   const [error, setError] = useState(null);
+  const [animationTriggered, setAnimationTriggered] = useState(false);
 
-  // Check if the user has completed the survey
   const checkSurveyStatus = async () => {
     setLoading(true);
     try {
-      // Query the survey responses for the user
       const { data, error } = await supabase
         .from("survey_responses")
         .select("answers")
@@ -32,11 +32,9 @@ const SurveyComp = () => {
       }
   
       if (data) {
-        // If there's a row, assume the user has completed the survey
         setHasCompletedSurvey(true);
         setSurveyData(data.answers);
       } else {
-        // If no row is found, the user hasn't completed the survey
         setHasCompletedSurvey(false);
       }
     } catch (err) {
@@ -47,12 +45,10 @@ const SurveyComp = () => {
     }
   };
 
-  // Save or update survey answers
   const handleSurveyComplete = async (sender) => {
-    const surveyData = sender.data; // Get the survey answers
+    const surveyData = sender.data; 
     
     try {
-      // Check if the user already has a survey response
       const { data, error } = await supabase
         .from("survey_responses")
         .select("id")
@@ -64,12 +60,11 @@ const SurveyComp = () => {
         return;
       }
 
-      // If the user already has a survey response, update it
       if (data) {
         const { error: updateError } = await supabase
           .from("survey_responses")
           .update({ answers: surveyData })
-          .eq("id", data.id); // Use the existing survey response ID
+          .eq("id", data.id);
 
         if (updateError) {
           console.error("Error updating survey data:", updateError);
@@ -77,7 +72,6 @@ const SurveyComp = () => {
           console.log("Survey data updated successfully.");
         }
       } else {
-        // If the user doesn't have a survey response, insert a new one
         const { error: insertError } = await supabase
           .from("survey_responses")
           .insert([{ user_id: userId, answers: surveyData }]);
@@ -88,16 +82,14 @@ const SurveyComp = () => {
           console.log("Survey data saved successfully.");
         }
       }
-      
-      // Recheck the survey status after saving or updating
       await checkSurveyStatus();
-
     } catch (err) {
       console.error("Unexpected error during survey handling:", err);
     }
   };
 
   const survey = new Survey.Model(json); 
+  survey.applyTheme(theme);
   survey.onComplete.add(handleSurveyComplete);
 
   useEffect(() => {
@@ -107,6 +99,12 @@ const SurveyComp = () => {
       setLoading(false);
     }
   }, [userId]);
+
+  useEffect(() => {
+    if (hasCompletedSurvey) {
+      setAnimationTriggered(true); // Trigger the fade-in animation when data is available
+    }
+  }, [hasCompletedSurvey]);
 
   if (loading) {
     return (
@@ -127,16 +125,16 @@ const SurveyComp = () => {
   // Render the survey if the user hasn't completed it
   if (!hasCompletedSurvey) {
     return (
-      <div style={{ padding: "20px" }}>
-        <Survey.Survey model={survey} />
+      <div className="survey-container">
+        <Survey.Survey className="survey-model" model={survey} />
       </div>
     );
   }
 
-  // Render survey results if the user has completed it
+  // Render survey results with animation
   return (
-    <div className="container my-5">
-      <h1 className="text-center mb-5">Your Survey Responses</h1>
+    <div className={`survey-results-container ${animationTriggered ? 'fade-in' : ''}`}>
+      <h1 className="title text-center mb-5">Your Survey Responses</h1>
       <ul className="list-group">
         {Object.entries(surveyData).map(([question, answer]) => (
           <li

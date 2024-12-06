@@ -4,7 +4,7 @@ $secondary-color: #F5B26B;
 $border-radius: 15px;
 $hover-color: #FF5722;
 
-.header{
+.checklist-header{
     padding: 30px;
     color: $primary-color;
     font-family: $font-family;
@@ -69,7 +69,7 @@ $hover-color: #FF5722;
     }
 }
 
-.card {
+.checklist-card {
     cursor: auto;
     border-radius: $border-radius;
     margin-bottom: 20px;

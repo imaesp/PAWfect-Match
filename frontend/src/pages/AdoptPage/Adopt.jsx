@@ -14,13 +14,14 @@ function Adopt() {
     const [pets, setPets] = useState([]);
     const [userAnswers, setUserAnswers] = useState(null); // Survey data
     const [loading, setLoading] = useState(true);
-
+    const [organization, setOrganization] = useState([]);
     const [selectedFilters, setSelectedFilters] = useState({
         species: '',
         sex: '',
         size: '',
         age: '',
         breed: '',
+        state: '',
     });
 
     // Fetch pets data from Supabase
@@ -29,7 +30,22 @@ function Adopt() {
             try {
                 const { data, error } = await supabase
                     .from('pets')
-                    .select('animalID, name, species, sex, activityLevel, energyLevel, age, size, breed, primaryBreed, secondaryBreed, animalLocation, pictures');
+                    .select(`
+                        animalID, 
+                        name, 
+                        species, 
+                        sex, 
+                        activityLevel, 
+                        energyLevel, 
+                        age, 
+                        size, 
+                        breed, 
+                        primaryBreed, 
+                        secondaryBreed, 
+                        animalLocation, 
+                        pictures,
+                        orgID
+                    `);
                 if (error) throw error;
                 setPets(data);
             } catch (error) {
@@ -38,6 +54,26 @@ function Adopt() {
         }
 
         getPets();
+    }, []);
+
+    // Fetch organization data
+    useEffect(() => {
+        async function getOrganization() {
+            try {
+                const { data, error } = await supabase
+                    .from('organizations')
+                    .select(`
+                        orgID,
+                        state
+                    `);
+                if (error) throw error;
+                setOrganization(data);
+            } catch (error) {
+                console.error("Error fetching organizations:", error.message);
+            }
+        }
+
+        getOrganization();
     }, []);
 
     // Fetch survey responses for the current user
@@ -90,31 +126,43 @@ function Adopt() {
         }));
     };
 
+    // Add state from organizations to pets based on orgID
+    const petsWithState = pets.map((pet) => {
+        const org = organization.find((org) => org.orgID === pet.orgID);
+        return {
+            ...pet,
+            state: org ? org.state : '', // Add state from organization
+        };
+    });
+
     // Function to filter pets based on selected filters
-    const filteredPets = pets.filter((pet) => {
+    const filteredPets = petsWithState.filter((pet) => {
         return (
             (selectedFilters.species ? pet.species === selectedFilters.species : true) &&
             (selectedFilters.sex ? pet.sex === selectedFilters.sex : true) &&
             (selectedFilters.size ? pet.size === selectedFilters.size : true) &&
             (selectedFilters.age ? pet.age === selectedFilters.age : true) &&
-            (selectedFilters.breed ? pet.breed === selectedFilters.breed : true)
+            (selectedFilters.breed ? pet.breed === selectedFilters.breed : true) &&
+            (selectedFilters.state ? pet.state === selectedFilters.state : true)
         );
-    });    
+    });
 
     // If the user is not authenticated or doesn't have survey data, show all pets
     if (!userAnswers || !user?.id) {
         return (
-            <>
-                <CarouselAdopt />
-                <Filter onFilterChange={handleFilterChange} />
-                <Row xs={1} sm={2} md={3} lg={5} className="g-4">
-                    {filteredPets.map((pet) => (
-                        <Col key={pet.animalID}>
-                            <PetCard pet={pet} />
-                        </Col>
-                    ))}
-                </Row>
-            </>
+            <div className='adopt-page'>
+                <div className='adopt-container'>
+                    <CarouselAdopt />
+                    <Filter onFilterChange={handleFilterChange} />
+                    <Row xs={1} sm={2} md={3} lg={5} className="g-4">
+                        {filteredPets.map((pet) => (
+                            <Col key={pet.animalID}>
+                                <PetCard pet={pet} />
+                            </Col>
+                        ))}
+                    </Row>
+                </div>
+            </div>
         );
     }
     if (loading) {
@@ -129,17 +177,19 @@ function Adopt() {
     const bestMatches = findBestMatches(userAnswers, filteredPets, 3547);
 
     return (
-        <>
-            <CarouselAdopt />
-            <Filter onFilterChange={handleFilterChange} />
-            <Row xs={1} sm={2} md={3} lg={5} className="g-4">
-                {bestMatches.map((pet) => (
-                    <Col key={pet.animalID}>
-                        <PetCard pet={pet} />
-                    </Col>
-                ))}
-            </Row>
-        </>
+        <div className='adopt-page'>
+            <div className='adopt-container'>
+                <CarouselAdopt />
+                <Filter onFilterChange={handleFilterChange} />
+                <Row xs={1} sm={2} md={3} lg={5} className="g-4">
+                    {bestMatches.map((pet) => (
+                        <Col key={pet.animalID}>
+                            <PetCard pet={pet} />
+                        </Col>
+                    ))}
+                </Row>
+            </div>
+        </div>
     );
 }
 

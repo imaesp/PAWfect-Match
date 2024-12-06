@@ -1,6 +1,25 @@
-.budget-pg {
-  background-color: #ece2d8;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.budget-cont{
+  background-color: #fffaf0;
+  h1{
+    font-family: 'Poppins', sans-serif;
+    color: #220601;
+    font-weight: bold;
+  }
+  .tips-section{
+    background-color: #fffaf0;
+    .tips-container{
+      margin-top: 50px;
+      margin-bottom: 50px;
+      background-color: #fffaf0;
+      color: #220601;
+      font-weight: bold;
+    }
+  }
+
+  .budget-section {
+    background-color: #fffaf0;
+    justify-content: space-between;
+  }
+  
+
 }

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useAuth } from '@clerk/clerk-react';
 import { SignIn } from '@clerk/clerk-react';
+import './AuthGuard.scss'; 
 
 const AuthGuard = ({ children }) => {
   const { userId } = useAuth();
@@ -19,8 +20,9 @@ const AuthGuard = ({ children }) => {
 
   if (!userId) {
     return (
-      <div className="sign-in-modal">
-        <SignIn 
+      <div className="auth-guard-container">
+        <SignIn
+          mode="modal"
           fallbackRedirectUrl={location.pathname} // Use the current URL as the fallback
         />
       </div>

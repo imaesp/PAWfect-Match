@@ -9,7 +9,7 @@ function Checklist(){
     
     return(
         <>
-            <section className='header'>
+            <section className='checklist-header'>
                 <h1 className='top'>Pet Adoption <span>&</span></h1>
                 <h1 className='bottom'>Care Checklist</h1>
                 <p className='page-description'>Welcome to Pawfect Match Checklist! Whether you're adopting a new pet or taking care of the one you already have,
@@ -25,7 +25,7 @@ function Checklist(){
                 </p>
                 {ChecklistItems.filter(item => item.section === 'Adopting').map((item) => (
                     <div key={item.id} className={`category-${item.category.replace(/\s+/g, '-').toLowerCase()}`}>
-                        <Card>
+                        <Card className='checklist-card'>
                             <CardHeader><h4>{item.category}</h4></CardHeader>
                             <CardBody>
                                 {item.value.map((v, index) => (
@@ -52,7 +52,7 @@ function Checklist(){
                 <br/>
                 {ChecklistItems.filter(item => item.section === 'Ongoing Pet Care Checklist').map((item) => (
                     <div key={item.id}>
-                        <Card>
+                        <Card className='checklist-card'>
                         <CardHeader><h4>{item.category}</h4></CardHeader>
                         <CardBody>
                         {item.value.map((v, index) => (

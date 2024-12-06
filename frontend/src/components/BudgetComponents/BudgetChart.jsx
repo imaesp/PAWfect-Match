@@ -70,7 +70,7 @@ export default function BudgetChart() {
 
   return (
     <PieChart
-      colors={["#bfa697", "#eeeaea", "#de9d76", "#f5b26b", "#ffca93"]}
+      colors={["#bfa697", "#eeeaea", "#de9d76", "#f5b26b", "#ffca93", "#5A464C"]}
       series={[{ data: chartData }]}
       width={800}
       height={400}

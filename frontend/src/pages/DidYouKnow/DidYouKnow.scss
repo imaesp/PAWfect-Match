@@ -1,9 +1,9 @@
 $text-color: #fff;
 
 .education-container{
-    background-color: #de9d76;
+    background-color: #FFCA93;
     padding: 90px 500px 90px;
-    height: 800px;
+    height: 850px;
 
     h1 {
         font-size: 40px;
@@ -14,16 +14,23 @@ $text-color: #fff;
       }
 
     .facts-container{
-        background-color: #de9d76;
+        background-color: #FFCA93;
     }
     .edu-container{
-        background-color: #FFCA93;
+        background-color: #ffff;
     }
 
     h3{
-        color: #fff;
+        color: #fffaf0;
         font-weight: bold;
         font-size: 40px;
+    }
+
+    .quote{
+        color: #220601;
+        font-weight: bold;
+        font-size: 40px;
+        opacity: 0.75;
     }
     p{
         color: #220601;
@@ -41,7 +48,6 @@ $text-color: #fff;
         margin-top: 20px;
         color: #220601;
         font-weight: bold;
-        opacity: 0.5;
     }
 
     .linking{

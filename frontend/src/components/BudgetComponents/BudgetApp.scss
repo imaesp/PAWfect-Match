@@ -1,6 +1,7 @@
 .budget-container {
-  background-color: #bfa697;
-  width: 35%;
+  background-color: #fffaf0;
+  width: auto;
+  height: 50vh;
   margin-right: 1em;
   border-radius: 10px;
 }
@@ -49,10 +50,8 @@ h1 {
 }
 
 .budgets {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 1rem;
-  align-items: flex-start;
+  display: flex;
+  
 }
 
 .total {

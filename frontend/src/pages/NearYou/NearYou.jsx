@@ -127,10 +127,11 @@ const NearYou = () => {
           color: '#fff',
           transition: 'color 0.3s ease',
         }}
-        onMouseEnter={(e) => (e.target.style.color = '#3D0C02')}
-        onMouseLeave={(e) => (e.target.style.color = '#fff')}
+        onMouseEnter={(e) => (e.target.style.color = '#de9d76')}
+        onMouseLeave={(e) => (e.target.style.color = '#220601')}
       >
         <p>Meet the 3,000+ adoptable pets waiting for a home!</p>
+        <img className="paw-print" src='/leftpaw.png' alt="" style={{ height: '45px', marginLeft:'10px'}} />
       </Link>
       
     </div>

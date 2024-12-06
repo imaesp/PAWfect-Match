@@ -1,11 +1,14 @@
-.journey-container {
-  background-color: #de9d76;
-  color: #fff;
-  text-align: center;
-}
 
-.journey-header {
-  font-size: 2.75rem;
+.journey-container {
+  padding-top: 100px;
+  background-color: #fffaf0;
+  color: #390510;
+  text-align: center;
   font-weight: bold;
+
+
+  .journey-header {
+  font-size: 40px;
   padding-top: 10px;
+  }
 }

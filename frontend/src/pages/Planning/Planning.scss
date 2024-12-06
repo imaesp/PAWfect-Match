@@ -1,11 +1,11 @@
 .plan-container {
-    background-color: #FFCA93;
+    background-color: #fffaf0;
     padding: 90px 500px 90px;
     height: 800px;
 
     .title {
         font-size: 60px;
-        color: white;
+        color: #220601;
         margin-top: 20px;
         margin-bottom: 50px;
         font-weight: bold;
@@ -13,12 +13,12 @@
 
     h1 {
         font-size: 30px;
-        color: #000000;
+        color: #220601;
         margin-top: 20px;
     }
 
     .container {
-        background-color: #FFCA93;
+        background-color: #fffaf0;
         transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
         position: relative; /* For positioning shadow effect */
 
@@ -45,8 +45,9 @@
     }
 
     p {
-        color: #ffffff;
+        color: #220601;
         font-weight: bold;
+        opacity: .5;
     }
 
     .card-divider {
@@ -65,6 +66,11 @@
 
     .linking {
         font-weight: bold;
+    }
+
+    .btn{
+        background-color: #220601;
+        color: #fff;
     }
 
     .dog {
