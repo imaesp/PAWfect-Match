@@ -1,13 +1,14 @@
 import Button from 'react-bootstrap/Button';
 import { Card } from 'react-bootstrap';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import './PetCard.scss';
 
 function PetCard({ pet }) {
-    // State to track whether the icon has been clicked
+ 
     const [isClicked, setIsClicked] = useState({});
 
-    // Toggle the heart for the specific pet by ID
+ 
     const handleClick = (petId) => {
         setIsClicked((prevState) => ({
             ...prevState,
@@ -47,7 +48,9 @@ function PetCard({ pet }) {
                     <Card.Text>
                         {pet.breed} | {pet.age}
                     </Card.Text>
-                    <Button variant="primary">Adopt Me</Button>
+                    <Link to={`/adopt/${pet.animalID}`} state={{ pet }}>
+                        <Button variant="primary">Adopt Me</Button>
+                    </Link>
                 </Card.Body>
             </Card>
 

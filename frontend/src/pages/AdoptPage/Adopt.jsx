@@ -44,6 +44,8 @@ function Adopt() {
                         secondaryBreed, 
                         animalLocation, 
                         pictures,
+                        birthdate,
+                        descriptionPlain,
                         orgID
                     `);
                 if (error) throw error;
@@ -64,7 +66,15 @@ function Adopt() {
                     .from('organizations')
                     .select(`
                         orgID,
-                        state
+                        name,
+                        city,
+                        state,
+                        address,
+                        country,
+                        zip,
+                        email,
+                        phone,
+                        orgurl
                     `);
                 if (error) throw error;
                 setOrganization(data);
@@ -184,7 +194,7 @@ function Adopt() {
                 <Row xs={1} sm={2} md={3} lg={5} className="g-4">
                     {bestMatches.map((pet) => (
                         <Col key={pet.animalID}>
-                            <PetCard pet={pet} />
+                            <PetCard pet={pet}/>
                         </Col>
                     ))}
                 </Row>
