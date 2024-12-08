@@ -1,3 +1,4 @@
+
 import './Checklist.scss'
 import Checkbox from '../../components/Checkbox/Checkbox';
 import { ChecklistItems } from './ChecklistItems';
@@ -25,7 +26,7 @@ function Checklist(){
                 <section id='Adopting'>
                     <h3>Adopting a Pet Checklist</h3>
                     <p className='no-wrap-paragraph'>Getting ready to adopt a new furry companion is an exciting time! 
-                        Here’s a checklist to ensure you’re ready to welcome a new pet into your life:
+                        Here’s your checklist to welcome a new pet into your life:
                     </p>
                     {ChecklistItems.filter(item => item.section === 'Adopting').map((item) => (
                         <div key={item.id} className={`category-${item.category.replace(/\s+/g, '-').toLowerCase()}`} style={{color: '#390510'}}>
@@ -46,13 +47,14 @@ function Checklist(){
                         </div>
                     ))}
                 </section>
-                
+                <div className='space-between'></div>
+
                 <PawPrintLeftToRight></PawPrintLeftToRight>
                 <section id='OngoingCare'>
                     <h3>Ongoing Pet Care Checklist</h3>
                     <br/>
                     <p className='no-wrap-paragraph'> Once you’ve adopted your pet, it’s important to provide continuous care. 
-                        Here’s your checklist to keep your pet happy, healthy, and thriving.
+                        Here’s your checklist to keep your pet happy, healthy, and thriving:
                     </p>
                     <br/>
                     {ChecklistItems.filter(item => item.section === 'Ongoing Pet Care Checklist').map((item) => (
@@ -79,7 +81,6 @@ function Checklist(){
                     ))}
                 </section>
             </div>
-
         </>
     );
 }
