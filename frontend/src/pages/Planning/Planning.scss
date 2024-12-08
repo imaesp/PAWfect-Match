@@ -1,79 +1,173 @@
 .plan-container {
     background-color: #fffaf0;
-    padding: 90px 500px 90px;
+    align-items: center;
+    align-content: center;
     height: 800px;
-
+    padding: 0px 200px 0 200px;
+  
     .title {
-        font-size: 60px;
-        color: #220601;
-        margin-top: 20px;
-        margin-bottom: 50px;
-        font-weight: bold;
+      font-size: 60px;
+      color: #220601;
+      margin-top: 20px;
+      margin-bottom: 50px;
+      font-weight: bold;
     }
-
+  
     h1 {
-        font-size: 30px;
-        color: #220601;
-        margin-top: 20px;
+      font-size: 30px;
+      color: #220601;
+      margin-top: 20px;
     }
-
+  
     .container {
-        background-color: #fffaf0;
-        transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
-        position: relative; /* For positioning shadow effect */
-
-        &:hover {
-            transform: scale(1.05);
-            background-color: rgba(0, 0, 0, 0.1); /* Light background color change */
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adding shadow effect */
-        }
-
-        /* Image hover effect */
-        img {
-            transition: transform 0.3s ease;
-        }
-
-        &:hover img {
-            transform: scale(1.1); /* Slightly scale up image on hover */
-        }
+      background-color: #fffaf0;
+      transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+  
+      &:hover {
+        transform: scale(1.05);
+        background-color: rgba(0, 0, 0, 0.1);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      }
+  
+      img {
+        transition: transform 0.3s ease;
+      }
+  
+      &:hover img {
+        transform: scale(1.1);
+      }
     }
-
+  
     h3 {
-        color: #fff;
-        font-weight: bold;
-        font-size: 40px;
+      color: #fff;
+      font-weight: bold;
+      font-size: 40px;
     }
-
+  
     p {
-        color: #220601;
-        font-weight: bold;
-        opacity: .5;
+      color: #220601;
+      font-weight: bold;
+      opacity: 0.5;
     }
-
+  
     .card-divider {
-        width: 100%;
-        border-top: 2px solid #220601;
-        opacity: .5;
-        margin: 30px 0 -5px;
+      width: 100%;
+      border-top: 2px solid #220601;
+      opacity: 0.5;
+      margin: 30px 0 -5px;
     }
-
+  
     h2 {
-        margin-top: 20px;
-        color: #220601;
-        font-weight: bold;
-        opacity: 0.5;
+      margin-top: 20px;
+      color: #220601;
+      font-weight: bold;
+      opacity: 0.5;
     }
-
+  
     .linking {
-        font-weight: bold;
+      font-weight: bold;
     }
-
-    .btn{
-        background-color: #220601;
-        color: #fff;
+  
+    .btn {
+      background-color: #220601;
+      color: #fff;
     }
-
+  
     .dog {
-        padding-right: 900px;
+      padding-right: 900px;
     }
-}
+  }
+  
+
+  @media (max-width: 768px) {
+    .plan-container {
+      padding: 40px 20px; 
+      height: auto; 
+    }
+  
+    .title {
+      font-size: 36px; 
+      margin-bottom: 30px;
+    }
+  
+    h1 {
+      font-size: 24px; 
+    }
+  
+    .container {
+      padding: 15px; 
+      width: 100%; 
+    }
+  
+    .dog {
+      padding-right: 0;
+    }
+  
+    h3 {
+      font-size: 30px;
+    }
+  
+    p {
+      font-size: 18px;
+    }
+  
+    .card-divider {
+      margin: 20px 0; 
+    }
+  
+    h2 {
+      font-size: 20px;
+    }
+  
+    .btn {
+      width: 100%; 
+      padding: 10px; 
+    }
+  }
+  
+
+  @media (max-width: 1024px) {
+    .plan-container {
+      padding: 60px 50px;
+    }
+  
+    .title {
+      font-size: 50px; 
+      margin-bottom: 40px;
+    }
+  
+    h1 {
+      font-size: 28px; 
+    }
+  
+    .container {
+      padding: 20px; 
+      width: 80%; 
+    }
+  
+    .dog {
+      padding-right: 500px; 
+    }
+  
+    h3 {
+      font-size: 35px;
+    }
+  
+    p {
+      font-size: 22px;
+    }
+  
+    .card-divider {
+      margin: 25px 0; 
+    }
+  
+    h2 {
+      font-size: 25px;
+    }
+  
+    .btn {
+      width: 100%; 
+      padding: 15px;
+    }
+  }

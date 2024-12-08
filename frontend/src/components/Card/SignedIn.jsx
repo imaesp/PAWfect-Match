@@ -51,7 +51,7 @@ function SignedCard() {
               width: "250px",
             }}
           >
-            <p onClick={updateAction}>View Matches</p>
+            <p className='view-btn' onClick={updateAction}>View Matches</p>
             <button className="btn questionnaire_arrow" onClick={updateAction}>
               <img
                 style={{ width: "22px" }}

@@ -1,66 +1,77 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
-
 .navbar {
   background-color: #fffaf0;
   display: flex; 
-  justify-content: space-between; 
+  justify-content: center; 
   align-items: center; 
   padding: 10px 20px;
+  box-sizing: border-box; 
+}
 
-  .navbar-container {
-    background-color: transparent !important;
-    color: #390510;
-    font-family: 'Poppins', sans-serif;
-    margin-left: 400px;
+.navbar-container {
+  max-width: 1200px;
+  width: 100%; 
+}
+
+.left-section {
+  display: flex;
+  align-items: center;
+  gap: 8px; 
+}
+
+.paw-logo {
+  height: 50px;
+  width: auto;
+}
+
+.name {
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: #390510;
+  text-decoration: none;
+}
+
+
+.mid {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap; 
+  gap: 10px;
+}
+
+.navLinks {
+  padding: 10px 15px;
+  text-decoration: none;
+  color: #390510;
+  transition: color 0.3s ease;
+}
+
+.navLinks:hover,
+.navLinks:focus {
+  color: #FFCA93;
+}
+
+.login {
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    padding: 10px;
   }
-  /* Left Section (Logo and Name) */
-  .left-section {
-    display: flex;
+
+  .navbar-container .row {
+    flex-direction: column;
     align-items: center;
-    gap: 2px; 
-    margin-right: 40px;
-  
-    .paw-logo {
-      height: 50px;
-      width: auto;
-    }
-  
-    .name {
-      font-weight: bold;
-      font-size: 1.2rem;
-      text-decoration: none;
-      color: #390510;
-    }
-  
-    .name:hover {
-      color: #FFCA93;
-    }
   }
-  
-  /* Middle Section (Navigation Links) */
+
   .mid {
-    display: flex;
-    justify-content: center; 
+    justify-content: center;
   }
-  
-  .navLinks {
-    padding: 10px 15px;
-    text-decoration: none;
-    color: #390510;
-    transition: color 0.3s ease;
-    margin: -2px; 
-  }
-  
-  .navLinks:hover,
-  .navLinks:focus {
-    color: #FFCA93;
-  }
-  
-  /* Right Section (Sign In Button) */
+
   .login {
-    margin-left: auto;
-    display: flex;
-    justify-content: flex-end;
-    margin-left: 40px; 
+    justify-content: center;
   }
 }

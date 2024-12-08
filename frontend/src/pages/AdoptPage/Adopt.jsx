@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
 import PetCard from '../../components/Card/PetCard';
+import Card from "../../components/Card/Card";
+import SignedCard from "../../components/Card/SignedIn";
 import CarouselAdopt from '../../components/CarouselAdopt/CarouselAdopt';
 import Filter from '../../components/Filter/Filter';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
 import './Adopt.scss';
 import supabase from '../../supabase/supabaseClient';
 import { useUser } from '@clerk/clerk-react';
@@ -12,9 +12,9 @@ import { findBestMatches } from '../../utils/petMatchAlgorithm';
 function Adopt() {
     const { user } = useUser();
     const [pets, setPets] = useState([]);
-    const [userAnswers, setUserAnswers] = useState(null); // Survey data
+    const [userAnswers, setUserAnswers] = useState(null);
     const [loading, setLoading] = useState(true);
-    const [organization, setOrganization] = useState([]);
+    const [organizations, setOrganizations] = useState([]);
     const [selectedFilters, setSelectedFilters] = useState({
         species: '',
         sex: '',
@@ -24,30 +24,12 @@ function Adopt() {
         state: '',
     });
 
-    // Fetch pets data from Supabase
     useEffect(() => {
         async function getPets() {
             try {
                 const { data, error } = await supabase
                     .from('pets')
-                    .select(`
-                        animalID, 
-                        name, 
-                        species, 
-                        sex, 
-                        activityLevel, 
-                        energyLevel, 
-                        age, 
-                        size, 
-                        breed, 
-                        primaryBreed, 
-                        secondaryBreed, 
-                        animalLocation, 
-                        pictures,
-                        birthdate,
-                        descriptionPlain,
-                        orgID
-                    `);
+                    .select(`animalID, name, species, sex, activityLevel, energyLevel, age, size, breed, primaryBreed, secondaryBreed, animalLocation, pictures, birthdate, descriptionPlain, orgID`);
                 if (error) throw error;
                 setPets(data);
             } catch (error) {
@@ -58,35 +40,22 @@ function Adopt() {
         getPets();
     }, []);
 
-    // Fetch organization data
     useEffect(() => {
-        async function getOrganization() {
+        async function getOrganizations() {
             try {
                 const { data, error } = await supabase
                     .from('organizations')
-                    .select(`
-                        orgID,
-                        name,
-                        city,
-                        state,
-                        address,
-                        country,
-                        zip,
-                        email,
-                        phone,
-                        orgurl
-                    `);
+                    .select(`orgID, name, city, state, address, country, zip, email, phone, orgurl`);
                 if (error) throw error;
-                setOrganization(data);
+                setOrganizations(data);
             } catch (error) {
                 console.error("Error fetching organizations:", error.message);
             }
         }
 
-        getOrganization();
+        getOrganizations();
     }, []);
 
-    // Fetch survey responses for the current user
     useEffect(() => {
         async function fetchSurveyData() {
             if (!user?.id) return;
@@ -103,7 +72,6 @@ function Adopt() {
                     const formattedAnswers = formatSurveyData(data.answers);
                     setUserAnswers(formattedAnswers);
                 } else {
-                    console.log('No survey data found for the user.');
                     setUserAnswers(null);
                 }
             } catch (error) {
@@ -116,7 +84,6 @@ function Adopt() {
         fetchSurveyData();
     }, [user?.id]);
 
-    // Format survey data to match the userAnswers structure
     const formatSurveyData = (surveyData) => ({
         species: surveyData.species,
         sex: surveyData.sex,
@@ -136,16 +103,14 @@ function Adopt() {
         }));
     };
 
-    // Add state from organizations to pets based on orgID
-    const petsWithState = pets.map((pet) => {
-        const org = organization.find((org) => org.orgID === pet.orgID);
+    const petsWithState = pets.length && organizations.length ? pets.map((pet) => {
+        const org = organizations.find((org) => org.orgID === pet.orgID);
         return {
             ...pet,
             state: org ? org.state : '', // Add state from organization
         };
-    });
+    }) : [];
 
-    // Function to filter pets based on selected filters
     const filteredPets = petsWithState.filter((pet) => {
         return (
             (selectedFilters.species ? pet.species === selectedFilters.species : true) &&
@@ -157,24 +122,33 @@ function Adopt() {
         );
     });
 
-    // If the user is not authenticated or doesn't have survey data, show all pets
     if (!userAnswers || !user?.id) {
         return (
             <div className='adopt-page'>
                 <div className='adopt-container'>
-                    <CarouselAdopt />
-                    <Filter onFilterChange={handleFilterChange} />
-                    <Row xs={1} sm={2} md={3} lg={5} className="g-4">
-                        {filteredPets.map((pet) => (
-                            <Col key={pet.animalID}>
-                                <PetCard pet={pet} />
-                            </Col>
-                        ))}
-                    </Row>
+                    <CarouselAdopt className='adopt-carrousel'/>
+
+                    {/* Two-column layout using Bootstrap grid */}
+                    <div className="container text-center">
+                        <div className="row align-items-start">
+                            <div className="col-md-4">
+                                <Filter className="adopt-filter" onFilterChange={handleFilterChange} />
+                                <Card></Card>
+                            </div>
+                            <div className="col-md-8">
+                                <div className="pet-grid">
+                                    {filteredPets.map((pet) => (
+                                        <PetCard key={pet.animalID} pet={pet} />
+                                    ))}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         );
     }
+
     if (loading) {
         return (
             <div className="d-flex justify-content-center align-items-center vh-100">
@@ -183,21 +157,29 @@ function Adopt() {
         );
     }
 
-    // If user is authenticated and has survey data, show best matches
     const bestMatches = findBestMatches(userAnswers, filteredPets, 3547);
 
     return (
         <div className='adopt-page'>
             <div className='adopt-container'>
-                <CarouselAdopt />
-                <Filter onFilterChange={handleFilterChange} />
-                <Row xs={1} sm={2} md={3} lg={5} className="g-4">
-                    {bestMatches.map((pet) => (
-                        <Col key={pet.animalID}>
-                            <PetCard pet={pet}/>
-                        </Col>
-                    ))}
-                </Row>
+                <CarouselAdopt className='adopt-carrousel'/>
+                
+                {/* Two-column layout using Bootstrap grid */}
+                <div className="container text-center">
+                    <div className="row align-items-start">
+                        <div className="col-md-4">
+                            <Filter className="adopt-filter" onFilterChange={handleFilterChange} />
+                            <SignedCard></SignedCard>
+                        </div>
+                        <div className="col-md-8">
+                            <div className="pet-grid">
+                                {bestMatches.map((pet) => (
+                                    <PetCard key={pet.animalID} pet={pet} />
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     );

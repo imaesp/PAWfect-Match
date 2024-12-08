@@ -1,9 +1,11 @@
 .budget-container {
   background-color: #fffaf0;
-  width: auto;
+  width: 100%; 
   height: 50vh;
   margin-right: 1em;
   border-radius: 10px;
+  padding: 1em; 
+  box-sizing: border-box; 
 }
 
 .budget-header {
@@ -20,6 +22,7 @@
   transform: none !important;
   border: 2px solid #7e7067 !important;
   margin-right: 1em !important;
+  width: auto; 
 }
 
 .e-button,
@@ -31,7 +34,9 @@
   transform: none !important;
   border: 2px solid #7e7067 !important;
   margin-right: 0px !important;
+  width: auto; 
 }
+
 .e-button:hover {
   background-color: #fff6ec !important;
   color: #000 !important;
@@ -42,7 +47,6 @@
 
 h1 {
   color: #ece2d8;
-  // color: #7e7067;
 }
 
 .title {
@@ -51,7 +55,9 @@ h1 {
 
 .budgets {
   display: flex;
-  
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1em; 
 }
 
 .total {
@@ -60,4 +66,64 @@ h1 {
 
 .reg-card {
   background-color: #ece2d8;
+  width: calc(33.33% - 1em);
+  box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+  .budget-container {
+    height: auto; 
+    margin-right: 0; 
+    padding: 1em; 
+  }
+
+  .budgets {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .b-button,
+  .e-button {
+    width: 100%; 
+    margin-right: 0; 
+    margin-bottom: 1em; 
+  }
+
+  h1 {
+    font-size: 24px; 
+  }
+
+  .title {
+    font-size: 18px;
+  }
+
+  .reg-card {
+    width: 100%; 
+    margin-bottom: 1em; 
+  }
+}
+
+@media (max-width: 480px) {
+  .budget-container {
+    padding: 0.5em;
+  }
+
+  h1 {
+    font-size: 20px;
+  }
+
+  .title {
+    font-size: 16px; 
+  }
+
+  .b-button,
+  .e-button {
+    width: 100%;
+    padding: 12px; 
+  }
+
+  .reg-card {
+    margin-bottom: 1em; 
+    width: 100%;
+  }
 }
