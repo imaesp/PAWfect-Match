@@ -1,8 +1,11 @@
+
+
 export const ChecklistItems = [
     {
         id: 1,
         section: 'Adopting',
         category: 'Choose the Right Pet',
+        style: { color: '#390510' }, 
         value: [
             'Assess your living situation: Do you have enough space for a pet? (Apartment, house, backyard, etc.)',
             'Consider your lifestyle: Are you active and ready for a high-energy pet? Or do you prefer a more relaxed, low-maintenance pet?',
@@ -14,6 +17,7 @@ export const ChecklistItems = [
         id: 2,
         section: 'Adopting',
         category: 'Prepare Your Home',
+        style: { color: '#390510' }, 
         value: [
             'Create a safe space: Ensure your home is pet-friendly (secured fences, safe outdoor areas, etc.).',
             'Pet-proof your home: Remove dangerous items (toxic plants, small objects, electrical cords).',
@@ -25,9 +29,10 @@ export const ChecklistItems = [
         id: 3,
         section: 'Adopting',
         category: 'Plan for Health and Wellness',
+        style: { color: '#390510' }, 
         value: [
             'Find a Veterinarian: Schedule an initial health check-up.',
-            'Vaccinations and microchipping: Ensure your pet is vaccinated and microchipped.',
+            'Vaccinations and micro-chipping: Ensure your pet is vaccinated and micro-chipped.',
             'Flea, tick, and worm treatment: Stay on top of parasite control.'
         ],
     },
@@ -35,6 +40,7 @@ export const ChecklistItems = [
         id: 4,
         section: 'Adopting',
         category: 'Financial Readiness',
+        style: { color: '#390510'}, 
         value: [
             'Consider ongoing expenses: Food, healthcare, grooming, toys, and unexpected vet visits.',
             'Emergency fund: Set aside a fund for unforeseen medical needs.'
@@ -44,6 +50,7 @@ export const ChecklistItems = [
         id: 5,
         section: 'Adopting',
         category: 'Adoption Process',
+        style: { color: '#390510' }, 
         value: [
             'Complete an adoption application: Fill out the necessary paperwork.',
             'Meet your future pet: Spend time interacting with the pet before finalizing the adoption.',
@@ -54,6 +61,7 @@ export const ChecklistItems = [
         id: 6,
         section: 'Ongoing Pet Care Checklist',
         category: 'Regular Health Check-ups',
+        style: { color: '#390510'}, 
         value: [
             'Routine Vet Visits: Schedule annual check-ups to monitor health.',
             'Keep up with vaccinations: Ensure your pet’s vaccinations are up to date.',
@@ -66,6 +74,7 @@ export const ChecklistItems = [
         id: 7,
         section: 'Ongoing Pet Care Checklist',
         category: 'Nutrition and Diet',
+        style: { color: '#390510'}, 
         value: [
             'Choose the right food: Select a diet that meets your pet\'s age, breed, and health requirements.',
             'Maintain a consistent feeding schedule: Regular meals at the same time every day.',
@@ -76,6 +85,7 @@ export const ChecklistItems = [
         id: 8,
         section: 'Ongoing Pet Care Checklist',
         category: ' Exercise & Mental Stimulation',
+        style: { color: '#390510'}, 
         value: [
             'Daily exercise: Regular walks, playtime, or outdoor activities.',
             'Enrichment activities: Toys, puzzle feeders, training sessions, and socialization.',
@@ -86,6 +96,7 @@ export const ChecklistItems = [
         id: 9,
         section: 'Ongoing Pet Care Checklist',
         category: 'Grooming & Hygiene',
+        style: { color: '#390510'}, 
         value: [
             'Regular grooming: Brush your pet’s coat to reduce shedding and matting.',
             'Bathing: Bathe your pet when necessary (consult breed-specific grooming needs).',
@@ -97,6 +108,7 @@ export const ChecklistItems = [
         id: 10,
         section: 'Ongoing Pet Care Checklist',
         category: 'Behavior & Training',
+        style: { color: '#390510'}, 
         value: [
             'Obedience training: Teach basic commands (sit, stay, come, etc.).',
             'Socialization: Expose your pet to different people, environments, and other animals.',
@@ -107,6 +119,7 @@ export const ChecklistItems = [
         id: 11,
         section: 'Ongoing Pet Care Checklist',
         category: 'Love & Bonding',
+        style: { color: '#390510'}, 
         value: [
             'Spend quality time together: Regular cuddle sessions, playtime, and bonding activities.',
             'Keep a routine: Pets thrive on consistency, so try to maintain regular routines.',

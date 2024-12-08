@@ -27,6 +27,14 @@ function PetCard({ pet }) {
     // Conditionally set the image source based on the `isClicked` state
     const heartIconSrc = isClicked[pet.animalID] ? '/heartfill.png' : '/heart.png';
 
+    const sizeAndSexLabels = {
+        "Medium": 'M',
+        "Small": 'S',
+        "Large": 'L',
+        "Female": 'F',
+        "Male": 'M'
+      };
+
     return (
         
             <Card>
@@ -43,18 +51,39 @@ function PetCard({ pet }) {
                     onClick={() => handleClick(pet.animalID)} 
                 />
 
-                <Card.Body>
+                <Card.Body> 
                     <Card.Title>{pet.name}</Card.Title>
-                    <Card.Text>
-                        {pet.breed} | {pet.age}
-                    </Card.Text>
+                    
+                    { !pet.size ? (
+                        pet.sex ? (
+                            
+                            <Card.Text>
+                                {sizeAndSexLabels[pet.sex]}
+                            </Card.Text>
+                        ) : (
+                            
+                            <Card.Text>
+                                No size or sex available
+                            </Card.Text>
+                        )
+                    ) : (
+                        
+                        <Card.Text>
+                            
+                            <div>{sizeAndSexLabels[pet.size]} <br></br>Size </div>  <div>{sizeAndSexLabels[pet.sex]}</div>
+
+                        </Card.Text>
+                    )}
+                    
                     <Link to={`/adopt/${pet.animalID}`} state={{ pet }}>
                         <Button variant="primary">Adopt Me</Button>
                     </Link>
                 </Card.Body>
+
             </Card>
 
     );
 }
 
 export default PetCard;
+

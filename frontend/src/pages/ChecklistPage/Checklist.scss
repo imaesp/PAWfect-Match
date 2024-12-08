@@ -1,55 +1,81 @@
-$font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-$primary-color: #580e0e;
-$secondary-color: #F5B26B;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+$font-family: 'Poppins', sans-serif;
+$primary-color: #390510;
+$secondary-color: #FFCA93;
 $border-radius: 15px;
 $hover-color: #FF5722;
 
-.checklist-header{
-    padding: 30px;
-    color: $primary-color;
+.checklist-header {
+    padding: 5em 5em 4em 13em; /* Updated padding for all sides */
+
+    color: white;
     font-family: $font-family;
     background-color: $secondary-color;
-    h1{
-        font-size: 50px;
-        font-weight: 900;
-        span{
-            height: 100px;
-            width: 100px;
-        }
-    }
-    .top{
-        margin-bottom: 5px;
-        margin-top: 20px;
-     }
-    .page-description{
-        text-align: left;
-        color: rgb(82, 79, 79);
-        width: 50%;
-    }
-    .adopt, .care {
-        border: 2px solid wheat;
-        border-radius: 15px;
-        background-color: wheat;
-        text-decoration: none;
-        color: $primary-color;
-        padding: 10px;
-        &:hover{
-            color: #000;
+
+    h1 {
+        font-size: 3vw; /* Font size relative to viewport width */
+        font-weight: bold;
+
+        span {
+            height: 8em;
+            width: 8em;
         }
     }
 
+    .top {
+        margin-bottom: 5px;
+        margin-top: 1em;
+
+        .ampersand {
+            font-size: 4vw; /* Adjusted font size relative to viewport width */
+            font-weight: bold;
+            color: $primary-color;
+
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%) translateY(.1%); // WORK ON & COMPONENT AND THE BOX AND MIDD SECTION
+            z-index: 1;
+        }
+    }
+
+    .page-description {
+        text-align: left;
+        color: white;
+        width: 50%;
+        margin-bottom: 2em;
+        font-size: 1.2vw; /* Font size relative to viewport width */
+    }
+
+    .adopt, .care {
+        border: 2px solid #fffaf0;
+        border-radius: $border-radius;
+        background-color: #fffaf0;
+        text-decoration: none;
+        color: $primary-color;
+        padding: .8em;
+        &:hover {
+            color: #390510;
+        }
+    }
+}
+
+.checklist-layout {
+    background-color: #fffaf0;
 }
 
 #Adopting, #OngoingCare {
     font-family: $font-family;
-    margin: 20px;
-    padding: 20px;
+    padding: 2em;
     display: flex;
     flex-wrap: wrap;
+    //justify-content: center;
+
+    border-color: #390510;
 
     h3 {
-        margin-bottom: 20px;
-        color: #580e0e;
+        margin-bottom: 2em;
+        color: #390510;
     }
 
     .category-choose-the-right-pet,
@@ -63,43 +89,92 @@ $hover-color: #FF5722;
     .category-grooming-and-hygiene,
     .category-behavior-and-training {
         border-radius: $border-radius;
-        margin-bottom: 20px;
+        margin-bottom: 2em;
         display: flex;
         flex-direction: column;
+
     }
 }
 
 .checklist-card {
     cursor: auto;
     border-radius: $border-radius;
-    margin-bottom: 20px;
-    padding: 15px;
+    margin-bottom: 2em;
+    padding: 1em;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+
     &:hover {
         transform: translateY(-5px);
         box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.15);
     }
 
     .card-header {
-        background-color: #fff;
-        color: #580e0e;
+        background-color: #fffaf0;
+        color: #390510;
     }
-    
+
     .card-body {
-        background-color: #ffffff;
+        background-color: #fffaf0;
     }
 }
 
-.no-wrap-paragraph{
+.no-wrap-paragraph {
     margin-left: 21px;
     margin-right: 100px;
-
+    color: #390510;
 }
 
-:checked{
+:checked {
     cursor: pointer;
 }
-.checkbox-container{
+
+.checkbox-container {
     display: flex;
+}
+
+/* Media Queries */
+@media (max-width: 1200px) {
+    .checklist-header {
+        padding: 4em 4em 3em 10em;
+        h1 {
+            font-size: 6vw;
+        }
+        .ampersand {
+            font-size: 9vw;
+        }
+        .page-description {
+            font-size: 3vw;
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .checklist-header {
+        padding: 3em 3em 2em 8em;
+        h1 {
+            font-size: 7vw;
+        }
+        .ampersand {
+            font-size: 10vw;
+        }
+        .page-description {
+            font-size: 4vw;
+        }
+    }
+}
+
+@media (max-width: 480px) {
+    .checklist-header {
+        padding: 2em 2em 1em 5em;
+        h1 {
+            font-size: 8vw;
+        }
+        .ampersand {
+            font-size: 11vw;
+        }
+        .page-description {
+            font-size: 5vw;
+        }
+    }
 }
