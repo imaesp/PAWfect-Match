@@ -1,7 +1,5 @@
 import { useState, useEffect } from 'react';
 import PetCard from '../../components/Card/PetCard';
-import Card from "../../components/Card/Card";
-import SignedCard from "../../components/Card/SignedIn";
 import CarouselAdopt from '../../components/CarouselAdopt/CarouselAdopt';
 import Filter from '../../components/Filter/Filter';
 import './Adopt.scss';
@@ -133,7 +131,6 @@ function Adopt() {
                         <div className="row align-items-start">
                             <div className="col-md-4">
                                 <Filter className="adopt-filter" onFilterChange={handleFilterChange} />
-                                <Card></Card>
                             </div>
                             <div className="col-md-8">
                                 <div className="pet-grid">
@@ -169,7 +166,6 @@ function Adopt() {
                     <div className="row align-items-start">
                         <div className="col-md-4">
                             <Filter className="adopt-filter" onFilterChange={handleFilterChange} />
-                            <SignedCard></SignedCard>
                         </div>
                         <div className="col-md-8">
                             <div className="pet-grid">

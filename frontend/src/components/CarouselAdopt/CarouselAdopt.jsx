@@ -1,3 +1,4 @@
+
 import Carousel from 'react-bootstrap/Carousel';
 //import CarouselImage from 'pages/carouselImage';
 import './CarouselAdopt.scss';
@@ -31,9 +32,6 @@ function CarouselAdopt(){
         </>
     );
 }
-
-
-
 
 
 export default CarouselAdopt;
