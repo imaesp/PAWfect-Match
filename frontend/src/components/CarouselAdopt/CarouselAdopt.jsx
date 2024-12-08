@@ -9,22 +9,22 @@ function CarouselAdopt(){
                 <Carousel.Item>
                     <img src="/CD2.webp" alt='Carousel Picture of animals 1' className='Img1'/>
                     <Carousel.Caption>
-                        <h3>Adopt a new best friend</h3>
-                        <p>Because every pet deserves a loving home.</p>
+                        <h3>Adopt a New Best Friend</h3>
+                        <p>Because every pet deserves a loving home</p>
                     </Carousel.Caption>
                 </Carousel.Item>
                 <Carousel.Item>
                 <img src='/CD.png' alt='Carousel Picture of animals 2' className='Img2'/>
                     <Carousel.Caption>
-                        <h3>Whether it's a playful pup or a cuddly cat</h3>
-                        <p> We have the PAW-PURRfect companion waiting for you =^.^=</p>
+                        <h3>Whether it's a Playful Pup or a Cuddly Cat</h3>
+                        <p> We have the PAWfect companion waiting for you!</p>
                     </Carousel.Caption>
                 </Carousel.Item>
                 <Carousel.Item>
                 <img src='/CD3.jpg' alt='Carousel Picture of animals 3' className='Img3'/>
                     <Carousel.Caption>
-                        <h3>Unite with your future furry family today</h3>
-                        <p> pawsitively unforgettable bonds await!</p>
+                        <h3>Find Your Furry Soulmate</h3>
+                        <p>Unconditional love is just a click away!</p>
                     </Carousel.Caption>
                 </Carousel.Item>
         </Carousel>

@@ -1,77 +1,89 @@
-//Card Desgin
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
 .card {
-    border-radius: 20%;
+    border-radius: 50%;
+    border: 2px solid #ffcb939c !important; /* Added border color */
     margin-top: 10px;
     margin-left: 10px;
     padding: 0;
-    height: 200px;     
-    width: 15rem; 
+    height: 300px;
+    width: 17rem;
     cursor: pointer;
     transition: 0.6s;
-   &:hover{
-        box-shadow: 10px 10px 50px #3D0A0A;
+    &:hover {
         transform: scale(0.95);
-   }
+    }
 }
-  
-/* Card Image */
+
 .card-img-top {
-    border-radius: 10px 10px 0 0; /* round the top corners of the image */
+    border-radius: 10px 10px 0 0;
     object-fit: cover;
     height: 228px;
 }
-  
-/* Card Body */
+
 .card-body {
-    background-color: #fff;
+    background-color: rgba(255, 203, 147, 0.25); 
     padding: 10px;
 }
-  
-/* Title */
+
 .card-title {
-    font-family: Georgia, Times, 'Times New Roman', serif;
-    //font-family: Nexa Bold,arial,helvetica,sans-serif;
+    font-family:'Poppins', sans-serif;
     font-size: 50px;
     font-weight: 400;
     color: #3D0A0A;
 }
 
-/* Text inside Card */
 .card-text {
-    font-family: Georgia, Times, 'Times New Roman', serif;
+    font-family: 'Poppins', sans-serif;
     font-size: 15px;
     color: #3D0A0A;
     margin-bottom: 10px;
 }
-  
-/* Button inside Card */
-.card-body .btn {
-    background-color: #3D0A0A;
-    border-color: #3D0A0A;
-    color: #ffca93;
-    padding: 10px;
-    border-radius: 5px;
-    font-size: 16px;
-    width: 200px;
-    
-    &:hover {
-        background-color: #fff;
-        border-color: #3D0A0A;
-        color:#3D0A0A;
-        border: 3px solid;
 
+.card-body .btn {
+    border: 2px solid #3D0A0A;
+    background-color: white;
+    border-color: #3D0A0A;
+    color: #3D0A0A;
+    border-radius: 15px;
+    font-size: 16px;
+    width: 120px;
+    &:hover {
+        background-color: #3D0A0A;
+        color: white;
+        border: 2px solid #3D0A0A;
     }
 }
-  
-/* Icon Overlay */
+
 .icon-overlay {
-    position: absolute; 
-    top: 10px; 
-    right: 10px; 
-    width: 30px; 
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 30px;
     height: 30px;
-    object-fit: contain; 
-    z-index: 10; 
+    object-fit: contain;
+    z-index: 10;
     cursor: pointer;
 }
 
+.info-circles {
+    padding-top: 10px;
+
+    display: flex;
+    justify-content: start;
+    gap:10px;
+    margin-bottom: 25px;
+}
+
+.circle {
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    background-color: white;
+    border: 2px solid #3D0A0A;
+    color: #3D0A0A;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    font-weight: bold;
+}
