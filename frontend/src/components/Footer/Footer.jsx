@@ -6,9 +6,6 @@ function Footer() {
     <div className='container-footer'>
 
       <div className='text'>
-          <ul>
-            <li>Contact</li>
-          </ul>
           <p>PAWfect Match</p>
       </div>
 

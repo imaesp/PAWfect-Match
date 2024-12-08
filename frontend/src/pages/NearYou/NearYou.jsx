@@ -81,8 +81,11 @@ const NearYou = () => {
     }
   };
 
+  // Get the top 3 best matches or all pets if no userAnswers
   const petsToDisplay = userAnswers ? findBestMatches(userAnswers, pets, 3) : pets;
 
+  // Limit petsToDisplay to only the first 3 pets
+  const limitedPets = petsToDisplay.slice(0, 3);
 
   useEffect(() => {
     const petAnimationInterval = setInterval(() => {
@@ -98,7 +101,7 @@ const NearYou = () => {
     <div className="pet-container">
       <h1>Check out your top matches!</h1>
       <div className="pet-cards">
-        {petsToDisplay.map((pet, index) => {
+        {limitedPets.map((pet, index) => {
           const picturesArray = parsePictures(pet.pictures);
           const picture = picturesArray[0];
 
@@ -133,7 +136,6 @@ const NearYou = () => {
         <p>Meet the 3,000+ adoptable pets waiting for a home!</p>
         <img className="paw-print" src='/leftpaw.png' alt="" style={{ height: '45px', marginLeft:'10px'}} />
       </Link>
-      
     </div>
   );
 };
