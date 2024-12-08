@@ -9,6 +9,7 @@
     width: 17rem;
     cursor: pointer;
     transition: 0.6s;
+    color:#3D0A0A !important;
     &:hover {
         transform: scale(0.95);
     }
@@ -29,13 +30,11 @@
     font-family:'Poppins', sans-serif;
     font-size: 50px;
     font-weight: 400;
-    color: #3D0A0A;
 }
 
 .card-text {
     font-family: 'Poppins', sans-serif;
     font-size: 15px;
-    color: #3D0A0A;
     margin-bottom: 10px;
 }
 
@@ -80,7 +79,6 @@
     border-radius: 50%;
     background-color: white;
     border: 2px solid #3D0A0A;
-    color: #3D0A0A;
     display: flex;
     align-items: center;
     justify-content: center;

@@ -49,10 +49,10 @@ function PetCard({ pet }) {
                 <Card.Title>{pet.name}</Card.Title>
                 <div className="info-circles">
                     {pet.size && <div className="circle"> Size <br /> {sizeAndSexLabels[pet.size]} </div>}
-                    {pet.sex && <div className="circle">{sizeAndSexLabels[pet.sex]}</div>}
+                    {pet.sex && <div className="circle"> Sex <br /> {sizeAndSexLabels[pet.sex]}</div>}
                 </div>
                 {!pet.size && !pet.sex && (
-                    <Card.Text>No size or sex available</Card.Text>
+                    <Card.Text></Card.Text>
                 )}
                 <Link to={`/adopt/${pet.animalID}`} state={{ pet }}>
                     <Button variant="primary">Adopt Me</Button>
