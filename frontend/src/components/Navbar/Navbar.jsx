@@ -25,7 +25,6 @@ function Navbar() {
               <Link to="/survey" className="navLinks">Matchmaker</Link>
               <Link to="/about" className="navLinks">About</Link>
               <Link to='/checklist' className="navLinks">Check List</Link>
-              <Link to="/test" className="navLinks">Test</Link>
             </div>
           </div>
 

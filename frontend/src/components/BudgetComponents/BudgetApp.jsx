@@ -41,7 +41,7 @@ export default function BudgetPage() {
             Add Expense
           </Button>
         </Stack>
-        <div className="budgets">
+        <div className="budgets-scroll-container">
           {budgets.map((budget) => {
             const amount = getBudgetExpenses(budget.id).reduce(
               (total, expense) => total + expense.amount,

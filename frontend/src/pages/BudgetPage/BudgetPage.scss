@@ -28,8 +28,11 @@
   background-color: #fffaf0;
   display: flex;
   justify-content: space-between;
-  padding: 1em;
   flex-wrap: wrap;
+}
+
+.chart-container{
+  height: 500px;
 }
 
 .budget-section > * {
