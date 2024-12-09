@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
 .card {
     border-radius: 50%;
-    border: 2px solid #ffcb939c !important; /* Added border color */
     margin-top: 10px;
     margin-left: 10px;
     padding: 0;
@@ -29,7 +28,7 @@
 .card-title {
     font-family:'Poppins', sans-serif;
     font-size: 50px;
-    font-weight: 400;
+    font-weight: bolder;
 }
 
 .card-text {
