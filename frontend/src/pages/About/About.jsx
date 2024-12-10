@@ -10,7 +10,7 @@ const members = [
     linkedinUrl: "https://www.linkedin.com/in/imanol-espinal-8b366326b",
   },
   {
-    img: '/avatar.svg',
+    img: '/Sania.jpg',
     name: "Sania Pervez",
     title: "Full-Stack Developer",
     githubUrl: "https://www.github.com/sanipervez",
