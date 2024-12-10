@@ -1,28 +1,55 @@
 .landing-container {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center; 
+  justify-content: center;
   background-color: #FFCA93;
   padding: 2rem;
   height: 80vh;
   font-family: 'Poppins', sans-serif;
   box-sizing: border-box;
+}
 
-  .text-section {
-    max-width: 560px;
-    margin-left: 20rem;
-    margin-right: -20rem;
+.landing-container .text-section {
+  max-width: 560px;
+  text-align: center;
+  margin: 0 auto; /* Center by default */
+}
 
-    .heading {
-      font-size: 4.5rem;
-      font-weight: bold;
-      color: #fff;
-      margin-bottom: 1rem;
-    }
+.landing-container .text-section .heading {
+  font-size: clamp(2.5rem, 5vw, 4.5rem); /* Adjusts for screen size */
+  font-weight: bold;
+  color: #fff;
+  margin-bottom: 1rem;
+}
 
-    .sub-text {
-      font-size: 1.5rem;
-      color: #fff;
-    }
+.landing-container .text-section .sub-text {
+  align-self: start;
+  font-size: clamp(1rem, 2vw, 1.5rem); /* Adjusts for screen size */
+  color: #fff;
+  text-align: left;
+}
+
+@media (min-width: 768px) {
+  .landing-container {
+    flex-direction: row;
+    padding: 4rem;
+  }
+
+  .landing-container .text-section {
+    text-align: left;
+    margin-left: 5%; /* Adjust spacing */
+    margin-right: 5%; /* Adjust spacing */
+  }
+}
+
+@media (min-width: 1200px) {
+  .landing-container {
+    padding: 5rem;
+  }
+
+  .landing-container .text-section {
+    margin-left: 10%;
+    margin-right: 10%;
   }
 }

@@ -11,7 +11,7 @@ import './Hero.scss'
 
 function Hero() {
   return (
-    <div>
+    <div className='hero-container'>
       <LandingSection></LandingSection>
       <PawPrintLtoR></PawPrintLtoR>
       <Journey></Journey>

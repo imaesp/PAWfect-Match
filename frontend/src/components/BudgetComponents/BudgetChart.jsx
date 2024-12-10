@@ -1,14 +1,36 @@
 import { PieChart } from "@mui/x-charts/PieChart";
 import { useEffect, useState } from "react";
 import { useAuth } from "@clerk/clerk-react"; // Import Clerk's useAuth
-import supabase from '../../supabase/supabaseClient';
+import supabase from "../../supabase/supabaseClient";
+import "./BudgetChart.scss";
 
 export default function BudgetChart() {
   const [chartData, setChartData] = useState([]);
+  const [chartWidth, setChartWidth] = useState(800); // Default width for larger screens
+  const [chartHeight, setChartHeight] = useState(400); // Default height
   const { userId } = useAuth(); // NEW Get the current user's ID
 
+  // Adjust chart size on window resize
   useEffect(() => {
-    if (!userId) return; // NEW Ensure userId is available
+    const handleResize = () => {
+      if (window.innerWidth < 768) {
+        setChartWidth(window.innerWidth - 40); // Adjust width for small screens
+        setChartHeight(300); // Adjust height for small screens
+      } else {
+        setChartWidth(800); // Default width for larger screens
+        setChartHeight(400); // Default height for larger screens
+      }
+    };
+
+    handleResize(); // Set initial size based on current window size
+    window.addEventListener("resize", handleResize); // Add event listener for resize
+
+    // Clean up the event listener on component unmount
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  useEffect(() => {
+    if (!userId) return; // Ensure userId is available
 
     const fetchChartData = async () => {
       try {
@@ -16,18 +38,18 @@ export default function BudgetChart() {
         const { data: budgets, error: budgetsError } = await supabase
           .from("budgets")
           .select("*")
-          .eq("userId", userId); // CHECK THAT THE CURRENT USERID MATCHES THE ONE IN THE DATABASE
+          .eq("userId", userId);
         if (budgetsError) throw budgetsError;
 
         // Fetch expenses for the logged-in user
         const { data: expenses, error: expensesError } = await supabase
           .from("expenses")
           .select("*")
-          .eq("userId", userId); // CHECK THAT THE CURRENT USERID MATCHES THE ONE IN THE DATABASE
+          .eq("userId", userId);
         if (expensesError) throw expensesError;
 
-        let remaining = 0; // Line 16 in Original Code
-         // Retrieve the total expenses for each budget by checking if budget.id (mapped from budgets) matches expense.budgetId (from expenses)
+        let remaining = 0;
+        // Aggregate data based on budgets and expenses
         const aggregateData = budgets.map((budget) => {
           const totalExpenses = expenses
             .filter((expense) => expense.budgetId === budget.id)
@@ -40,12 +62,11 @@ export default function BudgetChart() {
             label: budget.name,
           };
         });
-        // Our logic checks for expenses with budgetId, no need to map through it again
-        const uncategorized = expenses // Line 31 in Original Code
+
+        const uncategorized = expenses
           .filter((expense) => expense.budgetId === "Uncategorized")
           .reduce((sum, expense) => sum + expense.amount, 0);
 
-        
         remaining -= uncategorized;
 
         aggregateData.push({
@@ -61,19 +82,32 @@ export default function BudgetChart() {
 
         setChartData(aggregateData);
       } catch (error) {
-        console.error("Error fetching data", error); // Catch error in case Supabase can't find the record
+        console.error("Error fetching data", error);
       }
     };
 
     fetchChartData();
-  }, [userId]); // Refetch whenever userId changes
+  }, [userId]);
 
   return (
     <PieChart
-      colors={["#bfa697", "#eeeaea", "#de9d76", "#f5b26b", "#ffca93", "#5A464C"]}
+      className="pie-chart"
+      margin={{ top: 20, bottom: 80, left: 50, right: 50 }} // Ensure sufficient space around chart
+
+      colors={["#bfa697", "#eeeaea", "#de9d76", "#f5b26b", "#ffca93", "#5A464C", "#97bfb6", "#786858", "#d9cbb5", "#a6eae9", "#cfc9c9", "#b0a8a8", "#76b9de", "#f3c5b2", "#af775e", "#6bb2f5", "#e89d5c", "#d7a572", "#93afff", "#ffd8aa", "#e2b87b", "#465a54", "#7c6a71", "#42373c", "#c4a58c", "#dbc7ad", "#f4e4d7", "#83674e", "#695c4b", "#967355", "#9a4f4f", "#6d7080", "#7391a6"]}
       series={[{ data: chartData }]}
-      width={800}
-      height={400}
+      width={chartWidth}
+      height={chartHeight}
+      slotProps={{
+        legend: {
+          direction: "row",
+          position: { vertical: "bottom", horizontal: "middle" },
+        },
+      }}
     />
+
   );
 }
+
+
+

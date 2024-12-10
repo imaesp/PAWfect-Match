@@ -1,5 +1,55 @@
-.adopt-page{
+.adopt-page {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
     background-color: #fffaf0;
-    margin-top: -10px;
-}
+  }
+  
+  .adopt-container {
+    width: 100%;
+    padding: 20px;
+  
+  }
+  
+  .adopt-carrousel {
+    margin-bottom: 20px; 
+  }
+  
+  .adopt-filter {
+    margin-bottom: 20px;
+  }
+  
+  .adopt-card, .signed-adopt-card {
+    margin-top: 100px !important;
+  }
 
+  .pet-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 2rem;
+    justify-items: center;
+    padding: 0;
+    margin: 0;
+  }
+  
+  @media (max-width: 768px) {
+
+    .adopt-container {
+      display: flex;
+      flex-direction: column; 
+      padding: 10px; 
+    }
+    
+    .adopt-card, .signed-adopt-card {
+        margin-bottom: 20px;
+    }
+
+    .pet-grid {
+      grid-template-columns: 1fr; 
+      width: 100%;
+      margin-top: 100px !important; 
+    }
+  }
+  

@@ -1,9 +1,35 @@
 .budget-container {
   background-color: #fffaf0;
-  width: auto;
-  height: 50vh;
+  width: 100%;
+  height: auto; // Adjust height dynamically
   margin-right: 1em;
   border-radius: 10px;
+  padding: 1em;
+  box-sizing: border-box;
+}
+
+.budgets-scroll-container {
+  display: flex;
+  flex-wrap: wrap; // Allow wrapping within the container
+  gap: 1rem; // Add spacing between cards
+  max-height: 60vh; // Limit the height of the container
+  overflow-y: auto; // Enable vertical scrolling
+  padding: 1rem;
+  border-radius: 0.5rem;
+  background-color: #fffaf0; // Optional: adds a light background for distinction
+}
+
+.budgets-scroll-container::-webkit-scrollbar {
+  width: 8px; // Customize the scrollbar width
+}
+
+.budgets-scroll-container::-webkit-scrollbar-thumb {
+  background-color: #390510; // Match the app's primary color
+  border-radius: 4px;
+}
+
+.budgets-scroll-container::-webkit-scrollbar-track {
+  background: #f0f0f0; // Light track background
 }
 
 .budget-header {
@@ -20,6 +46,7 @@
   transform: none !important;
   border: 2px solid #7e7067 !important;
   margin-right: 1em !important;
+  width: auto;
 }
 
 .e-button,
@@ -31,7 +58,9 @@
   transform: none !important;
   border: 2px solid #7e7067 !important;
   margin-right: 0px !important;
+  width: auto;
 }
+
 .e-button:hover {
   background-color: #fff6ec !important;
   color: #000 !important;
@@ -42,7 +71,6 @@
 
 h1 {
   color: #ece2d8;
-  // color: #7e7067;
 }
 
 .title {
@@ -51,7 +79,9 @@ h1 {
 
 .budgets {
   display: flex;
-  
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1em;
 }
 
 .total {
@@ -60,4 +90,64 @@ h1 {
 
 .reg-card {
   background-color: #ece2d8;
+  width: calc(33.33% - 1em);
+  box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+  .budget-container {
+    height: auto;
+    margin-right: 0;
+    padding: 1em;
+  }
+
+  .budgets {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .b-button,
+  .e-button {
+    width: 100%;
+    margin-right: 0;
+    margin-bottom: 1em;
+  }
+
+  h1 {
+    font-size: 24px;
+  }
+
+  .title {
+    font-size: 18px;
+  }
+
+  .reg-card {
+    width: 100%;
+    margin-bottom: 1em;
+  }
+}
+
+@media (max-width: 480px) {
+  .budget-container {
+    padding: 0.5em;
+  }
+
+  h1 {
+    font-size: 20px;
+  }
+
+  .title {
+    font-size: 16px;
+  }
+
+  .b-button,
+  .e-button {
+    width: 100%;
+    padding: 12px;
+  }
+
+  .reg-card {
+    margin-bottom: 1em;
+    width: 100%;
+  }
 }

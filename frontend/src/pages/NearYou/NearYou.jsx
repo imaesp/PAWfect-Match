@@ -5,6 +5,7 @@ import { findBestMatches } from '../../utils/petMatchAlgorithm';
 import { useUser } from '@clerk/clerk-react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import { Card } from 'react-bootstrap';
 
 const NearYou = () => {
   const { user } = useUser();
@@ -81,8 +82,11 @@ const NearYou = () => {
     }
   };
 
+  // Get the top 3 best matches or all pets if no userAnswers
   const petsToDisplay = userAnswers ? findBestMatches(userAnswers, pets, 3) : pets;
 
+  // Limit petsToDisplay to only the first 3 pets
+  const limitedPets = petsToDisplay.slice(0, 3);
 
   useEffect(() => {
     const petAnimationInterval = setInterval(() => {
@@ -94,11 +98,19 @@ const NearYou = () => {
     };
   }, []);
 
+  const sizeAndSexLabels = {
+    "Medium": 'M',
+    "Small": 'S',
+    "Large": 'L',
+    "Female": 'F',
+    "Male": 'M'
+  };
+
   return (
     <div className="pet-container">
       <h1>Check out your top matches!</h1>
       <div className="pet-cards">
-        {petsToDisplay.map((pet, index) => {
+        {limitedPets.map((pet, index) => {
           const picturesArray = parsePictures(pet.pictures);
           const picture = picturesArray[0];
 
@@ -114,8 +126,23 @@ const NearYou = () => {
                 delay: 0.5 * index,
               }}
             >
-              <img src={picture} alt={pet.name || 'Adoptable Pet'} />
-              <div className="pet-name">{pet.name}</div>
+              <Card>
+                  <Card.Img
+                      variant="top"
+                      src={picture}
+                      alt={pet.name + " the PAWfect Pet"}
+                  />
+                  <Card.Body>
+                      <Card.Title>{pet.name}</Card.Title>
+                      <div className="info-circles">
+                          {pet.size && <div className="circle"> Size <br /> {sizeAndSexLabels[pet.size]} </div>}
+                          {pet.sex && <div className="circle"> Sex <br /> {sizeAndSexLabels[pet.sex]}</div>}
+                      </div>
+                      {!pet.size && !pet.sex && (
+                          <Card.Text></Card.Text>
+                      )}
+                  </Card.Body>
+              </Card>
             </motion.div>
           );
         })}
@@ -133,7 +160,6 @@ const NearYou = () => {
         <p>Meet the 3,000+ adoptable pets waiting for a home!</p>
         <img className="paw-print" src='/leftpaw.png' alt="" style={{ height: '45px', marginLeft:'10px'}} />
       </Link>
-      
     </div>
   );
 };

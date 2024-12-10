@@ -56,3 +56,59 @@
   font-size: 20px;
   font-weight: bold;
 }
+
+@media (max-width: 768px) {
+  .button-container {
+    flex-direction: column;
+    margin-top: 2rem;
+    gap: 1.5rem;
+  }
+
+  .first,
+  .second,
+  .third {
+    margin: 1rem; 
+  }
+
+  .first-button,
+  .second-button,
+  .third-button {
+    width: 4rem;
+    height: 4rem;
+    font-size: 0.9rem; 
+  }
+
+  .survey-button {
+    margin-top: 1rem;
+    padding: 0.5rem 1rem; 
+    font-size: 18px;
+  }
+}
+
+
+@media (max-width: 1024px) {
+  .button-container {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+  }
+
+  .first,
+  .second,
+  .third {
+    margin: 1.5rem 3rem;
+  }
+
+  .first-button,
+  .second-button,
+  .third-button {
+    width: 4.5rem;
+    height: 4.5rem;
+    font-size: 1rem;
+  }
+
+  .survey-button {
+    padding: 0.5rem 1.2rem;
+    font-size: 19px;
+  }
+}

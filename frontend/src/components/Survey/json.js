@@ -6,6 +6,7 @@ export const json = {
       "elements": [
         {
           "type": "dropdown",
+          "renderAs": "select",
           "name": "species",
           "title": " Which type of pet do you think would be your PAWfect match?",
           "choices": [
@@ -15,6 +16,7 @@ export const json = {
         },
         {
           "type": "dropdown",
+          "renderAs": "select",
           "name": "sex",
           "title": "What's your vibe for your PAWfect match?",
           "choices": [
@@ -24,6 +26,7 @@ export const json = {
         },
         {
           "type": "dropdown",
+          "renderAs": "select",
           "name": "activityLevel",
           "title": "Would you prefer a pet that is:",
           "choices": [
@@ -33,6 +36,7 @@ export const json = {
         },
         {
           "type": "dropdown",
+          "renderAs": "select",
           "name": "PlayHours",
           "title": "Can you dedicate a minimum of 2 hours each day for walks, play, or training activities with your pet?",
           "choices": [
@@ -42,6 +46,7 @@ export const json = {
         },
         {
           "type": "dropdown",
+          "renderAs": "select",
           "name": "OutHours",
           "title": "On average, how many hours per day are you away from home due to work, school, or other activities?\r\n",
           "choices": [
@@ -52,6 +57,7 @@ export const json = {
         },
         {
           "type": "dropdown",
+          "renderAs": "select",
           "name": "age",
           "title": "What is your age preference?",
           "choices": [
@@ -62,6 +68,7 @@ export const json = {
         },
         {
           "type": "dropdown",
+          "renderAs": "select",
           "name": "budget",
           "title": "How much do you expect to budget for your pet on an annual basis?",
           "choices": [
@@ -81,6 +88,7 @@ export const json = {
         },
         {
           "type": "dropdown",
+          "renderAs": "select",
           "name": "livingArea",
           "title": "What best describes the size of your living area?",
           "choices": [
@@ -100,6 +108,7 @@ export const json = {
         },
         {
           "type": "dropdown",
+          "renderAs": "select",
           "name": "outdoorAccess",
           "title": "Do you have access to outdoor space for your pet?",
           "choices": [
@@ -110,6 +119,7 @@ export const json = {
         },
         {
           "type": "dropdown",
+          "renderAs": "select",
           "name": "size",
           "title": " Do you have size preferences for your pet selection?",
           "choices": [
@@ -120,6 +130,7 @@ export const json = {
         },
         {
           "type": "tagbox",
+          "renderAs": "select",
           "name": "breed",
           "title": "Do you have any breed restrictions that may affect your matches(ie. allergies, living conditions(building requirements))",
           "choices": [

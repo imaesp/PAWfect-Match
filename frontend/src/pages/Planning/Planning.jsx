@@ -12,7 +12,7 @@ function Planning() {
             <img src="/pet-house.png" alt="" />
             <h1>CHECKLIST FOR ADOPTERS</h1>
             <p>Make the adoption transition as smooth as possible</p>
-            <Link to='/article'><button class="btn">Learn more</button></Link>
+            <Link to='/checklist'><button class="btn">Learn more</button></Link>
           </div>
         </div>
         <div class="col">
@@ -20,7 +20,7 @@ function Planning() {
             <img src="/faq-icon.png" alt=""/>
             <h1>PET ADOPTION FAQS</h1>
             <p>Get the answers to all your questions about adoption </p>
-            <Link to='/article'><button class="btn">Learn more</button></Link>
+            <Link to='/checklist'><button class="btn">Learn more</button></Link>
           </div>
         </div>
         <div class="col">

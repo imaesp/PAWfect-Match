@@ -6,6 +6,7 @@ import { json } from "./json";
 import "survey-react/survey.css";
 import { theme } from "./survey_theme";
 import './Survey.scss';
+import { Link } from "react-router-dom";
 
 const SurveyComp = () => {
   const { user } = useUser();
@@ -102,7 +103,7 @@ const SurveyComp = () => {
 
   useEffect(() => {
     if (hasCompletedSurvey) {
-      setAnimationTriggered(true); // Trigger the fade-in animation when data is available
+      setAnimationTriggered(true); 
     }
   }, [hasCompletedSurvey]);
 
@@ -122,36 +123,53 @@ const SurveyComp = () => {
     );
   }
 
-  // Render the survey if the user hasn't completed it
-  if (!hasCompletedSurvey) {
+
+  const questionLabels = {
+    "age": "Preferred Age",
+    "sex": "Preferred Sex",
+    "size": "Preferred Size",
+    "budget":"My Budget (Approximate)",
+    "species": "Preferred Species",
+    "OutHours": "My Out Hours",
+    "PlayHours": "Play Hours",
+    "livingArea": "My Living Area",
+    "activityLevel": "Preferred Activity Level",
+    "outdoorAccess": "My Outdoor Access",
+  };
+
+  if (hasCompletedSurvey) {
     return (
-      <div className="survey-container">
-        <Survey.Survey className="survey-model" model={survey} />
+      <div className={`survey-results-container ${animationTriggered ? 'fade-in' : ''}`}>
+        <h1 className="title text-center mb-5">Your Survey Responses</h1>
+        <ul className="list-group">
+          {Object.entries(surveyData).map(([question, answer]) => (
+            <li
+              key={question}
+              className="list-group-item d-flex justify-content-between align-items-center"
+            >
+              <strong>{questionLabels[question] || question}:</strong>
+              <span>{answer}</span>
+            </li>
+          ))}
+        </ul>
+        <button
+          className="btn btn-primary mt-4"
+          onClick={() => setHasCompletedSurvey(false)}
+        >
+          Edit Survey
+        </button>
+        <Link to='/'>
+          <button className="btn btn-primary mt-4">
+              See Best Matches
+          </button>
+        </Link>
       </div>
     );
   }
 
-  // Render survey results with animation
   return (
-    <div className={`survey-results-container ${animationTriggered ? 'fade-in' : ''}`}>
-      <h1 className="title text-center mb-5">Your Survey Responses</h1>
-      <ul className="list-group">
-        {Object.entries(surveyData).map(([question, answer]) => (
-          <li
-            key={question}
-            className="list-group-item d-flex justify-content-between align-items-center"
-          >
-            <strong>{question}:</strong>
-            <span>{answer}</span>
-          </li>
-        ))}
-      </ul>
-      <button
-        className="btn btn-primary mt-4"
-        onClick={() => setHasCompletedSurvey(false)}
-      >
-        Edit Survey
-      </button>
+    <div className="survey-container">
+      <Survey.Survey className="survey-model" model={survey} />
     </div>
   );
 };

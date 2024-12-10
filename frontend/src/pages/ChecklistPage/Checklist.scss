@@ -1,105 +1,225 @@
-$font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-$primary-color: #580e0e;
-$secondary-color: #F5B26B;
-$border-radius: 15px;
-$hover-color: #FF5722;
 
-.checklist-header{
-    padding: 30px;
-    color: $primary-color;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+$font-family: 'Poppins', sans-serif;
+$primary-color: #390510;
+$secondary-color: #FFCA93;
+$border-radius: 15px;
+$hover-color: #FFCA93;
+$box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+
+.checklist-header {
+    padding: 2em 1em;
+    color: white;
     font-family: $font-family;
     background-color: $secondary-color;
-    h1{
-        font-size: 50px;
-        font-weight: 900;
-        span{
-            height: 100px;
-            width: 100px;
+
+    h1 {
+        font-size: 6vw;
+        font-weight: bold;
+    }
+
+    .top {
+        padding-top: 1em;
+
+        .ampersand {
+            font-size: 10vw;
+            color: $primary-color;
+            transform: translateX(-21.5%) translateY(-70%); /* Adjusted position */
         }
     }
-    .top{
-        margin-bottom: 5px;
-        margin-top: 20px;
-     }
-    .page-description{
-        text-align: left;
-        color: rgb(82, 79, 79);
-        width: 50%;
+
+    .bottom {
+        margin-top: -2.5em;
     }
+
+    .page-description {
+        text-align: left;
+        color: white;
+        width: 100%;
+        margin-bottom: 1em;
+        font-size: 3vw;
+    }
+
     .adopt, .care {
-        border: 2px solid wheat;
-        border-radius: 15px;
-        background-color: wheat;
+        border: 2px solid #fffaf0;
+        border-radius: $border-radius;
+        background-color: #fffaf0;
         text-decoration: none;
         color: $primary-color;
-        padding: 10px;
-        &:hover{
-            color: #000;
+        padding: .5em;
+        box-shadow: $box-shadow;
+
+        &:hover {
+            background-color: lighten($hover-color, 15%);
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+        }
+    }
+}
+
+.checklist-layout {
+    background-color: #fffaf0;
+
+    .space-between {
+        padding: 1em;
+    }
+
+    #Adopting, #OngoingCare {
+        font-family: $font-family;
+        display: flex;
+        flex-wrap: wrap;
+        border-color: #390510;
+        align-items: flex-start;
+        justify-content: flex-start; /* Aligns content to the left */
+
+        h3 {
+            font-size: 4vw;
+            font-weight: bold;
+            padding-top: 1em;
+            color: $primary-color;
+            margin-left: 1em;
+        }
+
+        .category {
+            border-radius: $border-radius;
+            margin-bottom: 1em;
+            display: flex;
+            flex-direction: column;
+            
+        }
+
+        .no-wrap-paragraph { 
+            color: $primary-color; 
+            font-size: 3vw; 
+            padding-bottom: 1em; 
+            margin-left: 1em; 
+            text-align: left; /* Ensures the text stays left-aligned */ 
+            white-space: normal; /* Allows text to wrap normally */ }
+    }
+
+    .checklist-card {
+        cursor: auto;
+        border-radius: $border-radius;
+        margin-bottom: 1em;
+        padding: .5em;
+        box-shadow: $box-shadow;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        width: 95%;
+        max-width: 320px;
+        margin: 0 auto;
+
+        &:hover {
+            transform: translateY(-5px);
+            box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .card-header, .card-body {
+            background-color: #fffaf0;
+            color: $primary-color;
         }
     }
 
-}
-
-#Adopting, #OngoingCare {
-    font-family: $font-family;
-    margin: 20px;
-    padding: 20px;
-    display: flex;
-    flex-wrap: wrap;
-
-    h3 {
-        margin-bottom: 20px;
-        color: #580e0e;
-    }
-
-    .category-choose-the-right-pet,
-    .category-prepare-your-home, 
-    .category-plan-for-health-and-wellness, 
-    .category-financial-readiness, 
-    .category-adoption-process,
-    .category-regular-health-check-ups,
-    .category-nutrition-and-diet,
-    .category-exercise-and-mental-stimulation,
-    .category-grooming-and-hygiene,
-    .category-behavior-and-training {
-        border-radius: $border-radius;
-        margin-bottom: 20px;
+    .checkbox-container {
         display: flex;
-        flex-direction: column;
+        justify-content: flex-start; /* Aligns checkboxes to the left */
+        input[type="checkbox"] {
+            appearance: none;
+            width: 2em;
+            height: .75em; /* Increased height for roundness */
+            border: 2px solid $secondary-color;
+            border-radius: 50%; /* Makes the checkbox round */
+            background-color: #fffaf0;
+            cursor: pointer;
+
+            &:checked {
+                background-color: $primary-color;
+                border-color: $primary-color;
+                cursor: pointer;
+            }
+        }
+    }
+}
+@media (max-width: 767px) { 
+    .checklist-header { 
+        padding: 1.5em 1em; 
+        
+        h1 { 
+            font-size: 8vw; 
+        } 
+        
+        .top .ampersand { 
+            font-size: 12vw; 
+            top: 20%; 
+            left: 5%; 
+            transform: translate(15%, -90%); 
+        } 
+        .page-description { 
+            font-size: 4vw; 
+            
+        } 
+    } 
+    .checklist-layout #Adopting, .checklist-layout #OngoingCare { 
+        h3 { 
+            font-size: 5vw; 
+        } 
+        .no-wrap-paragraph { 
+            font-size: 4vw; 
+        } 
+    } 
+}
+
+@media (min-width: 768px) {
+    .checklist-header {
+        padding: 3em 3em 5em 7em;
+
+        h1 {
+            font-size: 4vw;
+        }
+
+        .top .ampersand {
+            font-size: 8vw;
+        }
+
+        .page-description {
+            font-size: 2vw;
+        }
+    }
+
+    .checklist-layout #Adopting, .checklist-layout #OngoingCare {
+        h3 {
+            font-size: 3vw;
+        }
+
+        .no-wrap-paragraph {
+            font-size: 2vw;
+        }
     }
 }
 
-.checklist-card {
-    cursor: auto;
-    border-radius: $border-radius;
-    margin-bottom: 20px;
-    padding: 15px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    &:hover {
-        transform: translateY(-5px);
-        box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.15);
+@media (min-width: 1024px) {
+    .checklist-header {
+        padding: 5em 5em 7em 13em;
+
+        h1 {
+            font-size: 3vw;
+        }
+
+        .top .ampersand {
+            font-size: 6vw;
+        }
+
+        .page-description {
+            font-size: 1.2vw;
+        }
     }
 
-    .card-header {
-        background-color: #fff;
-        color: #580e0e;
+    .checklist-layout #Adopting, .checklist-layout #OngoingCare {
+        h3 {
+            font-size: 2vw;
+        }
+
+        .no-wrap-paragraph {
+            font-size: 1.5vw;
+        }
     }
-    
-    .card-body {
-        background-color: #ffffff;
-    }
-}
-
-.no-wrap-paragraph{
-    margin-left: 21px;
-    margin-right: 100px;
-
-}
-
-:checked{
-    cursor: pointer;
-}
-.checkbox-container{
-    display: flex;
 }
