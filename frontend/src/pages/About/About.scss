@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+
+.about-container {
+    background-color: #fffaf0; // Set the entire page background color
+    color: #390510;
+    min-height: 100vh; // Ensure it spans the full viewport height
+    width: 100%; // Full-width coverage
+
+.mission {
+    font-size: 1.25rem; /* Using rem for better scaling */
+    background-color: #FFCA93;
+    color: white;
+    padding: 15vw 5vw 15vw 5vw; /* Increased padding on top and bottom */
+
+    .welcome {
+        font-size: 3.5rem; // Relative unit for better scaling
+        font-weight: bold;
+
+        p {
+            margin: 0 5vw 2vw 5vw; /* Using vw for margins to make it responsive */
+        }
+    }
+}
+
+/* Media Queries for larger screens */
+@media (min-width: 768px) {
+    .mission {
+        padding: 10vw 15vw 10vw 15vw; /* Increased padding on top and bottom */
+
+        .welcome {
+            font-size: 2rem;
+
+            p {
+                margin: 0 10vw 2vw 10vw;
+            }
+        }
+    }
+}
+
+@media (min-width: 1024px) {
+    .mission {
+        padding: 8vw 20vw 8vw 20vw; /* Increased padding on top and bottom */
+
+        .welcome {
+            font-size: 1.75rem;
+
+            p {
+                margin: 0 15vw 2vw 15vw;
+            }
+        }
+    }
+}
+
+    
+
+    .about-us{
+        padding-top: 150px;
+    }
+}
