@@ -1,0 +1,16 @@
+.pie-chart-container {
+    overflow: visible; /* Prevent content from being cut off */
+  }
+  
+
+@media (max-width: 480px){
+
+    // .MuiChartsLegend-root{
+    //     transform: translateY(50px); /* Shifts the element 20px down */
+    //     padding: -10
+    // }
+
+    .pie-chart{
+        height: 450px;
+    }
+}

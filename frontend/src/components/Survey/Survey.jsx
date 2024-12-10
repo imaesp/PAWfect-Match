@@ -6,6 +6,7 @@ import { json } from "./json";
 import "survey-react/survey.css";
 import { theme } from "./survey_theme";
 import './Survey.scss';
+import { Link } from "react-router-dom";
 
 const SurveyComp = () => {
   const { user } = useUser();
@@ -157,6 +158,11 @@ const SurveyComp = () => {
         >
           Edit Survey
         </button>
+        <Link to='/'>
+          <button className="btn btn-primary mt-4">
+              See Best Matches
+          </button>
+        </Link>
       </div>
     );
   }

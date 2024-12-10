@@ -1,11 +1,40 @@
 .budget-container {
   background-color: #fffaf0;
-  width: 100%; 
-  height: 50vh;
+  width: 100%;
+  height: auto; // Adjust height dynamically
   margin-right: 1em;
   border-radius: 10px;
-  padding: 1em; 
-  box-sizing: border-box; 
+  padding: 1em;
+  box-sizing: border-box;
+}
+
+.button-container-budget{
+  margin-left: 7rem;
+}
+
+.budgets-scroll-container {
+  margin-left: 5rem;
+  display: flex;
+  flex-wrap: wrap; // Allow wrapping within the container
+  gap: 1rem; // Add spacing between cards
+  max-height: 60vh; // Limit the height of the container
+  overflow-y: auto; // Enable vertical scrolling
+  padding: 1rem;
+  border-radius: 0.5rem;
+  background-color: #fffaf0; // Optional: adds a light background for distinction
+}
+
+.budgets-scroll-container::-webkit-scrollbar {
+  width: 8px; // Customize the scrollbar width
+}
+
+.budgets-scroll-container::-webkit-scrollbar-thumb {
+  background-color: #390510; // Match the app's primary color
+  border-radius: 4px;
+}
+
+.budgets-scroll-container::-webkit-scrollbar-track {
+  background: #f0f0f0; // Light track background
 }
 
 .budget-header {
@@ -22,7 +51,7 @@
   transform: none !important;
   border: 2px solid #7e7067 !important;
   margin-right: 1em !important;
-  width: auto; 
+  width: auto;
 }
 
 .e-button,
@@ -34,7 +63,7 @@
   transform: none !important;
   border: 2px solid #7e7067 !important;
   margin-right: 0px !important;
-  width: auto; 
+  width: auto;
 }
 
 .e-button:hover {
@@ -57,7 +86,7 @@ h1 {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  gap: 1em; 
+  gap: 1em;
 }
 
 .total {
@@ -72,9 +101,9 @@ h1 {
 
 @media (max-width: 768px) {
   .budget-container {
-    height: auto; 
-    margin-right: 0; 
-    padding: 1em; 
+    height: auto;
+    margin-right: 0;
+    padding: 1em;
   }
 
   .budgets {
@@ -82,15 +111,9 @@ h1 {
     align-items: center;
   }
 
-  .b-button,
-  .e-button {
-    width: 100%; 
-    margin-right: 0; 
-    margin-bottom: 1em; 
-  }
 
   h1 {
-    font-size: 24px; 
+    font-size: 24px;
   }
 
   .title {
@@ -98,8 +121,8 @@ h1 {
   }
 
   .reg-card {
-    width: 100%; 
-    margin-bottom: 1em; 
+    width: 100%;
+    margin-bottom: 1em;
   }
 }
 
@@ -108,22 +131,24 @@ h1 {
     padding: 0.5em;
   }
 
+  .button-container-budget{
+    margin-left: 2rem;
+  }
+
+  .budgets-scroll-container{
+    margin-left: 0;
+  }
+
   h1 {
     font-size: 20px;
   }
 
   .title {
-    font-size: 16px; 
-  }
-
-  .b-button,
-  .e-button {
-    width: 100%;
-    padding: 12px; 
+    font-size: 16px;
   }
 
   .reg-card {
-    margin-bottom: 1em; 
+    margin-bottom: 1em;
     width: 100%;
   }
 }
