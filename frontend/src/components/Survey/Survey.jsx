@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from "react";
 import * as Survey from "survey-react";
 import supabase from "../../supabase/supabaseClient";
@@ -7,6 +8,7 @@ import "survey-react/survey.css";
 import { theme } from "./survey_theme";
 import './Survey.scss';
 import { Link } from "react-router-dom";
+import Button from 'react-bootstrap/Button';
 
 const SurveyComp = () => {
   const { user } = useUser();
@@ -153,14 +155,15 @@ const SurveyComp = () => {
           ))}
         </ul>
         <button
-          className="btn btn-primary mt-4"
+          className="btn btn-primary mt-4 big-boy"
           onClick={() => setHasCompletedSurvey(false)}
+          style={{height: '65px', gap: '20px'}}
         >
           Edit Survey
         </button>
         <Link to='/'>
-          <button className="btn btn-primary mt-4">
-              See Best Matches
+          <button className="btn btn-primary mt-4 big-boy" >
+              See Matches
           </button>
         </Link>
       </div>
