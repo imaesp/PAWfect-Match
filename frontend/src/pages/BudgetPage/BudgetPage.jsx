@@ -83,7 +83,7 @@ export default function BudgetPage() {
             </div>
           </div>
           <div class="col">
-            <h1 className="me-auto">Budgets</h1>
+            <h1 className="main-budget me-auto">Budgets</h1>
             <div className="budgets-container">
               <BudgetApp />
             </div>
