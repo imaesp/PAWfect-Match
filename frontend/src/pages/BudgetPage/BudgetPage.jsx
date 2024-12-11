@@ -5,30 +5,19 @@ import { motion } from "framer-motion";
 import "./BudgetPage.scss";
 
 const tips = [
-  "Set clear savings goals for both short-term and long-term needs.",
-  "Pay yourself first by automatically transferring a portion of your income to savings.",
-  "Build an emergency fund to cover 3–6 months of living expenses.",
-  "Use high-yield savings accounts to maximize interest earned on savings.",
-  "Save windfalls like bonuses, tax refunds, or gifts instead of spending them.",
-  "Track your savings progress using apps or spreadsheets.",
-  "Eliminate unnecessary subscriptions to cut down on recurring costs.",
-  "Start small by saving a percentage of each paycheck and increasing it over time.",
-  "Create a shopping list to avoid impulse purchases.",
-  "Compare prices using tools or apps to find the best deals.",
-  "Take advantage of discounts like student, senior, or membership discounts.",
-  "Buy in bulk for non-perishable items to save money over time.",
-  "Wait 24–48 hours before making big purchases to ensure they’re necessary.",
-  "Avoid emotional spending by finding healthier ways to cope with stress or boredom.",
-  "Use cash for discretionary spending to limit overspending.",
-  "Look for quality over quantity and invest in durable products.",
-  "Track all income and expenses using budgeting apps, spreadsheets, or manual methods.",
-  "Use the 50/30/20 rule for budgeting: 50% for essentials, 30% for wants, and 20% for savings and debt repayment.",
-  "Prioritize debt repayment, focusing on high-interest debt first.",
-  "Automate bill payments and savings contributions to avoid missed deadlines.",
-  "Adjust your budget regularly to reflect changing circumstances.",
-  "Plan for non-monthly expenses like holidays, car maintenance, or annual bills.",
-  "Track budget variances to identify and address areas of overspending.",
-  "Create sinking funds by saving incrementally for specific goals like vacations or new gadgets."
+  "Did you know? Pet care costs can range from $1,500 to $2,000 annually. Households with an income of $60,000 or more are often better equipped to cover these expenses, especially for dogs",
+  "Adoption fees vary widely, ranging from $50 to $500 depending on the shelter and the animal's breed and age",
+  "Did you know? Many shelters include spaying/neutering in the adoption fee, saving you $200–$500",
+  "Expect to budget $200–$500 annually for routine vet visits and vaccinations",
+  "Adjust your budget regularly to reflect changing circumstances",
+  "Emergency medical care can cost $1,000–$5,000. Consider pet insurance to cover unexpected costs!",
+  "Pet insurance can range from $20–$50 per month and helps with unexpected medical expenses",
+  "Track expenses to identify and address areas of overspending",
+  "Planning a vacation? Boarding a pet costs $25–$85 per night, or you can hire a sitter for $15–$50 per visit",
+  "Certain breeds require regular grooming, costing $30–$90 per session",
+  "Tip: Set aside $50–$100 per month in a pet emergency fund to cover unexpected costs",
+  "Senior pets often have lower upfront costs but may need more frequent medical care",
+  "Thinking about a puppy? Puppies can cost $2,000+ in their first year due to vaccinations, training, and supplies"
 ];
 
 
