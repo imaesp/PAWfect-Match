@@ -32,15 +32,15 @@ const facts = [
 
 const quotes = [
     {
-        quote: "Until one has loved an animal, a part of one's soul remains unawakened.",
-        author: "Anatole France",
+        quote: "Pets are not our whole life, but they make our lives whole.",
+        author: "Roger Caras",
     },
     {
-        quote: "A dog is the only thing on earth that loves you more than you love yourself.",
-        author: "Josh Billings",
+        quote: "Animals are such agreeable friends—they ask no questions; they pass no criticisms.",
+        author: "Paul McCartney",
     },
     {
-        quote: "Pets bring vital energy to our homes and lives. Pets communicate many messages about love and connection.",
+        quote: "In a perfect world, every dog would have a home, and every home would have a dog.",
         author: "Unknown",
     },
     {
@@ -48,24 +48,20 @@ const quotes = [
         author: "Karen Davison",
     },
     {
-        quote: "The greatness of a nation and its moral progress can be judged by the way its animals are treated.",
+        quote: "Home is where the dog hair sticks to everything… but the dog.",
         author: "Mahatma Gandhi",
     },
     {
-        quote: "Adopting one animal won't change the world, but it will change the world for that one animal.",
+        quote: "Time spent with cats is never wasted.",
+        author: "Sigmund Freud",
+    },
+    {
+        quote: "Whoever said diamonds are a girl’s best friend never had a dog.",
         author: "Unknown",
     },
     {
-        quote: "The first rule of sustainability is to align with natural forces, or at least not try to defy them.",
-        author: "Paul Hawken",
-    },
-    {
-        quote: "We do not inherit the Earth from our ancestors; we borrow it from our children.",
-        author: "Native American Proverb",
-    },
-    {
-        quote: "Sustainability is treating ourselves and our environment as if we are to live on this earth forever.",
-        author: "Arron Wood",
+        quote: "Who rescued who?",
+        author: "Unknown",
     },
 ];
 
