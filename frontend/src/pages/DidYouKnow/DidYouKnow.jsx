@@ -56,10 +56,6 @@ const quotes = [
         author: "Sigmund Freud",
     },
     {
-        quote: "Money can buy you a fine dog, but only love can make him wag his tail.",
-        author: "Kinky Friedman",
-    },
-    {
         quote: "Whoever said diamonds are a girl’s best friend never had a dog.",
         author: "Unknown",
     },

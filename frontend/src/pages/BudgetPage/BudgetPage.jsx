@@ -45,7 +45,7 @@ export default function BudgetPage() {
     <div className="budget-cont">
       <div className="tips-section row">
         <div className="col">
-          <div className="tips-container container text-center rounded">
+          {/* <div className="tips-container container text-center rounded">
               {randomTip.map((tip, index) => (
                   <motion.div
                       key={tip + index}
@@ -60,7 +60,7 @@ export default function BudgetPage() {
                       <h3 className='tip'>{tip}</h3>
                   </motion.div>
               ))}
-            </div>
+            </div> */}
           </div>
       </div>
       <div class="budget-section container text-center">

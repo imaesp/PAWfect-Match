@@ -109,6 +109,8 @@ function Adopt() {
         };
     }) : [];
 
+    
+
     const filteredPets = petsWithState.filter((pet) => {
         return (
             (selectedFilters.species ? pet.species === selectedFilters.species : true) &&
