@@ -36,20 +36,12 @@ const quotes = [
         author: "Roger Caras",
     },
     {
-        quote: "Animals are such agreeable friends—they ask no questions; they pass no criticisms.",
-        author: "Paul McCartney",
-    },
-    {
         quote: "In a perfect world, every dog would have a home, and every home would have a dog.",
         author: "Unknown",
     },
     {
         quote: "Saving one dog will not change the world, but surely for that one dog, the world will change forever.",
         author: "Karen Davison",
-    },
-    {
-        quote: "Home is where the dog hair sticks to everything… but the dog.",
-        author: "Mahatma Gandhi",
     },
     {
         quote: "Time spent with cats is never wasted.",
@@ -62,6 +54,22 @@ const quotes = [
     {
         quote: "Who rescued who?",
         author: "Unknown",
+    },
+    {
+        quote: "Our pets are our family.", 
+        author: "Ana Monnar",
+    },
+    {
+        quote: "Animals are such agreeable friends - they ask no questions; they pass no criticisms.", 
+        author: "George Eliot",
+    },
+    {
+        quote: "Our task must be to free ourselves... by widening our circle of compassion to embrace all living creatures and the whole of nature and its beauty.", 
+        author: "Albert Einstein",
+    },
+    {
+        quote: "The whole glorious history of animals with people is about joy and connection. It’s about loving this creature and letting this creature love you.", 
+        uthor: "Jon Katz",
     },
 ];
 
