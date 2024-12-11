@@ -3,7 +3,8 @@ import { useLocation, useParams, Link, useNavigate } from "react-router-dom";
 import PetCarousel from "../../components/PetComponents/PetCarousel";
 import PetComponents from "../../components/PetComponents/PetComponents";
 import PetLocation from "../../components/PetLocation/PetLocation";
-import supabase from '../../supabase/supabaseClient';
+import './PetPage.scss'
+
 
 const PetPage = () => {
     const { state } = useLocation();
@@ -38,7 +39,7 @@ const PetPage = () => {
 
     
     return (
-        <div>
+        <div className='pet-page-container'>
             <PetCarousel
                 name={pet.name}
                 pictures={picturesArray.length > 0 ? picturesArray : ["/placeholder-image.png"]}
@@ -52,7 +53,9 @@ const PetPage = () => {
                 descriptionPlain={pet.descriptionPlain}
             />
 
-            <div style={{ textAlign: "center", marginTop: "20px" }}>
+            <PetLocation></PetLocation>
+
+            <div style={{ textAlign: "center", marginTop: "50px", paddingBottom: "50px" }}>
                 <button
                     className="btn btn-secondary"
                     onClick={() => navigate("/adopt")}

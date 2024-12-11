@@ -4,16 +4,20 @@
   flex-direction: column;
   align-items: center;
   height: 100vh;
-
+ 
+ 
   .about-container{
     background-color: #fffaf0;
-
+ 
+ 
     .team-container{
       margin-left: 90px;
     }
-
+ 
+ 
   }
-
+ 
+ 
   .mission {
     font-size: 1.25rem;
     background-color: #ffca93;
@@ -27,14 +31,17 @@
       }
     }
   }
-
-
+ 
+ 
+ 
+ 
   @media (min-width: 768px) {
-
+ 
+ 
     .about-container{
       background-color: #fffaf0;
-    }   
-    
+    }  
+   
     .mission {
       padding: 10vw 15vw 10vw 15vw;
       .welcome {
@@ -49,7 +56,8 @@
     .about-container{
       background-color: #fffaf0;
     }
-
+ 
+ 
     .mission {
       padding: 8vw 20vw 8vw 20vw;
       .welcome {
@@ -68,7 +76,8 @@
     color: #390510;
     margin-bottom: 2rem;
   }
-
+ 
+ 
   .sub-title {
     text-align: center;
     font-size: 24px;
@@ -76,7 +85,8 @@
     color: #390510;
     margin-top: 2rem;
   }
-
+ 
+ 
   .team-container {
     background-color: white;
     display: grid;
@@ -86,7 +96,8 @@
     width: 100%; // Ensures the grid takes up the full width
     max-width: 1200px; // Centers the grid within a max container
   }
-
+ 
+ 
   .team-card {
     background-color: #fff;
     border: 1px solid #ddd;
@@ -95,12 +106,14 @@
     padding: 1.5rem;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: transform 0.2s, box-shadow 0.2s;
-
+ 
+ 
     &:hover {
       transform: translateY(-5px);
       box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
     }
-
+ 
+ 
     .team-avatar {
       width: 100px;
       height: 100px;
@@ -108,45 +121,54 @@
       object-fit: cover;
       margin-bottom: 1rem;
     }
-
+ 
+ 
     .team-name {
       font-size: 1.25rem;
       font-weight: 600;
       margin-bottom: 0.5rem;
       color: #390510;
     }
-
+ 
+ 
     .team-title {
       font-size: 1rem;
       color: #220601;
       margin-bottom: 1rem;
     }
-
+ 
+ 
     .team-links {
       display: flex;
       justify-content: center;
       gap: 1rem;
-
+ 
+ 
       a {
         font-size: 1.5rem;
         color: #220601;
         transition: color 0.2s;
-
+ 
+ 
         &:hover {
           color: #007bff; // LinkedIn blue for LinkedIn, GitHub dark for GitHub
         }
-
+ 
+ 
         &.github-link {
           color: #333;
-
+ 
+ 
           &:hover {
             color: #000;
           }
         }
-
+ 
+ 
         &.linkedin-link {
           color: #0077b5;
-
+ 
+ 
           &:hover {
             color: #005682;
           }
@@ -154,36 +176,44 @@
       }
     }
   }
-
+ 
+ 
   @media (max-width: 768px) {
-
+ 
+ 
     .about-container{
       background-color: #fffaf0;
-      
+     
       .team-container{
         margin: 0;
       }
     }
-
+ 
+ 
     .title {
       font-size: 2rem;
     }
-
+ 
+ 
     .team-container {
       grid-template-columns: 1fr; // Ensures cards stack vertically on small screens
     }
-
+ 
+ 
     .team-card {
       padding: 1rem;
-
+ 
+ 
       .team-name {
         font-size: 1.1rem;
       }
-
+ 
+ 
       .team-title {
         font-size: 0.9rem;
       }
-
+ 
+ 
       .team-links {
         a {
           font-size: 1.25rem;
@@ -191,4 +221,6 @@
       }
     }
   }
-}
+ }
+ 
+ 
