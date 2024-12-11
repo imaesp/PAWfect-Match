@@ -8,7 +8,12 @@
   box-sizing: border-box;
 }
 
+.button-container-budget{
+  margin-left: 7rem;
+}
+
 .budgets-scroll-container {
+  margin-left: 5rem;
   display: flex;
   flex-wrap: wrap; // Allow wrapping within the container
   gap: 1rem; // Add spacing between cards
@@ -106,12 +111,6 @@ h1 {
     align-items: center;
   }
 
-  .b-button,
-  .e-button {
-    width: 100%;
-    margin-right: 0;
-    margin-bottom: 1em;
-  }
 
   h1 {
     font-size: 24px;
@@ -132,18 +131,20 @@ h1 {
     padding: 0.5em;
   }
 
+  .button-container-budget{
+    margin-left: 2rem;
+  }
+
+  .budgets-scroll-container{
+    margin-left: 0;
+  }
+
   h1 {
     font-size: 20px;
   }
 
   .title {
     font-size: 16px;
-  }
-
-  .b-button,
-  .e-button {
-    width: 100%;
-    padding: 12px;
   }
 
   .reg-card {

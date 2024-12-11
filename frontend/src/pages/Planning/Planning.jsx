@@ -17,18 +17,18 @@ function Planning() {
         </div>
         <div class="col">
           <div class="container text-center">
-            <img src="/faq-icon.png" alt=""/>
-            <h1>PET ADOPTION FAQS</h1>
-            <p>Get the answers to all your questions about adoption </p>
-            <Link to='/checklist'><button class="btn">Learn more</button></Link>
+            <img src="/budget.svg" alt=""/>
+            <h1>BUDGETING TOOL</h1>
+            <p> Track your expenses and manage ongoing pet care costs</p>
+            <Link to='/budget'><button class="btn">Learn more</button></Link>
           </div>
         </div>
         <div class="col">
         <div class="container text-center">
             <img src="dog.png" alt=""/>
-            <h1>RESOURCES</h1>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ducimus eos suscipit est fugit in nam.</p>
-            <Link to='/article'><button class="btn">Learn more</button></Link>
+            <h1>MATCHMAKER</h1>
+            <p>Personalized pet recommendations based on your preferences and lifestyle.</p>
+            <Link to='/survey'><button class="btn">Learn more</button></Link>
         </div>
       </div>
       </div>

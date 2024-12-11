@@ -36,7 +36,7 @@ function PetCard({ pet }) {
         <Card>
             <Card.Img
                 variant="top"
-                src={picture}
+                src={picture || '/default.jpg'}
                 alt={pet.name + " the PAWfect Pet"}
             />
             <img

@@ -102,6 +102,7 @@ export default function BudgetChart() {
         legend: {
           direction: "row",
           position: { vertical: "bottom", horizontal: "middle" },
+          padding: -5,
         },
       }}
     />

@@ -27,9 +27,9 @@ A live demo will be provided soon. Stay tuned!
 ## Tech Stack
 
 - **Frontend:** Vite, React
-- **Styling:** Tailwind CSS, Sass, Material UI, Emotion
+- **Styling:** Bootstrap, Sass, Material UI
 - **Animations:** Framer Motion
-- **APIs:** PetFinder API (for fetching pet profiles)
+- **APIs:** RescueGroups API (for fetching pet profiles)
 
 ## Getting Started
 

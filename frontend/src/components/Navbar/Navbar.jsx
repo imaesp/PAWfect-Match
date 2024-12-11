@@ -19,12 +19,12 @@ function Navbar() {
           {/* Middle Section */}
           <div className="col-auto mid">
             <div className="d-flex justify-content-center flex-wrap gap-2">
-              <Link to="/article" className="navLinks">Pet EDU</Link>
-              <Link to="/budget" className="navLinks">Budgeting Tool</Link>
-              <Link to="/adopt" className="navLinks">Adopt</Link>
               <Link to="/survey" className="navLinks">Matchmaker</Link>
+              <Link to="/adopt" className="navLinks">Adopt</Link>
+              <Link to="/budget" className="navLinks">Budgeting Tool</Link>
+              <Link to='/checklist' className="navLinks">Checklist</Link>
+              <Link to="/article" className="navLinks">Pet EDU</Link>
               <Link to="/about" className="navLinks">About</Link>
-              <Link to='/checklist' className="navLinks">Check List</Link>
             </div>
           </div>
 

@@ -24,15 +24,6 @@ export default function PetComponents({
     }
   );
 
-  // Convert URLs to hyperlinks
-  const convertUrls = (desc) => {
-    const urlPattern =
-      /(\b(https?):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/gi;
-    return desc.replace(
-      urlPattern,
-      (url) => `<a href="${url}" target="_blank">${url}</a>`
-    );
-  };
 
   // Convert email addresses to hyperlinks
   const convertEmails = (desc) => {
@@ -53,8 +44,7 @@ export default function PetComponents({
     );
   };
 
-  const descriptionLinks = convertUrls(modifiedDescription);
-  const descriptionEmails = convertEmails(descriptionLinks);
+  const descriptionEmails = convertEmails(modifiedDescription);
   const finalDescription = convertNumbers(descriptionEmails);
   const [showMore, setShowMore] = useState(false);
 
