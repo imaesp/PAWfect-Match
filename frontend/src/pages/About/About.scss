@@ -5,13 +5,13 @@
   align-items: center;
   height: 100vh;
 
-  .about-container{
+  .about-container {
     background-color: #fffaf0;
 
-    .team-container{
+    .team-container {
+      background-color: #fffaf0;
       margin-left: 90px;
     }
-
   }
 
   .mission {
@@ -28,13 +28,11 @@
     }
   }
 
-
   @media (min-width: 768px) {
-
-    .about-container{
+    .about-container {
       background-color: #fffaf0;
-    }   
-    
+    }
+
     .mission {
       padding: 10vw 15vw 10vw 15vw;
       .welcome {
@@ -46,7 +44,7 @@
     }
   }
   @media (min-width: 1024px) {
-    .about-container{
+    .about-container {
       background-color: #fffaf0;
     }
 
@@ -156,11 +154,10 @@
   }
 
   @media (max-width: 768px) {
-
-    .about-container{
+    .about-container {
       background-color: #fffaf0;
-      
-      .team-container{
+
+      .team-container {
         margin: 0;
       }
     }
