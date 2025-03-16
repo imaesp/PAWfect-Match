@@ -27,7 +27,7 @@ function Adopt() {
             try {
                 const { data, error } = await supabase
                     .from('pets')
-                    .select(`animalID, name, species, sex, activityLevel, energyLevel, age, size, breed, primaryBreed, secondaryBreed, animalLocation, pictures, birthdate, descriptionPlain, orgID`);
+                    .select(`animalID, name, species, sex, activityLevel, energyLevel, age, size, breed, primaryBreed, secondaryBreed, animalLocation, pictures, birthdate, descriptionPlain, orgID, housetrained, declawed, specialNeeds, obedienceTraining`);
                 if (error) throw error;
                 setPets(data);
             } catch (error) {
@@ -53,7 +53,6 @@ function Adopt() {
 
         getOrganizations();
     }, []);
-
     useEffect(() => {
         async function fetchSurveyData() {
             if (!user?.id) return;

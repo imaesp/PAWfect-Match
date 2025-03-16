@@ -81,23 +81,23 @@ function PetLocation() {
           src={`https://www.google.com/maps/embed/v1/place?key=${API_KEY}&q=${zip}`}
           allowFullScreen
         ></iframe>
-        <div class="separator-line"></div>
         <div className='location-container'>
           <img className='add-svg' src="/address.svg" alt="" />
           <p className='location-text'>
-            Location Address <br /> {address} <br /> {city}, {state} {zip}
+            <br />{address} <br /> {city}, {state} {zip}
           </p>
         </div>
-        <div class="separator-line"></div>
+        <hr></hr>
         <div className='email-container'>
           <img className='email-svg' src="/email.svg" alt="" />
           <p className='email-text'>{email}</p>
         </div>
-        <div class="separator-line"></div>
+        <hr></hr>
         <div className='phone-container'>
           <img className='phone-svg' src="/phone.svg" alt="" />
           <p className='phone-text'>{phone}</p>
         </div>
+        <hr></hr>
         <div className='btn-container'>
           <a href={orgurl || "#"} className="btn btn-primary">
             More About Us

@@ -44,18 +44,24 @@ const PetPage = () => {
                 name={pet.name}
                 pictures={picturesArray.length > 0 ? picturesArray : ["/placeholder-image.png"]}
             />
-            <PetComponents
-                name={pet.name}
-                birthdate={pet.birthdate}
-                sex={pet.sex}
-                breed={pet.breed}
-                size={pet.size}
-                descriptionPlain={pet.descriptionPlain}
-            />
-
-            <PetLocation></PetLocation>
-
-            <div style={{ textAlign: "center", marginTop: "50px", paddingBottom: "50px" }}>
+            <div className='pet-page-body'>
+                <PetComponents
+                    className='pet-component'
+                    name={pet.name}
+                    birthdate={pet.birthdate}
+                    sex={pet.sex}
+                    age={pet.age}
+                    breed={pet.breed}
+                    size={pet.size}
+                    housetrained={pet.housetrained}
+                    declawed={pet.declawed}
+                    specialNeeds={pet.specialNeeds}
+                    obedienceTraining={pet.obedienceTraining}
+                    descriptionPlain={pet.descriptionPlain}
+                />
+                <PetLocation className='pet-location'></PetLocation>
+            </div>
+            <div className='back-button-container' style={{ textAlign: "center", marginTop: "50px", paddingBottom: "50px" }}>
                 <button
                     className="btn btn-secondary"
                     onClick={() => navigate("/adopt")}
