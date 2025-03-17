@@ -66,7 +66,10 @@ export default function PetComponents({
   return (
     <div className="pc-container">
       <div className="desc-container">
-        <h2 className="pet-name">{name}</h2>
+        <div className="image-container">
+          <h2 className="pet-name">{name}</h2>
+          <img className='paw-icon' src="/rightpaw.png" alt="" />
+        </div>
         <p className="pet-breed">{breed}</p>
         <hr></hr>
         <div className="attributes-container">

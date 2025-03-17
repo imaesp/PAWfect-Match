@@ -126,7 +126,7 @@ const NearYou = () => {
                 delay: 0.5 * index,
               }}
             >
-              <Card>
+              <Card className='card'>
                   <Card.Img
                       variant="top"
                       src={picture}

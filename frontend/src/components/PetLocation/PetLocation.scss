@@ -19,8 +19,7 @@
         display: flex;
         flex-direction: column;
         border-radius: 15px;
-        
-
+    
         .title-picture {
             align-self: center;
             height: 100px;
@@ -102,23 +101,6 @@
             max-width: none;
             width: 100%;
             height: auto;
-            padding: 2rem;
-
-
-            .location-container {
-                display: flex;
-                margin-top: 20px;
-                margin-left: -60px;
-            }
-    
-            .email-container{
-                display: flex;
-               
-            }
-            .phone-container {
-                display: flex;
-                margin-left: -8rem;
-            }
         }
     }
 }

@@ -5,7 +5,7 @@ import SignedCard from "../../components/Card/SignedIn.jsx";
 import { useUser } from '@clerk/clerk-react';
 import supabase from '../../supabase/supabaseClient';
 
-const LandingSection = () => {
+const   LandingSection = () => {
   const { user } = useUser();
   const [userAnswers, setUserAnswers] = useState(null); // Survey data
   const [loading, setLoading] = useState(true); // Loading state

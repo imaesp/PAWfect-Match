@@ -19,3 +19,12 @@
         }
     }
 }
+
+@media (max-width: 768px) {
+    .pet-page-container{
+        .pet-page-body{
+            display: inline;
+            justify-self: center;
+        }
+    }
+}

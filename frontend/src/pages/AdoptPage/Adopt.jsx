@@ -53,6 +53,7 @@ function Adopt() {
 
         getOrganizations();
     }, []);
+    
     useEffect(() => {
         async function fetchSurveyData() {
             if (!user?.id) return;

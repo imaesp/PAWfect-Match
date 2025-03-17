@@ -12,9 +12,17 @@
     font-weight: bold;
     color: #220601;
  
-    .pet-name{
-      font-size: 3rem;
-      font-weight: bold;
+    .image-container{
+      display: flex;
+      justify-content: space-between;
+      .paw-icon{
+        height: 70px;
+        width: 70px;
+      }
+      .pet-name{
+        font-size: 3rem;
+        font-weight: bold;
+      }
     }
     .pet-breed{
       text-align: left;
@@ -52,25 +60,37 @@
   .pc-container {
     margin-top: 1rem;
     margin-bottom: 1rem;
-    width: 50% !important;
-    
+    width: 100% !important;
     .desc-container{
       font-weight: bold;
       color: #220601;
-      
-      h2{
-        padding-left: 0;
-        margin-left: 20px;
-        font-weight: bold;
-        align-self: center;
-        padding-bottom: 40px;
+      .image-container{
+        display: flex;
+        justify-content: space-between;
+        .paw-icon{
+          height: 70px;
+          width: 70px;
+        }
+        .pet-name{
+          font-size: 3rem;
+          font-weight: bold;
+        }
       }
-
-      p{
-        font-size: 15px;
+      .pet-breed{
+        text-align: left;
+      }
+    
+      .attributes-container{
+        gap: 1rem;
+        display: flex;
+      }
+      
+      .about-container{
+        color: #220601ab;
+        p{
+          text-align: left;
+        }
       }
     }
   }
-  
-
 }
