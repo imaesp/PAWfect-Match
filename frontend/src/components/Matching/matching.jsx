@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import supabase from '../../supabase/supabaseClient';
+import { getSupabaseBrowserClient } from '../../supabase/supabaseClient';
 import { findBestMatches } from '../../utils/petMatchAlgorithm';
 import { useUser } from '@clerk/clerk-react'; // For user authentication
 
@@ -8,6 +8,7 @@ const PetMatch = () => {
   const [pets, setPets] = useState([]);
   const [userAnswers, setUserAnswers] = useState(null); // Survey data
   const [loading, setLoading] = useState(true);
+  const supabase = getSupabaseBrowserClient();
 
   // Fetch pets from the database
   useEffect(() => {

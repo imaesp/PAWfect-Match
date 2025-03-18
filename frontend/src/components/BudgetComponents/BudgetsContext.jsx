@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from "react";
 import { v4 as uuidV4 } from "uuid";
 import { useAuth } from "@clerk/clerk-react"; // Import Clerk's useAuth
-import supabase from "../../supabase/supabaseClient";
+import { getSupabaseBrowserClient } from "../../supabase/supabaseClient";
 
 const BudgetsContext = React.createContext();
 export const UNCATEGORIZED_BUDGET_ID = "Uncategorized";
@@ -14,6 +14,7 @@ export const BudgetsProvider = ({ children }) => {
   const [budgets, setBudgets] = useState([]); // We get rid of the custom hook.
   const [expenses, setExpenses] = useState([]); // We get rid of the custom hook.
   const { userId, getToken } = useAuth(); // Get the current user's ID and token retrieval function
+  const supabase = getSupabaseBrowserClient();
 
   // Fetch budgets and expenses from Supabase on mount
   useEffect(() => {

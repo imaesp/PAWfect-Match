@@ -1,7 +1,7 @@
 import { PieChart } from "@mui/x-charts/PieChart";
 import { useEffect, useState } from "react";
 import { useAuth } from "@clerk/clerk-react"; // Import Clerk's useAuth
-import supabase from "../../supabase/supabaseClient";
+import { getSupabaseBrowserClient } from "../../supabase/supabaseClient";
 import "./BudgetChart.scss";
 
 export default function BudgetChart() {
@@ -9,6 +9,7 @@ export default function BudgetChart() {
   const [chartWidth, setChartWidth] = useState(800); // Default width for larger screens
   const [chartHeight, setChartHeight] = useState(400); // Default height
   const { userId } = useAuth(); // NEW Get the current user's ID
+  const supabase = getSupabaseBrowserClient();
 
   // Adjust chart size on window resize
   useEffect(() => {

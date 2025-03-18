@@ -3,7 +3,7 @@ import PetCard from '../../components/Card/PetCard';
 import CarouselAdopt from '../../components/CarouselAdopt/CarouselAdopt';
 import Filter from '../../components/Filter/Filter';
 import './Adopt.scss';
-import supabase from '../../supabase/supabaseClient';
+import { getSupabaseBrowserClient } from '../../supabase/supabaseClient';
 import { useUser } from '@clerk/clerk-react';
 import { findBestMatches } from '../../utils/petMatchAlgorithm';
 
@@ -21,7 +21,7 @@ function Adopt() {
         breed: '',
         state: '',
     });
-
+    const supabase = getSupabaseBrowserClient();
     useEffect(() => {
         async function getPets() {
             try {

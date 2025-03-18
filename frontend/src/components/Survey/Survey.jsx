@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from "react";
 import * as Survey from "survey-react";
-import supabase from "../../supabase/supabaseClient";
+import { getSupabaseBrowserClient } from "../../supabase/supabaseClient";
 import { useUser } from "@clerk/clerk-react"; 
 import { json } from "./json";
 import "survey-react/survey.css";
@@ -18,6 +18,7 @@ const SurveyComp = () => {
   const [loading, setLoading] = useState(true); 
   const [error, setError] = useState(null);
   const [animationTriggered, setAnimationTriggered] = useState(false);
+  const supabase = getSupabaseBrowserClient();
 
   const checkSurveyStatus = async () => {
     setLoading(true);
