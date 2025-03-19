@@ -43,10 +43,10 @@ const LandingSection = () => {
           providing a personalized matchmaking service.
         </p>
       </div>
-      {(!data) ? (
-        <Card/>
-      ) : (
+      {(data) ? (
         <SignedCard/>
+      ) : (
+        <Card/>
       )}
     </div>
   );
