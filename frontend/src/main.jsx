@@ -5,6 +5,7 @@ import App from "./App.jsx";
 import { ClerkProvider } from "@clerk/clerk-react";
 import { BudgetsProvider } from "./components/BudgetComponents/BudgetsContext.jsx";
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools"
 
 const PUBLISHABLE_KEY = import.meta.env.VITE_CL_API_KEY;
 
@@ -22,6 +23,7 @@ createRoot(document.getElementById("root")).render(
         <BudgetsProvider>
           <QueryClientProvider client={queryClient}>
             <App />
+            <ReactQueryDevtools></ReactQueryDevtools>
           </QueryClientProvider>
         </BudgetsProvider>
       </ClerkProvider>
