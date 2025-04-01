@@ -10,8 +10,7 @@ const PetPage = () => {
     const { state } = useLocation();
     const { pet } = state || {};
     const navigate = useNavigate();
-    const { animalID } = useParams();
-    const [loading, setLoading] = useState(true);
+
 
     if (!pet) {
         return <p>No pet found. Please go back and try again.</p>;
