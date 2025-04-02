@@ -1,16 +1,16 @@
-import { getSurveyResponses } from "../queries/getSurveyResponses";
-import useSupabase from "./useSupabase";
-import { useQuery } from "@tanstack/react-query";
+import { getSurveyResponses } from "../queries/getSurveyResponses"; //Our Query
+import useSupabase from "./useSupabase"; //Supabase Client Hook
+import { useQuery } from "@tanstack/react-query"; //useQuery for data Reads
 
 function useSurveyResponsesQuery(user_id) {
-    const client = useSupabase();
-    const queryKey = ["userSurveyResponses", user_id];
+    const client = useSupabase(); //Get our supabase client
+    const queryKey = ["userSurveyResponses", user_id]; //Here we defined our queryKey as [userSurveyResponses, {user_id}]
 
-    return useQuery({
+    return useQuery({ //useQuery requires two things: 1: a query Key, 2: a query function (a promise)
         queryKey,
         queryFn: async () => {
             if (!user_id) return null;
-            const result = await getSurveyResponses(client, user_id);
+            const result = await getSurveyResponses(client, user_id); //Here we call our Query
             return result?.data || null;
         },
         //Only fetch when user_id is True 

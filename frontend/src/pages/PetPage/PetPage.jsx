@@ -6,6 +6,13 @@ import PetLocation from "../../components/PetLocation/PetLocation";
 import './PetPage.scss'
 
 
+//Create fetch organizationByOrgID Query
+//Create useOrganizationByOrgID Hook
+//Store current pet's orgID
+//Call useOrganizationByOrgID(pet's orgID)
+//Pass the organization data into the PetLocation Component
+
+
 const PetPage = () => {
     const { state } = useLocation();
     const { pet } = state || {};

@@ -6,7 +6,7 @@ import "survey-react/survey.css";
 import { theme } from "./survey_theme";
 import "./Survey.scss";
 import { Link } from "react-router-dom";
-import { useUpdateSurveyResponse } from "../../hooks/useUpdateSurveyResponses";
+import useUpdateSurveyResponse from "../../hooks/useUpdateSurveyResponses";
 import useSurveyResponsesQuery from "../../hooks/useSurveyResponsesQuery";
 import { useQueryClient } from "@tanstack/react-query"; 
 
