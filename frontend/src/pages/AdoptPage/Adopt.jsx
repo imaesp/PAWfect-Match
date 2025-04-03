@@ -13,7 +13,6 @@ function Adopt() {
     const { user } = useUser();
     const user_id = user?.id;
     const supabase = getSupabaseBrowserClient();
-    const [organizations, setOrganizations] = useState([]);
     const [selectedFilters, setSelectedFilters] = useState({
         species: '',
         sex: '',
@@ -23,23 +22,6 @@ function Adopt() {
         state: '',
     });
    
-
-    useEffect(() => {
-        async function getOrganizations() {
-            try {
-                const { data, error } = await supabase
-                    .from('organizations')
-                    .select(`orgID, name, city, state, address, country, zip, email, phone, orgurl`);
-                if (error) throw error;
-                setOrganizations(data);
-            } catch (error) {
-                console.error("Error fetching organizations:", error.message);
-            }
-        }
-
-        getOrganizations();
-    }, []);
-
     const {data: surveyData, isLoading: isSurveyLoading, isSurveyError} = useSurveyResponsesQuery(user_id);
     const userAnswers = surveyData?.answers;
     

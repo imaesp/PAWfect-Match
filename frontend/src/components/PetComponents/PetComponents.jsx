@@ -15,18 +15,22 @@ export default function PetComponents({
   descriptionPlain,
 }) {
   // Replace ASCII to text
-  const modifiedDescription = descriptionPlain.replace(
-    /&#39;|&amp;|&rsquo;|&quot;/g,
-    (exp) => {
-      const replacements = {
-        "&#39;": "'",
-        "&amp;": "&",
-        "&rsquo;": "'",
-        "&quot;": '"',
-      };
-      return replacements[exp];
-    }
-  );
+  let modifiedDescription = ''
+  if(descriptionPlain) {
+    modifiedDescription = descriptionPlain.replace(
+      /&#39;|&amp;|&rsquo;|&quot;/g,
+      (exp) => {
+        const replacements = {
+          "&#39;": "'",
+          "&amp;": "&",
+          "&rsquo;": "'",
+          "&quot;": '"',
+        };
+        return replacements[exp];
+      }
+    );
+  }
+  
 
 
   // Convert email addresses to hyperlinks
