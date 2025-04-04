@@ -96,7 +96,6 @@ function Filter({ onFilterChange }) {
                     </Dropdown.Item>
                 ))}
             </DropdownButton>
-
             <DropdownButton
                 id="dropdown-breed"
                 title={breed || 'Select Breed'}

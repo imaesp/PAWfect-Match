@@ -92,7 +92,7 @@ function Adopt() {
     // });
  
     
-    const itemsPerPage = 12;
+    const itemsPerPage = 20;
     const startIndex = (page - 1) * itemsPerPage;
     const endIndex = startIndex + itemsPerPage;
     const petsToDisplay = userAnswers && user?.id ? findBestMatches(userAnswers, pets, 3547).slice(startIndex, endIndex) : pets.slice(startIndex, endIndex);
@@ -112,30 +112,28 @@ function Adopt() {
     return (
         <div className='adopt-page'>
             <div className='adopt-container'>
+                {/* Image Carrousel */}
                 <CarouselAdopt className='adopt-carrousel' />
-
-                {/* Two-column layout using Bootstrap grid */}
-                <div className="container text-center">
-                    <div className="row align-items-start">
-                        <div className="col-md-4">
-                            <Filter className="adopt-filter" onFilterChange={handleFilterChange} />
-                        </div>
-                        <div className="col-md-8">
-                            <div className="pet-grid">
-                                {petsToDisplay.map((pet) => (
-                                    <PetCard key={pet.animalID} pet={pet} />
-                                ))}
-                            </div>
-                        </div>
-                        <div className="pagination-controls">
-                            <button className='pagination-button' onClick={() => handlePageChange('prev')} disabled={page === 1}>
-                                Prev
-                            </button>
-                            <span>Page {page}</span>
-                            <button className='pagination-button' onClick={() => handlePageChange('next')} disabled={page * itemsPerPage >= (userAnswers && user?.id ? findBestMatches(userAnswers, pets, 3547) : pets).length}>
-                                Next
-                            </button>
-                        </div>
+                <div className="content-container">
+                    {/* Filter selection Container */}
+                    <div className="filter-container">
+                        <Filter className="adopt-filter" onFilterChange={handleFilterChange} />
+                    </div>
+                    {/* Pet Profiles Grid */}
+                    <div className="pet-grid">
+                        {petsToDisplay.map((pet) => (
+                            <PetCard key={pet.animalID} pet={pet} />
+                        ))}
+                    </div>
+                    {/* Pagination Controls */}
+                    <div className="pagination-controls">
+                        <button className='pagination-button' onClick={() => handlePageChange('prev')} disabled={page === 1}>
+                            Previous
+                        </button>
+                        <span>Page {page}</span>
+                        <button className='pagination-button' onClick={() => handlePageChange('next')} disabled={page * itemsPerPage >= (userAnswers && user?.id ? findBestMatches(userAnswers, pets, 3547) : pets).length}>
+                            Next
+                        </button>
                     </div>
                 </div>
             </div>

@@ -1,105 +1,134 @@
 .adopt-page {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 1rem;
-    background-color: #fffaf0;
-  }
-
-  .loading{
-    height: 100vh;
-    width: auto;
-    background-color: #fffaf0;
-    align-content: center;
-    .jumping-text {
-      gap: 2px;
-      font-family: "Poppins", sans-serif;
-      font-size: 3rem;
-      font-weight: bold;
-    }
-    
-    .jumping-text span {
-      color: #390510 !important;
-      display: inline-block;
-      animation: jump 0.6s infinite ease-in-out;
-    }
-    
-    @keyframes jump {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
-    }
-  }
-  
+  background-color: #fffaf0;
   .adopt-container {
     width: 100%;
-    padding: 20px;
 
-    .pagination-controls{
-      margin-top: 1rem;
-      .pagination-button {
-        background-color: #220601;
-        border-radius: 24px;
-        border-style: none;
-        box-shadow: rgba(0, 0, 0, .2) 0 3px 5px -1px,rgba(0, 0, 0, .14) 0 6px 10px 0,rgba(0, 0, 0, .12) 0 1px 18px 0;
-        color: #F6F9FE;
-        cursor: pointer;
-        height: 48px;
-        max-width: 100%;
-        overflow: visible;
-        padding: 2px 24px;
-        transition: box-shadow 280ms cubic-bezier(.4, 0, .2, 1),opacity 15ms linear 30ms,transform 270ms cubic-bezier(0, 0, .2, 1) 0ms;
-        width: auto;
+    .adopt-carrousel {
+      margin-bottom: 20px;
+    }
+
+    .content-container {
+
+      .filter-container {
+        justify-items: center;
       }
-      .pagination-button:hover {
-        background: #F6F9FE;
-        color: #220601;
+        
+      .pet-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr));
+        gap: 1px;
+        justify-items: center;
+        align-items: stretch;
+        justify-content: center;
+      
+        @media (max-width: 768px) {
+          grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr));
+        }
+      
+        @media (max-width: 480px) {
+          grid-template-columns: repeat(2, minmax(12rem, 1fr)); 
+          justify-content: center;
+        }
       }
-      span{
-        padding: 10px;
-        font-weight: bold;
-        color: #220601;
+      
+      
+      .pagination-controls {
+        margin-top: 1rem;
+        justify-self: center;
+        .pagination-button {
+          background-color: #220601;
+          border-radius: 24px;
+          border-style: none;
+          box-shadow: rgba(0, 0, 0, 0.2) 0 3px 5px -1px, rgba(0, 0, 0, 0.14) 0 6px 10px 0, rgba(0, 0, 0, 0.12) 0 1px 18px 0;
+          color: #F6F9FE;
+          cursor: pointer;
+          height: 48px;
+          max-width: 100%;
+          overflow: visible;
+          padding: 2px 24px;
+          transition: box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1), opacity 15ms linear 30ms, transform 270ms cubic-bezier(0, 0, 0.2, 1) 0ms;
+          width: auto;
+
+          @media (max-width: 768px) {
+            height: 40px;
+            padding: 2px 18px;
+          }
+
+          @media (max-width: 480px) {
+            height: 35px;
+            padding: 2px 14px;
+            font-size: 14px;
+          }
+        }
+
+        .pagination-button:hover {
+          background: #F6F9FE;
+          color: #220601;
+        }
+
+        span {
+          padding: 10px;
+          font-weight: bold;
+          color: #220601;
+
+          @media (max-width: 480px) {
+            font-size: 14px;
+          }
+        }
       }
     }
   }
-  
-  .adopt-carrousel {
-    margin-bottom: 20px; 
-  }
-  
-  .adopt-filter {
-    margin-bottom: 20px;
-  }
-  
-  .adopt-card, .signed-adopt-card {
-    margin-top: 100px !important;
+}
+
+.loading {
+  height: 100vh;
+  width: auto;
+  background-color: #fffaf0;
+  align-content: center;
+
+  .jumping-text {
+    gap: 2px;
+    font-family: "Poppins", sans-serif;
+    font-size: 3rem;
+    font-weight: bold;
+
+    @media (max-width: 768px) {
+      font-size: 2.5rem;
+    }
+
+    @media (max-width: 480px) {
+      font-size: 2rem;
+    }
   }
 
-  .pet-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 2rem;
-    justify-items: center;
-    padding: 0;
-    margin: 0;
+  .jumping-text span {
+    color: #390510 !important;
+    display: inline-block;
+    animation: jump 0.6s infinite ease-in-out;
   }
-  
-  @media (max-width: 768px) {
 
-    .adopt-container {
-      display: flex;
-      flex-direction: column; 
-      padding: 10px; 
-    }
-    
-    .adopt-card, .signed-adopt-card {
-        margin-bottom: 20px;
-    }
+  @keyframes jump {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+}
+
+@media (max-width: 768px) {
+  .adopt-container {
+    display: flex;
+    flex-direction: column;
 
     .pet-grid {
-      grid-template-columns: 1fr; 
+      grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr));
       width: 100%;
-      margin-top: 100px !important; 
     }
   }
-  
+}
+
+@media (max-width: 480px) {
+  .adopt-container {
+    .pet-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+}
