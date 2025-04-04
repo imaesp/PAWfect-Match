@@ -12,7 +12,7 @@ function Planning() {
             <img src="/pet-house.png" alt="" />
             <h1>CHECKLIST FOR ADOPTERS</h1>
             <p>Make the adoption transition as smooth as possible</p>
-            <Link to='/checklist'><button className="btn">Learn more</button></Link>
+            <Link to='/checklist'><button className="button">Learn more</button></Link>
           </div>
         </div>
         <div className="col">
@@ -20,7 +20,7 @@ function Planning() {
             <img src="/budget.svg" alt=""/>
             <h1>BUDGETING TOOL</h1>
             <p> Track your expenses and manage ongoing pet care costs</p>
-            <Link to='/budget'><button className="btn">Learn more</button></Link>
+            <Link to='/budget'><button className="button">Learn more</button></Link>
           </div>
         </div>
         <div className="col">
@@ -28,7 +28,7 @@ function Planning() {
             <img src="dog.png" alt=""/>
             <h1>MATCHMAKER</h1>
             <p>Personalized pet recommendations based on your preferences and lifestyle.</p>
-            <Link to='/survey'><button className="btn">Learn more</button></Link>
+            <Link to='/survey'><button className="button">Learn more</button></Link>
         </div>
       </div>
       </div>

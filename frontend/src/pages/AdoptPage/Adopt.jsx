@@ -8,6 +8,7 @@ import { useUser } from '@clerk/clerk-react';
 import { findBestMatches } from '../../utils/petMatchAlgorithm';
 import useSurveyResponsesQuery from '../../hooks/useSurveyResponsesQuery';
 import useGetPets from '../../hooks/useGetPets';
+import PawPrintLeftToRight from '../../components/PawPrintAnimation/PawPrintLtoR';
 
 function Adopt() {
     const { user } = useUser();
@@ -29,8 +30,15 @@ function Adopt() {
     
     if (isSurveyLoading || isPetsLoading) {
         return (
-            <div className="d-flex justify-content-center align-items-center vh-100">
-                <p className="text-secondary fs-4">Loading...</p>
+            <div className="loading">
+                <p className="jumping-text">
+                    {"Loading".split("").map((char, index) => (
+                    <span key={index} style={{ animationDelay: `${index * 0.1}s` }}>
+                        {char}
+                    </span>
+                    ))}
+                </p>
+                <PawPrintLeftToRight></PawPrintLeftToRight>
             </div>
         );
     }
