@@ -63,15 +63,15 @@ export default function BudgetPage() {
             </div>
           </div>
       </div>
-      <div class="budget-section container text-center">
-        <div class="row align-items-start">
-          <div class="col">
+      <div className="budget-section container text-center">
+        <div className="row align-items-start">
+          <div className="col">
             <h1 className="me-auto">Breakdown</h1>
             <div className="chart-container">
               <BudgetChart />
             </div>
           </div>
-          <div class="col">
+          <div className="col">
             <h1 className="main-budget me-auto">Budgets</h1>
             <div className="budgets-container">
               <BudgetApp />
