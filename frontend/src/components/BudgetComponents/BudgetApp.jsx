@@ -49,6 +49,7 @@ export default function BudgetPage() {
             );
             return (
               <BudgetCard
+                className='budget-card'
                 key={budget.id}
                 name={budget.name}
                 amount={amount}

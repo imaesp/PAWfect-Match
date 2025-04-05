@@ -105,9 +105,9 @@ const SurveyComp = () => {
       >
         Edit Survey
       </button>
-      <Link to="/">
-        <button className="btn btn-primary mt-4 big-boy">See Matches</button>
-      </Link>
+      
+      <button className="btn btn-primary mt-4 big-boy" onClick={() => window.location.href = '/'}>See Matches</button>
+      
     </div>
   );
 };

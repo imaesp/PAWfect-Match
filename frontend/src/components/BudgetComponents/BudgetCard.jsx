@@ -1,5 +1,6 @@
 import { Card, ProgressBar, Stack, Button } from "react-bootstrap";
 import { currencyFormatter } from "./utils";
+import './BudgetCard.scss'
 
 /*
 The following code creates a budget card.

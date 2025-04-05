@@ -33,7 +33,7 @@ function PetCard({ pet }) {
     };
 
     return (
-        <Card>
+        <Card className='pet-card'>
             <Card.Img
                 variant="top"
                 src={picture || '/default.jpg'}
@@ -55,7 +55,7 @@ function PetCard({ pet }) {
                     <Card.Text></Card.Text>
                 )}
                 <Link to={`/adopt/${pet.animalID}`} state={{ pet }}>
-                    <Button variant="primary">Adopt Me</Button>
+                    <Button className='adopt-button' variant="primary">Adopt Me</Button>
                 </Link>
             </Card.Body>
         </Card>
