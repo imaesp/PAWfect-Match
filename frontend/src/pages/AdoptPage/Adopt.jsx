@@ -50,18 +50,27 @@ function Adopt() {
         );
     }
 
+    
+    const matchedPets = userAnswers && user?.id
+    ? findBestMatches(userAnswers, pets, 3547)
+    : pets;
 
-    // const formatSurveyData = (surveyData) => ({
-    //     species: surveyData.species,
-    //     sex: surveyData.sex,
-    //     activityLevel: surveyData.activityLevel,
-    //     energyLevel: surveyData.energyLevel,
-    //     age: surveyData.age,
-    //     livingArea: surveyData.livingArea,
-    //     outdoorAccess: surveyData.outdoorAccess,
-    //     size: surveyData.size,
-    //     breed: surveyData.breed || [],
-    // });
+    // Apply filters to the full matchedPets list
+    const filteredPets = matchedPets.filter((pet) => {
+        return (
+            (!selectedFilters.species || pet.species === selectedFilters.species) &&
+            (!selectedFilters.sex || pet.sex === selectedFilters.sex) &&
+            (!selectedFilters.size || pet.size === selectedFilters.size) &&
+            (!selectedFilters.age || pet.age === selectedFilters.age) &&
+            (!selectedFilters.breed || pet.breed === selectedFilters.breed) &&
+            (!selectedFilters.state || pet.state === selectedFilters.state)
+        );
+    });
+
+    // Then paginate the filtered list
+    const itemsPerPage = 20;
+    const startIndex = (page - 1) * itemsPerPage;
+    const paginatedPets = filteredPets.slice(startIndex, startIndex + itemsPerPage);
 
     const handleFilterChange = (filterType, value) => {
         setSelectedFilters((prevState) => ({
@@ -70,36 +79,9 @@ function Adopt() {
         }));
     };
 
-    // const petsWithState = pets.length && organizations.length ? pets.map((pet) => {
-    //     const org = organizations.find((org) => org.orgID === pet.orgID);
-    //     return {
-    //         ...pet,
-    //         state: org ? org.state : '', // Add state from organization
-    //     };
-    // }) : [];
-
-    
-
-    // const filteredPets = petsWithState.filter((pet) => {
-    //     return (
-    //         (selectedFilters.species ? pet.species === selectedFilters.species : true) &&
-    //         (selectedFilters.sex ? pet.sex === selectedFilters.sex : true) &&
-    //         (selectedFilters.size ? pet.size === selectedFilters.size : true) &&
-    //         (selectedFilters.age ? pet.age === selectedFilters.age : true) &&
-    //         (selectedFilters.breed ? pet.breed === selectedFilters.breed : true) &&
-    //         (selectedFilters.state ? pet.state === selectedFilters.state : true)
-    //     );
-    // });
- 
-    
-    const itemsPerPage = 20;
-    const startIndex = (page - 1) * itemsPerPage;
-    const endIndex = startIndex + itemsPerPage;
-    const petsToDisplay = userAnswers && user?.id ? findBestMatches(userAnswers, pets, 3547).slice(startIndex, endIndex) : pets.slice(startIndex, endIndex);
-
     const handlePageChange = (direction) => {
         setPage((prevPage) => {
-            const totalPages = Math.ceil((userAnswers && user?.id ? findBestMatches(userAnswers, pets, 3547) : pets).length / itemsPerPage);
+            const totalPages = Math.ceil(filteredPets.length / itemsPerPage);
             if (direction === 'next' && prevPage < totalPages) {
                 return prevPage + 1;
             } else if (direction === 'prev' && prevPage > 1) {
@@ -121,7 +103,7 @@ function Adopt() {
                     </div>
                     {/* Pet Profiles Grid */}
                     <div className="pet-grid">
-                        {petsToDisplay.map((pet) => (
+                        {paginatedPets.map((pet) => (
                             <PetCard key={pet.animalID} pet={pet} />
                         ))}
                     </div>
