@@ -21,6 +21,8 @@
   font-weight: bold;
   color: #fff;
   margin-bottom: 1rem;
+  transform: translateY(20px);
+  animation: fadeSlide 0.5s ease-out forwards;
 }
 
 .landing-container .text-section .sub-text {
@@ -28,6 +30,19 @@
   font-size: clamp(1rem, 2vw, 1.5rem); /* Adjusts for screen size */
   color: #fff;
   text-align: left;
+  transform: translateY(20px);
+  animation: fadeSlide 3s ease-out forwards;
+}
+
+@keyframes fadeSlide {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @media (min-width: 768px) {

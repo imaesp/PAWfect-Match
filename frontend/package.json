@@ -18,6 +18,8 @@
     "@mui/styled-engine-sc": "^6.1.8",
     "@mui/x-charts": "^7.22.2",
     "@supabase/supabase-js": "^2.46.1",
+    "@tanstack/react-query": "^5.69.0",
+    "@tanstack/react-query-devtools": "^5.71.1",
     "axios": "^1.7.7",
     "bootstrap": "^5.3.3",
     "dotenv": "^16.4.5",

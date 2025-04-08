@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './NearYou.scss';
-import supabase from '../../supabase/supabaseClient';
+import { getSupabaseBrowserClient } from '../../supabase/supabaseClient';
 import { findBestMatches } from '../../utils/petMatchAlgorithm';
 import { useUser } from '@clerk/clerk-react';
 import { Link } from 'react-router-dom';
@@ -13,6 +13,7 @@ const NearYou = () => {
   const [userAnswers, setUserAnswers] = useState(null);
   const [loading, setLoading] = useState(true);
   const [animatePets, setAnimatePets] = useState(false);
+  const supabase = getSupabaseBrowserClient();
 
   // Fetch pets data from Supabase
   useEffect(() => {
@@ -126,7 +127,7 @@ const NearYou = () => {
                 delay: 0.5 * index,
               }}
             >
-              <Card>
+              <Card className='card'>
                   <Card.Img
                       variant="top"
                       src={picture}

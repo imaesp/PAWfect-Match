@@ -2,13 +2,14 @@ import PetMatch from '../../components/Matching/matching'
 import ZipCodeDistance from '../../components/ZipCode/ZipCode'
 import PetLocation from '../../components/PetLocation/PetLocation'
 import { useState, useEffect } from 'react';
-import supabase from '../../supabase/supabaseClient';
+import { getSupabaseBrowserClient } from '../../supabase/supabaseClient';
 import './TestPage.scss'
 
 function TestPage() {
 
     const [pets, setPets] = useState([]);
     const [organizations, setOrganization] = useState([]);
+    const supabase = getSupabaseBrowserClient();
     // Fetch pets data from Supabase
     useEffect(() => {
       async function getPets() {

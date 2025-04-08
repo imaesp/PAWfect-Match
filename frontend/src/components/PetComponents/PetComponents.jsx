@@ -4,25 +4,33 @@ import "./PetComponents.scss";
 
 export default function PetComponents({
   name,
-  birthdate,
   sex,
+  age,
   breed,
   size,
+  housetrained,
+  declawed,
+  specialNeeds,
+  obedienceTraining,
   descriptionPlain,
 }) {
   // Replace ASCII to text
-  const modifiedDescription = descriptionPlain.replace(
-    /&#39;|&amp;|&rsquo;|&quot;/g,
-    (exp) => {
-      const replacements = {
-        "&#39;": "'",
-        "&amp;": "&",
-        "&rsquo;": "'",
-        "&quot;": '"',
-      };
-      return replacements[exp];
-    }
-  );
+  let modifiedDescription = ''
+  if(descriptionPlain) {
+    modifiedDescription = descriptionPlain.replace(
+      /&#39;|&amp;|&rsquo;|&quot;/g,
+      (exp) => {
+        const replacements = {
+          "&#39;": "'",
+          "&amp;": "&",
+          "&rsquo;": "'",
+          "&quot;": '"',
+        };
+        return replacements[exp];
+      }
+    );
+  }
+  
 
 
   // Convert email addresses to hyperlinks
@@ -60,23 +68,37 @@ export default function PetComponents({
   };
 
   return (
-    <Container className="pc-container">
+    <div className="pc-container">
       <div className="desc-container">
-        <h2>{name}</h2>
-        <p>Birthdate: {birthdate}</p>
-        <p>Sex: {sex}</p>
-        <p>Breed: {breed}</p>
-        <p>Size: {size}</p>
-        <p className="info-container">
-          Additional Information: <br />{" "}
+        <div className="image-container">
+          <h2 className="pet-name">{name}</h2>
+          <img className='paw-icon' src="/rightpaw.png" alt="" />
+        </div>
+        <p className="pet-breed">{breed}</p>
+        <hr></hr>
+        <div className="attributes-container">
+          <p className="pet-sex">{sex}</p>
+          <p className="pet-age">{age}</p>
+          <p className="pet-sex">{size}</p>
+        </div>
+        <hr></hr>
+        <h2>About</h2>
+        <div className="about-container">
+          {housetrained && <p>House Trained: {housetrained}</p>}
+          {declawed && <p>Declawed: {declawed}</p>}
+          {specialNeeds && <p>Special Needs: {specialNeeds}</p>}
+          {obedienceTraining && <p>Obedience Training: {obedienceTraining}</p>}
+        </div>
+        <div className="info-container">
+          <h2 className="info-title">Meet {name}</h2>
           <span dangerouslySetInnerHTML={{ __html: showContent() }} />
-        </p>
+        </div>
         <div className="sb-container">
           <Button onClick={toggleReadMore} className="show-button">
             {showMore ? "Show Less" : "Read More"}
           </Button>
         </div>
       </div>
-    </Container>
+    </div>
   );
 }

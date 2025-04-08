@@ -3,16 +3,16 @@ import PetCard from '../../components/Card/PetCard';
 import CarouselAdopt from '../../components/CarouselAdopt/CarouselAdopt';
 import Filter from '../../components/Filter/Filter';
 import './Adopt.scss';
-import supabase from '../../supabase/supabaseClient';
 import { useUser } from '@clerk/clerk-react';
 import { findBestMatches } from '../../utils/petMatchAlgorithm';
+import useSurveyResponsesQuery from '../../hooks/useSurveyResponsesQuery';
+import useGetPets from '../../hooks/useGetPets';
+import PawPrintLeftToRight from '../../components/PawPrintAnimation/PawPrintLtoR';
 
 function Adopt() {
     const { user } = useUser();
-    const [pets, setPets] = useState([]);
-    const [userAnswers, setUserAnswers] = useState(null);
-    const [loading, setLoading] = useState(true);
-    const [organizations, setOrganizations] = useState([]);
+    const user_id = user?.id;
+    const [page, setPage] = useState(1);
     const [selectedFilters, setSelectedFilters] = useState({
         species: '',
         sex: '',
@@ -21,78 +21,56 @@ function Adopt() {
         breed: '',
         state: '',
     });
+   
+    const {data: surveyData, isLoading: isSurveyLoading, isSurveyError} = useSurveyResponsesQuery(user_id);
+    const userAnswers = surveyData?.answers;
+    
+    const {data: pets, isLoading: isPetsLoading, isError: isPetsError} = useGetPets();
+    
+    if (isSurveyLoading || isPetsLoading) {
+        return (
+            <div className="loading">
+                <p className="jumping-text">
+                    {"Loading".split("").map((char, index) => (
+                    <span key={index} style={{ animationDelay: `${index * 0.1}s` }}>
+                        {char}
+                    </span>
+                    ))}
+                </p>
+                <PawPrintLeftToRight></PawPrintLeftToRight>
+            </div>
+        );
+    }
 
-    useEffect(() => {
-        async function getPets() {
-            try {
-                const { data, error } = await supabase
-                    .from('pets')
-                    .select(`animalID, name, species, sex, activityLevel, energyLevel, age, size, breed, primaryBreed, secondaryBreed, animalLocation, pictures, birthdate, descriptionPlain, orgID`);
-                if (error) throw error;
-                setPets(data);
-            } catch (error) {
-                console.error("Error fetching pets:", error.message);
-            }
-        }
+    if(isSurveyError || isPetsError) {
+        return (
+            <div className="d-flex justify-content-center align-items-center vh-100">
+                <p className="text-secondary fs-4">Error</p>
+            </div>
+        );
+    }
 
-        getPets();
-    }, []);
+    
+    const matchedPets = userAnswers && user?.id
+    ? findBestMatches(userAnswers, pets, 3547)
+    : pets;
 
-    useEffect(() => {
-        async function getOrganizations() {
-            try {
-                const { data, error } = await supabase
-                    .from('organizations')
-                    .select(`orgID, name, city, state, address, country, zip, email, phone, orgurl`);
-                if (error) throw error;
-                setOrganizations(data);
-            } catch (error) {
-                console.error("Error fetching organizations:", error.message);
-            }
-        }
-
-        getOrganizations();
-    }, []);
-
-    useEffect(() => {
-        async function fetchSurveyData() {
-            if (!user?.id) return;
-
-            try {
-                const { data, error } = await supabase
-                    .from('survey_responses')
-                    .select('answers')
-                    .eq('user_id', user.id)
-                    .maybeSingle();
-
-                if (error) throw error;
-                if (data?.answers) {
-                    const formattedAnswers = formatSurveyData(data.answers);
-                    setUserAnswers(formattedAnswers);
-                } else {
-                    setUserAnswers(null);
-                }
-            } catch (error) {
-                console.error('Failed to fetch survey data:', error.message);
-            } finally {
-                setLoading(false);
-            }
-        }
-
-        fetchSurveyData();
-    }, [user?.id]);
-
-    const formatSurveyData = (surveyData) => ({
-        species: surveyData.species,
-        sex: surveyData.sex,
-        activityLevel: surveyData.activityLevel,
-        energyLevel: surveyData.energyLevel,
-        age: surveyData.age,
-        livingArea: surveyData.livingArea,
-        outdoorAccess: surveyData.outdoorAccess,
-        size: surveyData.size,
-        breed: surveyData.breed || [],
+    // Apply filters to the full matchedPets list
+    const filteredPets = matchedPets.filter((pet) => {
+        return (
+            (!selectedFilters.species || pet.species === selectedFilters.species) &&
+            (!selectedFilters.sex || pet.sex === selectedFilters.sex) &&
+            (!selectedFilters.size || pet.size === selectedFilters.size) &&
+            (!selectedFilters.age || pet.age === selectedFilters.age) &&
+            (!selectedFilters.breed || pet.breed === selectedFilters.breed) &&
+            (!selectedFilters.state || pet.state === selectedFilters.state)
+        );
     });
+
+    // Then paginate the filtered list
+    const itemsPerPage = 20;
+    const startIndex = (page - 1) * itemsPerPage;
+    const paginatedPets = filteredPets.slice(startIndex, startIndex + itemsPerPage);
 
     const handleFilterChange = (filterType, value) => {
         setSelectedFilters((prevState) => ({
@@ -101,81 +79,43 @@ function Adopt() {
         }));
     };
 
-    const petsWithState = pets.length && organizations.length ? pets.map((pet) => {
-        const org = organizations.find((org) => org.orgID === pet.orgID);
-        return {
-            ...pet,
-            state: org ? org.state : '', // Add state from organization
-        };
-    }) : [];
-
-    
-
-    const filteredPets = petsWithState.filter((pet) => {
-        return (
-            (selectedFilters.species ? pet.species === selectedFilters.species : true) &&
-            (selectedFilters.sex ? pet.sex === selectedFilters.sex : true) &&
-            (selectedFilters.size ? pet.size === selectedFilters.size : true) &&
-            (selectedFilters.age ? pet.age === selectedFilters.age : true) &&
-            (selectedFilters.breed ? pet.breed === selectedFilters.breed : true) &&
-            (selectedFilters.state ? pet.state === selectedFilters.state : true)
-        );
-    });
-
-    if (!userAnswers || !user?.id) {
-        return (
-            <div className='adopt-page'>
-                <div className='adopt-container'>
-                    <CarouselAdopt className='adopt-carrousel'/>
-
-                    {/* Two-column layout using Bootstrap grid */}
-                    <div className="container text-center">
-                        <div className="row align-items-start">
-                            <div className="col-md-4">
-                                <Filter className="adopt-filter" onFilterChange={handleFilterChange} />
-                            </div>
-                            <div className="col-md-8">
-                                <div className="pet-grid">
-                                    {filteredPets.map((pet) => (
-                                        <PetCard key={pet.animalID} pet={pet} />
-                                    ))}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        );
-    }
-
-    if (loading) {
-        return (
-            <div className="d-flex justify-content-center align-items-center vh-100">
-                <p className="text-secondary fs-4">Loading...</p>
-            </div>
-        );
-    }
-
-    const bestMatches = findBestMatches(userAnswers, filteredPets, 3547);
+    const handlePageChange = (direction) => {
+        setPage((prevPage) => {
+            const totalPages = Math.ceil(filteredPets.length / itemsPerPage);
+            if (direction === 'next' && prevPage < totalPages) {
+                return prevPage + 1;
+            } else if (direction === 'prev' && prevPage > 1) {
+                return prevPage - 1;
+            }
+            return prevPage;
+        });
+    };
 
     return (
         <div className='adopt-page'>
             <div className='adopt-container'>
-                <CarouselAdopt className='adopt-carrousel'/>
-                
-                {/* Two-column layout using Bootstrap grid */}
-                <div className="container text-center">
-                    <div className="row align-items-start">
-                        <div className="col-md-4">
-                            <Filter className="adopt-filter" onFilterChange={handleFilterChange} />
-                        </div>
-                        <div className="col-md-8">
-                            <div className="pet-grid">
-                                {bestMatches.map((pet) => (
-                                    <PetCard key={pet.animalID} pet={pet} />
-                                ))}
-                            </div>
-                        </div>
+                {/* Image Carrousel */}
+                <CarouselAdopt className='adopt-carrousel' />
+                <div className="content-container">
+                    {/* Filter selection Container */}
+                    <div className="filter-container">
+                        <Filter className="adopt-filter" onFilterChange={handleFilterChange} />
+                    </div>
+                    {/* Pet Profiles Grid */}
+                    <div className="pet-grid">
+                        {paginatedPets.map((pet) => (
+                            <PetCard key={pet.animalID} pet={pet} />
+                        ))}
+                    </div>
+                    {/* Pagination Controls */}
+                    <div className="pagination-controls">
+                        <button className='pagination-button' onClick={() => handlePageChange('prev')} disabled={page === 1}>
+                            Previous
+                        </button>
+                        <span>Page {page}</span>
+                        <button className='pagination-button' onClick={() => handlePageChange('next')} disabled={page * itemsPerPage >= (userAnswers && user?.id ? findBestMatches(userAnswers, pets, 3547) : pets).length}>
+                            Next
+                        </button>
                     </div>
                 </div>
             </div>

@@ -1,47 +1,29 @@
-import { useState, useEffect } from 'react';
 import "./LandingSection.scss"; // Import the SCSS file
 import Card from "../../components/Card/Card";
 import SignedCard from "../../components/Card/SignedIn.jsx";
 import { useUser } from '@clerk/clerk-react';
-import supabase from '../../supabase/supabaseClient';
+import useSurveyResponsesQuery from '../../hooks/useSurveyResponsesQuery.js';
 
 const LandingSection = () => {
   const { user } = useUser();
-  const [userAnswers, setUserAnswers] = useState(null); // Survey data
-  const [loading, setLoading] = useState(true); // Loading state
+  const { 
+    data, 
+    isLoading, 
+    isError 
+  } = useSurveyResponsesQuery(user?.id);
 
-  useEffect(() => {
-    async function fetchSurveyData() {
-      if (!user?.id) {
-        setLoading(false);
-        return;
-      }
+  if (isError) {
+    return (
+      <div className="landing-container">
+        <div className="text-section">
+          <h1 className="heading">Error</h1>
+          <p className="sub-text">{isError}</p>
+        </div>
+      </div>
+    );
+  }
 
-      try {
-        const { data, error } = await supabase
-          .from('survey_responses')
-          .select('answers')
-          .eq('user_id', user.id)
-          .maybeSingle();
-
-        if (error) throw error;
-
-        if (data?.answers) {
-          setUserAnswers(data.answers);
-        } else {
-          setUserAnswers(null);
-        }
-      } catch (error) {
-        console.error('Failed to fetch survey data:', error.message);
-      } finally {
-        setLoading(false);
-      }
-    }
-
-    fetchSurveyData();
-  }, [user?.id]);
-
-  if (loading) {
+  if (isLoading) {
     return (
       <div className="landing-container">
         <div className="text-section">
@@ -61,10 +43,10 @@ const LandingSection = () => {
           providing a personalized matchmaking service.
         </p>
       </div>
-      {(!userAnswers || !user?.id) ? (
-        <Card/>
-      ) : (
+      {(data) ? (
         <SignedCard/>
+      ) : (
+        <Card/>
       )}
     </div>
   );
