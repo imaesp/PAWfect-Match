@@ -1,4 +1,6 @@
 import React, {useState, useEffect} from 'react'
+import SurveyComponent from '../../components/Survey/SurveyComponent'
+
 import SurveyComp from '../../components/Survey/Survey'
 import './SurveyPage.scss'
 
