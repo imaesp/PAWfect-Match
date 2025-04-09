@@ -1,5 +1,4 @@
 import './Navbar.scss';
-import Dropdown from './Dropdown';
 import Login from '../../components/Login/Login';
 import { Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
