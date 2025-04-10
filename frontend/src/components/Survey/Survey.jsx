@@ -8,6 +8,7 @@ import "./Survey.scss";
 import { Link } from "react-router-dom";
 import useUpdateSurveyResponse from "../../hooks/useUpdateSurveyResponses";
 import useSurveyResponsesQuery from "../../hooks/useSurveyResponsesQuery";
+import useInsertSurveyResponse from "../../hooks/useInsertSurveyResponses";
 import { useQueryClient } from "@tanstack/react-query"; 
 
 const SurveyComp = () => {
@@ -17,7 +18,35 @@ const SurveyComp = () => {
   const queryClient = useQueryClient();
   const { data, isLoading, isError } = useSurveyResponsesQuery(user_id);
   const updateSurveyResponse = useUpdateSurveyResponse();
+  const insertSurveyResponse = useInsertSurveyResponse();
+  const survey = new Survey.Model(json);
+  survey.applyTheme(theme);
 
+  survey.onComplete.add((sender) => {
+    const results = sender.data;
+    if(user?.id && !data) {
+      insertSurveyResponse.mutate(
+        { user_id, answers: results },
+        {
+          onSuccess: () => {
+            queryClient.invalidateQueries(["surveyResponses", user_id]); // Refresh data
+            setIsEditing(false);
+          },
+        }
+      );
+    } else {
+      updateSurveyResponse.mutate(
+        { user_id, answers: results },
+        {
+          onSuccess: () => {
+            queryClient.invalidateQueries(["surveyResponses", user_id]); // Refresh data
+            setIsEditing(false);
+          },
+        }
+      );
+    }
+  });
+  
   if (isLoading) {
     return (
       <div className="d-flex justify-content-center align-items-center vh-100">
@@ -36,32 +65,15 @@ const SurveyComp = () => {
 
   if (!data) {
     return (
-      <div className="d-flex justify-content-center align-items-center vh-100">
-        <p className="text-danger fs-5">No data Found</p>
+      <div className="survey-container">
+        <Survey.Survey className="survey-model" model={survey} />
       </div>
     );
   }
 
-  const survey = new Survey.Model(json);
-  survey.applyTheme(theme);
-
-  
   if (data?.answers) {
     survey.data = data.answers; // Pre-fill survey with stored responses
   }
-
-  survey.onComplete.add((sender) => {
-    const results = sender.data;
-    updateSurveyResponse.mutate(
-      { user_id, answers: results },
-      {
-        onSuccess: () => {
-          queryClient.invalidateQueries(["surveyResponses", user_id]); // Refresh data
-          setIsEditing(false);
-        },
-      }
-    );
-  });
 
   const questionLabels = {
     age: "Preferred Age",
