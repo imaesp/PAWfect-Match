@@ -127,23 +127,12 @@ const NearYou = () => {
                 delay: 0.5 * index,
               }}
             >
-              <Card className='card'>
-                  <Card.Img
-                      variant="top"
-                      src={picture}
-                      alt={pet.name + " the PAWfect Pet"}
-                  />
-                  <Card.Body>
-                      <Card.Title>{pet.name}</Card.Title>
-                      <div className="info-circles">
-                          {pet.size && <div className="circle"> Size <br /> {sizeAndSexLabels[pet.size]} </div>}
-                          {pet.sex && <div className="circle"> Sex <br /> {sizeAndSexLabels[pet.sex]}</div>}
-                      </div>
-                      {!pet.size && !pet.sex && (
-                          <Card.Text></Card.Text>
-                      )}
-                  </Card.Body>
-              </Card>
+              <div className='card-img'>
+                <img variant="top" src={picture} alt={pet.name + " the PAWfect Pet"} />
+              </div>
+              <div className='card-body'>
+                <h1 className='pet-name'>{pet.name}</h1>
+              </div>
             </motion.div>
           );
         })}
