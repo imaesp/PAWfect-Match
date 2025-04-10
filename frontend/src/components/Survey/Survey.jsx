@@ -24,27 +24,17 @@ const SurveyComp = () => {
 
   survey.onComplete.add((sender) => {
     const results = sender.data;
-    if(user?.id && !data) {
-      insertSurveyResponse.mutate(
-        { user_id, answers: results },
-        {
-          onSuccess: () => {
-            queryClient.invalidateQueries(["surveyResponses", user_id]); // Refresh data
-            setIsEditing(false);
-          },
-        }
-      );
-    } else {
-      updateSurveyResponse.mutate(
-        { user_id, answers: results },
-        {
-          onSuccess: () => {
-            queryClient.invalidateQueries(["surveyResponses", user_id]); // Refresh data
-            setIsEditing(false);
-          },
-        }
-      );
-    }
+    const surveyResponseMutation = user?.id && !data ? insertSurveyResponse : updateSurveyResponse;
+    surveyResponseMutation.mutate(
+      { user_id, answers: results },
+      {
+        onSuccess: () => {
+          queryClient.invalidateQueries(["surveyResponses", user_id]); // Refresh data
+          setIsEditing(false);
+        },
+      }
+    );
+    
   });
   
   if (isLoading) {
