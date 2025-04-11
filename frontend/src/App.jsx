@@ -9,21 +9,23 @@ import { Routes, Route } from 'react-router-dom';
 import Checklist from './pages/ChecklistPage/Checklist.jsx';
 import PetPage from './pages/PetPage/PetPage.jsx';
 import About from './pages/About/About.jsx';
+import ScrollToTop from './components/Scroll/ScrollToTop.jsx';
 import './App.scss';
 
 function App() {
   return (
     <>
+      <ScrollToTop />
       <Navbar />
       <Routes>
         <Route path="/" element={<Hero />} />
-        <Route path="/survey" element={<AuthGuard><SurveyPage /></AuthGuard>}/>
-        <Route path="/budget" element={<AuthGuard><BudgetPage /></AuthGuard>}/>
+        <Route path="/survey" element={<AuthGuard><SurveyPage /></AuthGuard>} />
+        <Route path="/budget" element={<AuthGuard><BudgetPage /></AuthGuard>} />
         <Route path="/adopt" element={<AdoptPage />} />
         <Route path="/adopt/:animalID" element={<PetPage />} />
         <Route path="/article" element={<ArticlePage />} />
-        <Route path="/checklist" element={<Checklist></Checklist>}></Route>
-        <Route path="/about" element={<About></About>}></Route>
+        <Route path="/checklist" element={<Checklist />} />
+        <Route path="/about" element={<About />} />
       </Routes>
     </>
   );

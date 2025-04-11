@@ -69,7 +69,7 @@ const quotes = [
     },
     {
         quote: "The whole glorious history of animals with people is about joy and connection. It’s about loving this creature and letting this creature love you.", 
-        uthor: "Jon Katz",
+        author: "Jon Katz",
     },
 ];
 
