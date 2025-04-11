@@ -7,16 +7,6 @@ import './AuthGuard.scss';
 const AuthGuard = ({ children }) => {
   const { userId } = useAuth();
   const location = useLocation(); // Get the current location
-  const [showSignInModal, setShowSignInModal] = useState(false);
-
-  useEffect(() => {
-    // If the user is not authenticated, show the modal
-    if (!userId) {
-      setShowSignInModal(true);
-    } else {
-      setShowSignInModal(false);
-    }
-  }, [userId]);
 
   if (!userId) {
     return (

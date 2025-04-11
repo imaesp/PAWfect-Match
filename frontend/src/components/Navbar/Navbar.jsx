@@ -1,9 +1,16 @@
 import './Navbar.scss';
 import Login from '../../components/Login/Login';
+import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/clerk-react";
+import { useUser } from '@clerk/clerk-react';
 import { Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+// {user} ? <Link to="/survey" className="navLinks">Matchmaker</Link> : <SignInButton mode="modal"> <Link className="navLinks">Matchmaker</Link> </SignInButton>
+
 function Navbar() {
+
+  const { user } = useUser();
+  
   return (
     <nav className="navbar">
       <div className="container navbar-container">
@@ -18,9 +25,21 @@ function Navbar() {
           {/* Middle Section */}
           <div className="col-auto mid">
             <div className="d-flex justify-content-center flex-wrap gap-2">
-              <Link to="/survey" className="navLinks">Matchmaker</Link>
+              {user ? (
+                <Link to="/survey" className="navLinks">Matchmaker</Link>
+              ) : (
+                <SignInButton mode="modal">
+                  <span className="navLinks" role="button">Matchmaker</span>
+                </SignInButton>
+              )}
               <Link to="/adopt" className="navLinks">Adopt</Link>
-              <Link to="/budget" className="navLinks">Budgeting Tool</Link>
+              {user ? (
+                <Link to="/budget" className="navLinks">Budgeting Tool</Link>
+              ) : (
+                <SignInButton mode="modal">
+                  <span className="navLinks" role="button">Budgeting Tool</span>
+                </SignInButton>
+              )}
               <Link to='/checklist' className="navLinks">Checklist</Link>
               <Link to="/article" className="navLinks">Pet EDU</Link>
               <Link to="/about" className="navLinks">About</Link>

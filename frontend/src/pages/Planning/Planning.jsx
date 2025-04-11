@@ -1,8 +1,12 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
+import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/clerk-react";
+import { useUser } from '@clerk/clerk-react';
 import "./Planning.scss"
 
 function Planning() {
+  const { user } = useUser();
+
   return (
     <div className="plan-container text-center">
       <div className="row justify-content-center"><h1 className='title'>Planning on Adopting a Pet?</h1></div>
@@ -20,7 +24,13 @@ function Planning() {
             <img src="/budget.svg" alt=""/>
             <h1>BUDGETING TOOL</h1>
             <p> Track your expenses and manage ongoing pet care costs</p>
-            <Link to='/budget'><button className="button">Learn more</button></Link>
+            {user ? (
+                <Link to="/budget"><button className="button">Learn more</button></Link>
+              ) : (
+                <SignInButton mode="modal">
+                 <button className="button">Learn more</button>
+                </SignInButton>
+              )}
           </div>
         </div>
         <div className="col">
@@ -28,7 +38,13 @@ function Planning() {
             <img src="dog.png" alt=""/>
             <h1>MATCHMAKER</h1>
             <p>Personalized pet recommendations based on your preferences and lifestyle.</p>
-            <Link to='/survey'><button className="button">Learn more</button></Link>
+            {user ? (
+                <Link to="/survey"><button className="button">Learn more</button></Link>
+              ) : (
+                <SignInButton mode="modal">
+                 <button className="button">Learn more</button>
+                </SignInButton>
+              )}
         </div>
       </div>
       </div>
