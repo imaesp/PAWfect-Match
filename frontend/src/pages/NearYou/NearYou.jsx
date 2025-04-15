@@ -128,7 +128,7 @@ const NearYou = () => {
               }}
             >
               <div className='card-img'>
-                <img variant="top" src={picture} alt={pet.name + " the PAWfect Pet"} />
+                <img variant="top" src={picture || 'default.jpg'} alt={pet.name + " the PAWfect Pet"} />
               </div>
               <div className='card-body'>
                 <h1 className='pet-name'>{pet.name}</h1>

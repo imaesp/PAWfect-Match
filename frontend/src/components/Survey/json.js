@@ -133,6 +133,7 @@ export const json = {
           "renderAs": "select",
           "name": "breed",
           "title": "Do you have any breed restrictions that may affect your matches(ie. allergies, living conditions(building requirements))",
+          "placeholder": "Type in a Breed",
           "choices": [
             "Abyssinian",
             "Akita",
