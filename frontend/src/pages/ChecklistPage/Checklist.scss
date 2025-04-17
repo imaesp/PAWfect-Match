@@ -123,9 +123,8 @@ $box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
         display: flex;
         justify-content: flex-start; /* Aligns checkboxes to the left */
         input[type="checkbox"] {
-            appearance: none;
-            width: 2em;
-            height: .75em; /* Increased height for roundness */
+            width: 15px;
+            height: 15px; /* Increased height for roundness */
             border: 2px solid $secondary-color;
             border-radius: 50%; /* Makes the checkbox round */
             background-color: #fffaf0;
