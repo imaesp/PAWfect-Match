@@ -47,7 +47,7 @@ function CertifiedPetCard({ pet }) {
                 onClick={() => handleClick(pet.animalID)}
             />
             <Card.Body>
-                <Card.Title className='card-title'>{pet.name} Cetified Match</Card.Title>
+                <Card.Title className='card-title'>{pet.name}</Card.Title>
                 <div className="info-circles">
                     {pet.size && <div className="circle"> Size <br /> {sizeAndSexLabels[pet.size]} </div>}
                     {pet.sex && <div className="circle"> Sex <br /> {sizeAndSexLabels[pet.sex]}</div>}
