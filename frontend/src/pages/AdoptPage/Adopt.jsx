@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import PetCard from '../../components/Card/PetCard';
+import CertifiedPetCard from '../../components/Card/CertifiedPetCard';
 import CarouselAdopt from '../../components/CarouselAdopt/CarouselAdopt';
 import Filter from '../../components/Filter/Filter';
 import './Adopt.scss';
@@ -52,8 +53,13 @@ function Adopt() {
 
     
     const matchedPets = userAnswers && user?.id
-    ? findBestMatches(userAnswers, pets, 3547)
+    ? findBestMatches(userAnswers, pets, pets.length)
     : pets;
+
+    const certifiedMatches = matchedPets.slice(0,3);
+    for (let i = 0; i < 3; i++) {
+        certifiedMatches[i] = matchedPets[i].animalID;
+    }
 
     // Apply filters to the full matchedPets list
     const filteredPets = matchedPets.filter((pet) => {
@@ -90,7 +96,23 @@ function Adopt() {
             return prevPage;
         });
     };
-
+    // certifiedMatches = matchedPets.slice(0,3);
+        // for i in Range(3){
+        //     certifiedMatches[i] = matchedPets[i].animalID;
+        // }
+    // // [{123445, 3245645, 135645]
+    // //  if cetifiedMatches[pet.animalID] ? <CertifiedPetCard key={pet.animalID} pet={pet} /> : <PetCard key={pet.animalID} pet={pet} />
+    // <div className="pet-grid">
+    //      {paginatedPets.map((pet) => (
+    //             pet.animalID in cetifiedMatches ? (
+    //                 <CertifiedPetCard key={pet.animalID} pet={pet} />
+    //             ) : (
+    //                 <PetCard key={pet.animalID} pet={pet} />
+    //             )
+    //         <PetCard key={pet.animalID} pet={pet} />
+    //      ))}
+    // </div>
+    console.log(certifiedMatches)
     return (
         <div className='adopt-page'>
             <div className='adopt-container'>
@@ -103,9 +125,13 @@ function Adopt() {
                     </div>
                     {/* Pet Profiles Grid */}
                     <div className="pet-grid">
-                        {paginatedPets.map((pet) => (
+                        {paginatedPets.map((pet) =>
+                            certifiedMatches.includes(pet.animalID) ? (
+                            <CertifiedPetCard key={pet.animalID} pet={pet} />
+                            ) : (
                             <PetCard key={pet.animalID} pet={pet} />
-                        ))}
+                            )
+                        )}
                     </div>
                     {/* Pagination Controls */}
                     <div className="pagination-controls">
