@@ -14,6 +14,7 @@ function Adopt() {
     const { user } = useUser();
     const user_id = user?.id;
     const [page, setPage] = useState(1);
+    const [clickedIds, setClickedIds] = useState([]);
     const [selectedFilters, setSelectedFilters] = useState({
         species: '',
         sex: '',
@@ -22,6 +23,14 @@ function Adopt() {
         breed: '',
         state: '',
     });
+
+    const handleClick = (petId) => {
+        setClickedIds((prevState) =>
+            prevState.includes(petId)
+                ? prevState.filter(id => id !== petId)
+                : [...prevState, petId]
+        );
+    };
    
     const {data: surveyData, isLoading: isSurveyLoading, isSurveyError} = useSurveyResponsesQuery(user_id);
     const userAnswers = surveyData?.answers;
@@ -112,7 +121,6 @@ function Adopt() {
     //         <PetCard key={pet.animalID} pet={pet} />
     //      ))}
     // </div>
-    console.log(certifiedMatches)
     return (
         <div className='adopt-page'>
             <div className='adopt-container'>
@@ -127,9 +135,9 @@ function Adopt() {
                     <div className="pet-grid">
                         {paginatedPets.map((pet) =>
                             certifiedMatches.includes(pet.animalID) ? (
-                            <CertifiedPetCard key={pet.animalID} pet={pet} />
+                            <CertifiedPetCard key={pet.animalID} pet={pet} clickedIds={clickedIds} handleClick={handleClick}/>
                             ) : (
-                            <PetCard key={pet.animalID} pet={pet} />
+                            <PetCard key={pet.animalID} pet={pet} clickedIds={clickedIds} handleClick={handleClick} />
                             )
                         )}
                     </div>

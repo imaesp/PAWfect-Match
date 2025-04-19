@@ -1,19 +1,10 @@
 import Button from 'react-bootstrap/Button';
 import { Card } from 'react-bootstrap';
-import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './PetCard.scss';
 
-function PetCard({ pet }) {
-    const [isClicked, setIsClicked] = useState({});
-
-    const handleClick = (petId) => {
-        setIsClicked((prevState) => ({
-            ...prevState,
-            [petId]: !prevState[petId],
-        }));
-    };
-
+function PetCard({ pet, clickedIds, handleClick }) {
+    
     let picturesArray = [];
     try {
         picturesArray = JSON.parse(pet.pictures.replace(/'/g, '"'));
@@ -22,7 +13,9 @@ function PetCard({ pet }) {
     }
     const picture = picturesArray[0]; // Only the first picture
 
-    const heartIconSrc = isClicked[pet.animalID] ? '/heartfill.png' : '/heart.png';
+    const heartIconSrc = clickedIds.includes(pet.animalID)
+    ? '/heartfill.png'
+    : '/heart.png';
 
     const sizeAndSexLabels = {
         "Medium": 'M',
