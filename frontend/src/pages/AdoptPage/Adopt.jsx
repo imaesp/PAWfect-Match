@@ -26,17 +26,19 @@ function Adopt() {
     });
 
     const handleClick = (pet) => {
-        setFavoritedPets((prev) => {
-            const isFavorited = prev.find((p) => p.animalID === pet.animalID);
-            if (isFavorited) {
-                // Remove from favorites
-                return prev.filter((p) => p.animalID !== pet.animalID);
-            } else {
-                // Add to favorites
-                return [...prev, pet];
-            }
-        });
+        const existing = JSON.parse(localStorage.getItem("favoritedPets")) || [];
+        const updated = existing.some(f => f.animalID === pet.animalID)
+            ? existing.filter(f => f.animalID !== pet.animalID)
+            : [...existing, pet];
+    
+        localStorage.setItem("favoritedPets", JSON.stringify(updated));
+        setFavoritedPets(updated);
     };
+    useEffect(() => {
+        const storedFavorites = JSON.parse(localStorage.getItem("favoritedPets")) || [];
+        setFavoritedPets(storedFavorites);
+    }, []);
+    
     
    
     const {data: surveyData, isLoading: isSurveyLoading, isSurveyError} = useSurveyResponsesQuery(user_id);
