@@ -84,6 +84,19 @@
           }
         }
       }
+      @media (max-width: 768px) {
+        justify-items: center;
+        .container-left{
+          float: none;
+        }
+      }
+    
+      @media (max-width: 480px) { 
+        justify-items: center;
+        .container-left{
+          float: none;
+        }
+      }
     }
   }
 }
