@@ -1,14 +1,22 @@
-import React from 'react'
-import './Favorites.scss'
+import React from 'react';
+import './Favorites.scss';
+import { Link } from 'react-router-dom';
 
-function Favorites({ clickedIds }) {
+function Favorites({ favoritedPets  }) {
   return (
     <div className='fav-container'>
-         {clickedIds.map((id) =>
-         <h1>{id}</h1>
-        )}
+        <h1 className='fav-title'>Favorites</h1>
+        {favoritedPets.map((pet) => (
+        <Link to={`/adopt/${pet.animalID}`} state={{ pet }}>
+            <div className="fav-item" key={pet.animalID}>
+                <h1 className='pet-name'>{pet.name}</h1>
+                <img src="/rightpaw.png" alt="Pawprint" className="paw-icon" />
+            </div>
+        </Link>
+        
+      ))}
     </div>
-  )
+  );
 }
 
-export default Favorites
+export default Favorites;

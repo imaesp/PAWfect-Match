@@ -15,7 +15,7 @@ function Adopt() {
     const { user } = useUser();
     const user_id = user?.id;
     const [page, setPage] = useState(1);
-    const [clickedIds, setClickedIds] = useState([]);
+    const [favoritedPets, setFavoritedPets] = useState([]);
     const [selectedFilters, setSelectedFilters] = useState({
         species: '',
         sex: '',
@@ -25,13 +25,19 @@ function Adopt() {
         state: '',
     });
 
-    const handleClick = (petId) => {
-        setClickedIds((prevState) =>
-            prevState.includes(petId)
-                ? prevState.filter(id => id !== petId)
-                : [...prevState, petId]
-        );
+    const handleClick = (pet) => {
+        setFavoritedPets((prev) => {
+            const isFavorited = prev.find((p) => p.animalID === pet.animalID);
+            if (isFavorited) {
+                // Remove from favorites
+                return prev.filter((p) => p.animalID !== pet.animalID);
+            } else {
+                // Add to favorites
+                return [...prev, pet];
+            }
+        });
     };
+    
    
     const {data: surveyData, isLoading: isSurveyLoading, isSurveyError} = useSurveyResponsesQuery(user_id);
     const userAnswers = surveyData?.answers;
@@ -135,16 +141,16 @@ function Adopt() {
                         </div>
                         {/* Favorites Container */}
                         <div className='favorites-container'>
-                            <Favorites clickedIds={clickedIds}></Favorites>
+                            <Favorites favoritedPets={favoritedPets} />
                         </div>
                     </div>
                     {/* Pet Profiles Grid */}
                     <div className="pet-grid">
                         {paginatedPets.map((pet) =>
                             certifiedMatches.includes(pet.animalID) ? (
-                            <CertifiedPetCard key={pet.animalID} pet={pet} clickedIds={clickedIds} handleClick={handleClick}/>
+                            <CertifiedPetCard key={pet.animalID} pet={pet} handleClick={handleClick} isFavorited={!!favoritedPets.find(p => p.animalID === pet.animalID)}/>
                             ) : (
-                            <PetCard key={pet.animalID} pet={pet} clickedIds={clickedIds} handleClick={handleClick} />
+                            <PetCard key={pet.animalID} pet={pet}  handleClick={handleClick} isFavorited={!!favoritedPets.find(p => p.animalID === pet.animalID)} />
                             )
                         )}
                     </div>

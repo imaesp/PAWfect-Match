@@ -3,7 +3,7 @@ import { Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import './PetCard.scss';
 
-function PetCard({ pet, clickedIds, handleClick }) {
+function PetCard({ pet, handleClick, isFavorited }) {
     
     let picturesArray = [];
     try {
@@ -12,10 +12,6 @@ function PetCard({ pet, clickedIds, handleClick }) {
         console.error('Failed to parse pictures string:', error);
     }
     const picture = picturesArray[0]; // Only the first picture
-
-    const heartIconSrc = clickedIds.includes(pet.name)
-    ? '/heartfill.png'
-    : '/heart.png';
 
     const sizeAndSexLabels = {
         "Medium": 'M',
@@ -33,10 +29,10 @@ function PetCard({ pet, clickedIds, handleClick }) {
                 alt={pet.name + " the PAWfect Pet"}
             />
             <img
-                src={heartIconSrc}
-                alt="Heart Icon"
-                className="icon-overlay"
-                onClick={() => handleClick(pet.name)}
+                 src={isFavorited ? '/heartfill.png' : '/heart.png'}
+                 alt="Heart Icon"
+                 className="icon-overlay"
+                 onClick={() => handleClick(pet)}
             />
             <Card.Body>
                 <Card.Title className='card-title'>{pet.name}</Card.Title>
