@@ -9,6 +9,7 @@ import { findBestMatches } from '../../utils/petMatchAlgorithm';
 import useSurveyResponsesQuery from '../../hooks/useSurveyResponsesQuery';
 import useGetPets from '../../hooks/useGetPets';
 import PawPrintLeftToRight from '../../components/PawPrintAnimation/PawPrintLtoR';
+import Favorites from '../../components/Favorites/Favorites';
 
 function Adopt() {
     const { user } = useUser();
@@ -127,9 +128,15 @@ function Adopt() {
                 {/* Image Carrousel */}
                 <CarouselAdopt className='adopt-carrousel' />
                 <div className="content-container">
-                    {/* Filter selection Container */}
-                    <div className="filter-container">
-                        <Filter className="adopt-filter" onFilterChange={handleFilterChange} />
+                    <div className='container-left'>
+                        {/* Filter selection Container */}
+                        <div className="filter-container">
+                            <Filter className="adopt-filter" onFilterChange={handleFilterChange} />
+                        </div>
+                        {/* Favorites Container */}
+                        <div className='favorites-container'>
+                            <Favorites clickedIds={clickedIds}></Favorites>
+                        </div>
                     </div>
                     {/* Pet Profiles Grid */}
                     <div className="pet-grid">

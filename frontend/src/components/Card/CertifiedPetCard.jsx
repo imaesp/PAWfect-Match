@@ -13,7 +13,7 @@ function CertifiedPetCard({ pet, clickedIds, handleClick }) {
     }
     const picture = picturesArray[0]; // Only the first picture
 
-    const heartIconSrc = clickedIds.includes(pet.animalID)
+    const heartIconSrc = clickedIds.includes(pet.name)
     ? '/heartfill.png'
     : '/heart.png';
 
@@ -37,7 +37,7 @@ function CertifiedPetCard({ pet, clickedIds, handleClick }) {
                 src={heartIconSrc}
                 alt="Heart Icon"
                 className="icon-overlay"
-                onClick={() => handleClick(pet.animalID)}
+                onClick={() => handleClick(pet.name)}
             />
             <Card.Body>
                 <Card.Title className='card-title'>{pet.name}</Card.Title>

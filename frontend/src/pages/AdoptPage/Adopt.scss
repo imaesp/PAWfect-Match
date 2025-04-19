@@ -9,9 +9,17 @@
 
     .content-container {
 
-      .filter-container {
-        justify-items: center;
+      .container-left{
+        float: left;
+
+        .favorites-container{
+          padding-bottom: 4rem;
+        }
+        .filter-container {
+          justify-items: center;
+        }
       }
+      
         
       .pet-grid {
         display: grid;
