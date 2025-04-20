@@ -3,7 +3,7 @@ import { Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import './PetCard.scss';
 
-function PetCard({ pet, handleClick, isFavorited }) {
+function PetCard({ pet, handleVisited, handleClick, isFavorited }) {
     
     let picturesArray = [];
     try {
@@ -44,7 +44,7 @@ function PetCard({ pet, handleClick, isFavorited }) {
                     <Card.Text></Card.Text>
                 )}
                 <Link to={`/adopt/${pet.animalID}`} state={{ pet }}>
-                    <Button className='adopt-button' variant="primary">Adopt Me</Button>
+                    <Button className='adopt-button' variant="primary" onClick={() => handleVisited(pet)}>Adopt Me</Button>
                 </Link>
             </Card.Body>
         </Card>
