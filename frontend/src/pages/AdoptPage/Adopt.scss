@@ -25,9 +25,11 @@
       
         
       .pet-grid {
+        padding-top: 1rem;
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr));
         gap: 1px;
+        row-gap: 30px;
         justify-items: center;
         align-items: stretch;
         justify-content: center;

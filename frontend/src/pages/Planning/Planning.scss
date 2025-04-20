@@ -1,5 +1,5 @@
 .plan-container {
-    background-color: #fffaf0;
+    background-color: #FFCA93;
     align-items: center;
     align-content: center;
     height: 800px;
@@ -7,35 +7,29 @@
   
     .title {
       font-size: 60px;
-      color: #220601;
+      color: #fffaf0;
       margin-top: 20px;
       margin-bottom: 50px;
       font-weight: bold;
     }
   
     h1 {
+      font-weight: bold;
       font-size: 30px;
-      color: #220601;
+      color: #fffaf0;
       margin-top: 20px;
     }
   
     .container {
-      background-color: #fffaf0;
-      transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+      height: 350px;
+      border-radius: 10px;
+      background-color: #FFCA93;
       position: relative;
-  
-      &:hover {
-        transform: scale(1.05);
-      }
   
       img {
         transition: transform 0.3s ease;
         height: 121px;
         width: 121px;
-      }
-  
-      &:hover img {
-        transform: scale(1.1);
       }
     }
   
@@ -60,7 +54,7 @@
   
     h2 {
       margin-top: 20px;
-      color: #220601;
+      color: #fffaf0;
       font-weight: bold;
       opacity: 0.5;
     }
@@ -73,7 +67,6 @@
       background-color: #220601;
       border-radius: 24px;
       border-style: none;
-      box-shadow: rgba(0, 0, 0, .2) 0 3px 5px -1px,rgba(0, 0, 0, .14) 0 6px 10px 0,rgba(0, 0, 0, .12) 0 1px 18px 0;
       color: #F6F9FE;
       cursor: pointer;
       height: 48px;
