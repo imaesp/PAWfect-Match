@@ -117,7 +117,7 @@ function Adopt() {
     });
 
     // Then paginate the filtered list
-    const itemsPerPage = 20;
+    const itemsPerPage = 15;
     const startIndex = (page - 1) * itemsPerPage;
     const paginatedPets = filteredPets.slice(startIndex, startIndex + itemsPerPage);
 
