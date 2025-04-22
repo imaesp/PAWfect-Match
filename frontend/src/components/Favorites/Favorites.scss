@@ -9,10 +9,26 @@
     padding: 15px;
     background-color: white;
     border-radius: 10px;
+    overflow-y: auto;
+    padding-right: 15px;
+
 
     a {
         text-decoration: none;
         color: inherit;
+    }
+
+    &::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: #c8b4b4;
+      border-radius: 10px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: transparent;
     }
   }
 

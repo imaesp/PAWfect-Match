@@ -109,7 +109,7 @@ function Adopt() {
         return (
             (!selectedFilters.species || pet.species === selectedFilters.species) &&
             (!selectedFilters.sex || pet.sex === selectedFilters.sex) &&
-            (!selectedFilters.size || pet.size === selectedFilters.size) &&
+             (!selectedFilters.size || pet.size === selectedFilters.size) &&
             (!selectedFilters.age || pet.age === selectedFilters.age) &&
             (!selectedFilters.breed || pet.breed === selectedFilters.breed) &&
             (!selectedFilters.state || pet.state === selectedFilters.state)
@@ -127,7 +127,7 @@ function Adopt() {
             [filterType]: value,
         }));
     };
-
+       
     const handlePageChange = (direction) => {
         setPage((prevPage) => {
             const totalPages = Math.ceil(filteredPets.length / itemsPerPage);
