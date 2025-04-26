@@ -10,6 +10,7 @@ export default function BudgetCard({
   name,
   amount,
   max,
+  date,
   hideButtons,
   onAddExpenseClick,
   onViewExpensesClick,
@@ -23,12 +24,20 @@ export default function BudgetCard({
   } else {
     classNames.push("reg-card");
   }
+  
+  let yearMonth;
+  if(date) {
+    yearMonth = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}`;
+  } else {
+    console.log('Waiting for date')
+  }
 
   return (
     <Card className={classNames.join(" ")}>
       <Card.Body>
         <Card.Title className="d-flex justify-content-between align-items-baseline fw-normal mb-3">
           <div className="me-2">{name}</div>
+          <div className="me-2">{yearMonth}</div>
           <div className="d-flex align-items-baseline">
             {currencyFormatter.format(amount)}
             {max && (

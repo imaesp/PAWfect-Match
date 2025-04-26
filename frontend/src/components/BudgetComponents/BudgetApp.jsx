@@ -54,6 +54,7 @@ export default function BudgetPage() {
                 name={budget.name}
                 amount={amount}
                 max={budget.max}
+                date={new Date(budget.created_at)}
                 onAddExpenseClick={() => openAddExpenseModal(budget.id)}
                 onViewExpensesClick={() =>
                   setViewExpensesModalBudgetId(budget.id)
