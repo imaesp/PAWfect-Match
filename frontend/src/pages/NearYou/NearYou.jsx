@@ -1,65 +1,43 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import './NearYou.scss';
-import { getSupabaseBrowserClient } from '../../supabase/supabaseClient';
 import { findBestMatches } from '../../utils/petMatchAlgorithm';
 import { useUser } from '@clerk/clerk-react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Card } from 'react-bootstrap';
+import useSurveyResponsesQuery from '../../hooks/useSurveyResponsesQuery';
+import useGetPets from '../../hooks/useGetPets';
+
 
 const NearYou = () => {
   const { user } = useUser();
-  const [pets, setPets] = useState([]);
-  const [userAnswers, setUserAnswers] = useState(null);
-  const [loading, setLoading] = useState(true);
   const [animatePets, setAnimatePets] = useState(false);
-  const supabase = getSupabaseBrowserClient();
-
-  // Fetch pets data from Supabase
+  
   useEffect(() => {
-    async function getPets() {
-      try {
-        const { data, error } = await supabase
-          .from('pets')
-          .select(
-            'animalID, name, species, sex, activityLevel, energyLevel, age, size, breed, primaryBreed, pictures, animalLocation'
-          );
-        if (error) throw error;
-        setPets(data);
-      } catch (error) {
-        console.error('Error fetching pets:', error.message);
-      } finally {
-        setLoading(false);
-      }
-    }
-    getPets();
+    const petAnimationInterval = setInterval(() => {
+      setAnimatePets((prev) => !prev);
+    }, 2000);
+
+    return () => {
+      clearInterval(petAnimationInterval);
+    };
   }, []);
 
+  // Fetch pets data from Supabase
+  const {
+    data: pets,
+    isLoading: petsLoading,
+    isError: petsError,
+  } = useGetPets();
+
   // Fetch survey responses for the current user
-  useEffect(() => {
-    async function fetchSurveyData() {
-      if (!user?.id) return;
+  const {
+    data: surveyData,
+    isLoading: surveyLoading,
+    isError: surveyError,
+  } = useSurveyResponsesQuery(user?.id);
 
-      try {
-        const { data, error } = await supabase
-          .from('survey_responses')
-          .select('answers')
-          .eq('user_id', user.id)
-          .maybeSingle();
-
-        if (error) throw error;
-
-        if (data?.answers) {
-          setUserAnswers(formatSurveyData(data.answers));
-        } else {
-          setUserAnswers(null);
-        }
-      } catch (error) {
-        console.error('Failed to fetch survey data:', error.message);
-      }
-    }
-    fetchSurveyData();
-  }, [user?.id]);
+  if(petsLoading || surveyLoading) return <p>Loading...</p>
+  if(petsError || surveyError) return <p>Error loading Data</p>
 
   // Format survey data
   const formatSurveyData = (surveyData) => ({
@@ -74,7 +52,7 @@ const NearYou = () => {
     breed: surveyData.breed || [],
   });
 
-  // Parse pictures safely
+  // Parse pictures 
   const parsePictures = (pictures) => {
     try {
       return JSON.parse(pictures.replace(/'/g, '"')) || [];
@@ -83,29 +61,12 @@ const NearYou = () => {
     }
   };
 
+   const userAnswers = surveyData?.answers ? formatSurveyData(surveyData.answers) : null;
   // Get the top 3 best matches or all pets if no userAnswers
   const petsToDisplay = userAnswers ? findBestMatches(userAnswers, pets, 3) : pets;
 
   // Limit petsToDisplay to only the first 3 pets
   const limitedPets = petsToDisplay.slice(0, 3);
-
-  useEffect(() => {
-    const petAnimationInterval = setInterval(() => {
-      setAnimatePets((prev) => !prev);
-    }, 2000);
-
-    return () => {
-      clearInterval(petAnimationInterval);
-    };
-  }, []);
-
-  const sizeAndSexLabels = {
-    "Medium": 'M',
-    "Small": 'S',
-    "Large": 'L',
-    "Female": 'F',
-    "Male": 'M'
-  };
 
   return (
     <div className="pet-container">
@@ -114,7 +75,7 @@ const NearYou = () => {
         {limitedPets.map((pet, index) => {
           const picturesArray = parsePictures(pet.pictures);
           const picture = picturesArray[0];
-
+  
           return (
             <motion.div
               key={index}
@@ -155,3 +116,5 @@ const NearYou = () => {
 };
 
 export default NearYou;
+
+
