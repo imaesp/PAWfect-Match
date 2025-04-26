@@ -1,7 +1,5 @@
 import { useEffect, useState } from 'react';
-//import { useQuery } from '@tanstack/react-query';
 import './NearYou.scss';
-//import { getSupabaseBrowserClient } from '../../supabase/supabaseClient';
 import { findBestMatches } from '../../utils/petMatchAlgorithm';
 import { useUser } from '@clerk/clerk-react';
 import { Link } from 'react-router-dom';
