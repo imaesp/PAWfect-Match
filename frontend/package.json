@@ -22,6 +22,7 @@
     "@tanstack/react-query-devtools": "^5.71.1",
     "axios": "^1.7.7",
     "bootstrap": "^5.3.3",
+    "d3": "^7.9.0",
     "dotenv": "^16.4.5",
     "flowbite": "^2.5.2",
     "flowbite-react": "^0.10.2",

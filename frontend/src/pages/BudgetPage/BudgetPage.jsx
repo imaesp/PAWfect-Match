@@ -1,7 +1,10 @@
 import BudgetApp from "../../components/BudgetComponents/BudgetApp";
 import BudgetChart from "../../components/BudgetComponents/BudgetChart";
+import BudgetBarGraph from "../../components/BudgetComponents/BudgetBarGraph";
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import { useBudgets } from "../../components/BudgetComponents/BudgetsContext";
+
 import "./BudgetPage.scss";
 
 const tips = [
@@ -20,7 +23,6 @@ const tips = [
   "Thinking about a puppy? Puppies can cost $2,000+ in their first year due to vaccinations, training, and supplies"
 ];
 
-
 const getRandomTip = () => {
   const shuffled = tips.sort(() => 0.5 - Math.random());
   return shuffled.slice(0, 1);
@@ -30,7 +32,7 @@ const getRandomTip = () => {
 export default function BudgetPage() {
 
   const [randomTip, setRandomTip] = useState(getRandomTip());
-
+  const { budgets, getBudgetExpenses } = useBudgets();
   useEffect(() => {
     const factInterval = setInterval(() => {
         setRandomTip(getRandomTip());
@@ -68,7 +70,7 @@ export default function BudgetPage() {
           <div class="col">
             <h1 className="me-auto">Breakdown</h1>
             <div className="chart-container">
-              <BudgetChart />
+              <BudgetBarGraph data={budgets}></BudgetBarGraph>
             </div>
           </div>
           <div class="col">
