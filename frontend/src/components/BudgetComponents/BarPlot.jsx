@@ -1,51 +1,61 @@
 import { useBudgets } from "./BudgetsContext";
-import { useEffect, useMemo, useRef } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import * as d3 from "d3";
+import { format, isSameMonth, parseISO } from "date-fns";
 
 const MARGIN = { top: 30, right: 30, bottom: 50, left: 50 };
 
-export const Barplot = ({ width, height, data }) => {
-   const { budgets, getBudgetExpenses } = useBudgets();
+export const Barplot = ({ width, height }) => {
+  const { budgets, expenses } = useBudgets();
+  const [scope, setScope] = useState("all"); // all, monthly
   const axesRef = useRef(null);
+
   const boundsWidth = width - MARGIN.right - MARGIN.left;
   const boundsHeight = height - MARGIN.top - MARGIN.bottom;
-  const amount = getBudgetExpenses(data.id).reduce(
-    (total, expense) => total + expense.amount,
-    0
-  );
 
-  const allGroups = budgets.map((d) => String(d.x));
-  const allSubgroups = ["groupA", "groupB", "groupC", "groupD"]; // todo
+  function getBudgetExpenses(budgetId) {
+    if (!expenses) return [];
+    return expenses.filter((expense) => expense.budgetId === budgetId);
+  }
 
-  // Stack the data
-  const stackSeries = d3.stack().keys(allSubgroups).order(d3.stackOrderNone);
-  const series = stackSeries(data);
+  const filteredBudgets = useMemo(() => {
+    const now = new Date();
+    if (scope === "monthly") {
+      return budgets.filter((budget) => 
+        isSameMonth(parseISO(budget.created_at), now)
+      );
+    }
+    return budgets;
+  }, [budgets, scope]);
 
-  // Y axis
-  const max = 200; // todo
-  const yScale = useMemo(() => {
-    return d3
-      .scaleLinear()
-      .domain([0, max || 0])
-      .range([boundsHeight, 0]);
-  }, [data, height]);
-
-  // X axis
+  // X-axis: budget names
   const xScale = useMemo(() => {
     return d3
       .scaleBand()
-      .domain(allGroups)
+      .domain(filteredBudgets.map((d) => d.name))
       .range([0, boundsWidth])
-      .padding(0.05);
-  }, [data, width]);
+      .padding(0.4);
+  }, [filteredBudgets, width]);
 
-  // Color Scale
+  // Y-axis: maximum budget value
+  const yScale = useMemo(() => {
+    return d3
+      .scaleLinear()
+      .domain([
+        0,
+        d3.max(filteredBudgets, (d) => 
+          Math.max(d.max, getBudgetExpenses(d.id).reduce((acc, e) => acc + e.amount, 0))
+        ) || 0
+      ])
+      .range([boundsHeight, 0]);
+  }, [filteredBudgets, expenses, height]);
+
   const colorScale = d3
     .scaleOrdinal()
-    .domain(allGroups)
-    .range(["#e0ac2b", "#e85252", "#6689c6", "#9a6fb0", "#a53253"]);
+    .domain(filteredBudgets.map((d) => d.name))
+    .range(d3.schemeSet2);
 
-  // Render the X and Y axis using d3.js, not react
+  // Draw axes using D3
   useEffect(() => {
     const svgElement = d3.select(axesRef.current);
     svgElement.selectAll("*").remove();
@@ -54,37 +64,54 @@ export const Barplot = ({ width, height, data }) => {
     svgElement
       .append("g")
       .attr("transform", `translate(0,${boundsHeight})`)
-      .call(xAxisGenerator);
+      .call(xAxisGenerator)
+      .selectAll("text")
+      .attr("transform", "rotate(-40)")
+      .style("text-anchor", "end");
 
     const yAxisGenerator = d3.axisLeft(yScale);
     svgElement.append("g").call(yAxisGenerator);
   }, [xScale, yScale, boundsHeight]);
 
-  const rectangles = series.map((subgroup, i) => (
-    <g key={i}>
-      {subgroup.map((group, j) => (
-        <rect
-          key={j}
-          x={xScale(group.data.x)}
-          y={yScale(group[1])}
-          height={yScale(group[0]) - yScale(group[1])}
-          width={xScale.bandwidth()}
-          fill={colorScale(subgroup.key)}
-          opacity={0.9}
-        />
-      ))}
-    </g>
-  ));
-
   return (
     <div>
+      {/* Scope Buttons */}
+      <div style={{ marginBottom: "1rem", display: "flex", gap: "1rem" }}>
+        <button onClick={() => setScope("all")}>All Time</button>
+        <button onClick={() => setScope("monthly")}>This Month</button>
+      </div>
+
       <svg width={width} height={height}>
         <g
           width={boundsWidth}
           height={boundsHeight}
           transform={`translate(${MARGIN.left},${MARGIN.top})`}
         >
-          {rectangles}
+          {filteredBudgets.map((budget) => {
+            const expensesSum = getBudgetExpenses(budget.id).reduce((acc, e) => acc + e.amount, 0);
+            const barWidth = xScale.bandwidth() / 2;
+
+            return (
+              <g key={budget.id}>
+                {/* Budget bar */}
+                <rect
+                  x={xScale(budget.name)}
+                  y={yScale(budget.max)}
+                  width={barWidth}
+                  height={boundsHeight - yScale(budget.max)}
+                  fill="#4CAF50"
+                />
+                {/* Expenses bar */}
+                <rect
+                  x={xScale(budget.name) + barWidth}
+                  y={yScale(expensesSum)}
+                  width={barWidth}
+                  height={boundsHeight - yScale(expensesSum)}
+                  fill="#FF6B6B"
+                />
+              </g>
+            );
+          })}
         </g>
         <g
           width={boundsWidth}

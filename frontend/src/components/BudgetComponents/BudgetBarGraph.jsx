@@ -1,5 +1,5 @@
 import React from 'react'
-import { Barplot } from "./Barplot";
+import { Barplot } from './BarPlot'
 
 function BudgetBarGraph({ data, width = 700, height = 400 }) {
   return (

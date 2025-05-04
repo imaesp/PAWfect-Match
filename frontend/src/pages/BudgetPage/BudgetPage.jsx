@@ -33,6 +33,7 @@ export default function BudgetPage() {
 
   const [randomTip, setRandomTip] = useState(getRandomTip());
   const { budgets, getBudgetExpenses } = useBudgets();
+  const [showBarGraph, setShowBarGraph] = useState(false);
   useEffect(() => {
     const factInterval = setInterval(() => {
         setRandomTip(getRandomTip());
@@ -70,7 +71,22 @@ export default function BudgetPage() {
           <div class="col">
             <h1 className="me-auto">Breakdown</h1>
             <div className="chart-container">
-              <BudgetBarGraph data={budgets}></BudgetBarGraph>
+              <div>
+                <button
+                  onClick={() => setShowBarGraph(prev => !prev)}
+                  className="toggle-button"
+                >
+                  {showBarGraph ? "Show Pie Chart" : "Show Bar Graph"}
+                </button>
+
+                <div className="chart-container">
+                  {showBarGraph ? (
+                    <BudgetBarGraph data={budgets} />
+                  ) : (
+                    <BudgetChart />
+                  )}
+                </div>
+              </div>
             </div>
           </div>
           <div class="col">
